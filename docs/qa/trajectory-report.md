@@ -11,7 +11,7 @@ Result: PASS
 | Slice | Review evidence | Trailer commits | design+tasks | lib domains touched |
 |---|---|---|---|---|
 | 2026-06-21-add-app-shell | clean | 6 | yes | location, i18n |
-| 2026-06-21-add-comfort-score | clean | 3 | yes | i18n, scoring |
+| 2026-06-21-add-comfort-score | clean | 4 | yes | i18n, scoring |
 
 ## Cross-slice module overlap
 

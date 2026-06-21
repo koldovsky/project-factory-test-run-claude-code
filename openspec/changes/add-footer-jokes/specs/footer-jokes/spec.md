@@ -1,14 +1,6 @@
 # Footer Jokes Specification
 
-## Purpose
-
-The footer shows a single Ukrainian, weather-themed joke selected from a local,
-curated list — no external API and no tracking (FR-JOKES-01, BC-PRIVACY-01).
-Selection is deterministic so the server and the client render exactly the same
-text (no hydration mismatch, no per-render randomness). The selection logic is a
-pure, framework-free function in `lib/jokes` so it is fully unit-testable.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Local curated joke source
 

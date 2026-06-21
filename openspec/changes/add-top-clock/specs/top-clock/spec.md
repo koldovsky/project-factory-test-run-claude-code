@@ -1,10 +1,6 @@
 # Top Clock Specification
 
-## Purpose
-
-The top-clock capability shows a compact, accessible clock in the application header that displays the visitor's own local time (from the browser locale and timezone) and updates live while the page is open (FR-CLOCK-01). It exists to give the page a quiet sense of "now" for the person looking at it, and it is deliberately separate from the weather day/night logic, which is driven by the active location's sunrise/sunset. The clock is intentionally minimal: not a world clock, no timezone picker, and not tied to the selected weather location.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Live visitor local-time clock in header
 

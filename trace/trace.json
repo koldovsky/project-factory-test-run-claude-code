@@ -93,7 +93,7 @@
     {
       "id": "FR-CLOCK-01",
       "specs": [
-        "openspec/specs/top-clock/spec.md"
+        "openspec/changes/add-top-clock/specs/top-clock/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -157,7 +157,7 @@
     {
       "id": "FR-JOKES-01",
       "specs": [
-        "openspec/specs/footer-jokes/spec.md"
+        "openspec/changes/add-footer-jokes/specs/footer-jokes/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -615,6 +615,14 @@
     {
       "check": "recording-evidence",
       "msg": "FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "active-changes",
+      "msg": "active change \"add-footer-jokes\" is not archived"
+    },
+    {
+      "check": "active-changes",
+      "msg": "active change \"add-top-clock\" is not archived"
     }
   ]
 }

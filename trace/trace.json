@@ -107,7 +107,9 @@
         "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/geo/parse.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -116,7 +118,10 @@
         "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/geo/flag.test.ts",
+        "lib/geo/map.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -144,7 +149,9 @@
         "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/geo/parse.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -392,23 +399,11 @@
     },
     {
       "check": "test-trace",
-      "msg": "FR-SEARCH-01 has no test annotated \"@trace FR-SEARCH-01\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-SEARCH-02 has no test annotated \"@trace FR-SEARCH-02\""
-    },
-    {
-      "check": "test-trace",
       "msg": "FR-SEARCH-03 has no test annotated \"@trace FR-SEARCH-03\""
     },
     {
       "check": "test-trace",
       "msg": "FR-SEARCH-04 has no test annotated \"@trace FR-SEARCH-04\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-SEARCH-05 has no test annotated \"@trace FR-SEARCH-05\""
     },
     {
       "check": "test-trace",

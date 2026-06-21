@@ -17,6 +17,14 @@ export const en: Record<MessageKey, string> = {
   searchPlaceholder: "Find a city",
   searchLabel: "City search",
 
+  // City search states (FR-SEARCH-05, FR-SEARCH-06, BC-BRAND-01).
+  searchSuggestionsLabel: "City suggestions",
+  searchNothingFound: "Nothing found. Try a different name.",
+  searchError: "Could not load suggestions. Check your connection and try again.",
+  searchRetry: "Try again",
+  searchUseMyLocation: "My location",
+  searchLocating: "Detecting your location",
+
   // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
   clockRegionLabel: "Local time",
 

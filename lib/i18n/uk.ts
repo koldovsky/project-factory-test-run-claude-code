@@ -18,6 +18,15 @@ export const uk = {
   searchPlaceholder: "Знайдіть місто",
   searchLabel: "Пошук міста",
 
+  // City search states (FR-SEARCH-05, FR-SEARCH-06, BC-BRAND-01). Calm tone,
+  // no exclamation marks. The suggestion list is a labelled listbox.
+  searchSuggestionsLabel: "Підказки міст",
+  searchNothingFound: "Нічого не знайдено. Спробуйте іншу назву.",
+  searchError: "Не вдалося завантажити підказки. Перевірте звʼязок і спробуйте ще раз.",
+  searchRetry: "Спробувати ще раз",
+  searchUseMyLocation: "Моє місцезнаходження",
+  searchLocating: "Визначаємо місцезнаходження",
+
   // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
   clockRegionLabel: "Місцевий час",
 

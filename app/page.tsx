@@ -1,3 +1,4 @@
+import { CitySearch } from "@/components/search/CitySearch";
 import { EmptyState } from "@/components/shell/EmptyState";
 import { Notice } from "@/components/shell/Notice";
 import {
@@ -75,7 +76,7 @@ export default async function Home({
           <Notice>{t("deepLinkErrorNotice")}</Notice>
         </div>
       ) : null}
-      <EmptyState />
+      <EmptyState search={<CitySearch />} />
     </>
   );
 }

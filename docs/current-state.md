@@ -6,17 +6,22 @@
 
 ## Last Updated
 
-- **Date and time:** 2026-06-21 (Europe/Kyiv)
-- **Current phase:** Phase 4 — per-slice loop (wave 0 done, starting wave 1)
-- **Active change:** add-comfort-score (reviewed clean, archiving next)
+- **Date and time:** 2026-06-22 (Europe/Kyiv)
+- **Current phase:** Phase 4 — per-slice loop (wave 1 in progress)
+- **Active change:** add-footer-jokes (implemented green, awaiting review/archive)
 - **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
-  **add-comfort-score** (reviewed clean, 82 tests green incl. badge render test).
-  Per-slice loop proven; reusable `.pf/workflows/build-slice.js` +
-  `review-slice.js` (edit SLICE/BASE per slice; args passing is unreliable so
-  these hardcode it).
-- **Next task:** Archive add-comfort-score; then wave 1 (add-top-clock,
-  add-footer-jokes), wave 2 (add-city-search, add-forecast), wave 3 (add-map,
-  add-animated-bg), wave 4 (add-weekend-compare).
+  **add-comfort-score** (reviewed clean). **add-top-clock** implemented to green
+  (live clock via `useSyncExternalStore`, mount-guard, i18n aria-label).
+  **add-footer-jokes** implemented to green: `lib/jokes/jokes.ts`
+  (12 curated calm Ukrainian weather jokes, no "!"/Latin/emoji), `lib/jokes/select.ts`
+  (pure total `selectJoke` with sign-safe modulo + empty-list fallback, and pure
+  local-calendar `dayOfYear`), and `components/shell/Footer.tsx` now server-renders
+  `selectJoke(dayOfYear(new Date()))` as a calm plain-text line (no "use client",
+  no network, hydration-safe). 125 tests green (34 new in `lib/jokes`);
+  lint/tsc/build/openspec all pass. Review-slice + archive still pending.
+- **Next task:** Review + archive add-top-clock and add-footer-jokes; then
+  wave 2 (add-city-search, add-forecast), wave 3 (add-map, add-animated-bg),
+  wave 4 (add-weekend-compare).
 
 ## Source Of Truth
 

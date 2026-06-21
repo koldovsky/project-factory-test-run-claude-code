@@ -96,7 +96,9 @@
         "openspec/changes/add-top-clock/specs/top-clock/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/clock/format.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -160,7 +162,11 @@
         "openspec/changes/add-footer-jokes/specs/footer-jokes/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/jokes/dayOfYear.test.ts",
+        "lib/jokes/jokes.test.ts",
+        "lib/jokes/select.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -386,10 +392,6 @@
     },
     {
       "check": "test-trace",
-      "msg": "FR-CLOCK-01 has no test annotated \"@trace FR-CLOCK-01\""
-    },
-    {
-      "check": "test-trace",
       "msg": "FR-SEARCH-01 has no test annotated \"@trace FR-SEARCH-01\""
     },
     {
@@ -411,10 +413,6 @@
     {
       "check": "test-trace",
       "msg": "FR-SEARCH-06 has no test annotated \"@trace FR-SEARCH-06\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-JOKES-01 has no test annotated \"@trace FR-JOKES-01\""
     },
     {
       "check": "test-trace",

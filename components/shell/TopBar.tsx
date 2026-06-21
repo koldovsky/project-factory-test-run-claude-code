@@ -31,11 +31,10 @@ export function TopBar({ clock }: TopBarProps) {
         <div className="flex items-center gap-4">
           {/* Clock slot — only rendered when the top-clock slice provides a
               clock, so no empty named element is exposed to assistive tech.
-              Accessible name comes from the i18n table, not a hard-coded literal. */}
+              The clock component carries its own accessible name (from the i18n
+              table), so this wrapper is presentation-only — no duplicate label. */}
           {clock ? (
-            <div aria-label={t("clockRegionLabel")} className="text-sm text-muted-foreground">
-              {clock}
-            </div>
+            <div className="text-sm text-muted-foreground">{clock}</div>
           ) : null}
 
           {/* Theme indicator: pure-CSS reflection of the active OS theme. */}

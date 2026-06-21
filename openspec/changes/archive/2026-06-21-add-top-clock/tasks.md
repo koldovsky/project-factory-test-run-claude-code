@@ -31,4 +31,4 @@
 - [x] 4.6 Run review-slice; fix confirmed findings; re-run 4.1–4.5.
         (0 confirmed; added an a11y polish — aria-label composes label+value.)
 - [x] 4.7 Update `docs/current-state.md`.
-- [ ] 4.8 Archive after 4.1–4.7: `npx openspec archive add-top-clock --yes`.
+- [x] 4.8 Archive after 4.1–4.7: `npx openspec archive add-top-clock --yes`.

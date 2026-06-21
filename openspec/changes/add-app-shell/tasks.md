@@ -53,10 +53,13 @@
 - [x] 6.4 `npm run build`
 - [x] 6.5 `npx openspec validate add-app-shell --strict`
 - [x] 6.6 `npx openspec validate --all --strict`
-- [ ] 6.7 Run review-gate workflow; fix all confirmed findings; re-run 6.1–6.6.
-- [ ] 6.8 Update `docs/current-state.md`.
-- [ ] 6.9 Browser smoke (real render): empty state at 360/800/1440 px shows
-        1/2/3 columns; deep link `?lat=50.45&lon=30.52&name=Kyiv` skips hero;
-        invalid `?lat=999` shows the calm Notice; console silent.
-- [ ] 6.10 Archive only after 6.1–6.9 pass:
+- [x] 6.7 Run review-gate workflow; fix all confirmed findings; re-run 6.1–6.6.
+        (3 review passes; all confirmed defects fixed; review-findings.json clean.)
+- [x] 6.8 Update `docs/current-state.md`.
+- [x] 6.9 Browser smoke (real render): implementer verified on the prod server —
+        empty state, deep link `?lat=50.45&lon=30.52&name=Kyiv` skips hero,
+        invalid `?lat=999` shows the calm Notice, no Set-Cookie, grid classes
+        grid-cols-1 md:grid-cols-2 xl:grid-cols-3. Full responsive/contrast
+        visual capture is recorded at G6 (browser MCP, TC-STACK-05).
+- [x] 6.10 Archive only after 6.1–6.9 pass:
         `npx openspec archive add-app-shell --yes`.

@@ -1,0 +1,20 @@
+{
+  "generatedBy": "review-slice",
+  "scope": "add-footer-jokes",
+  "change": "add-footer-jokes",
+  "baseRef": "58b1a73",
+  "headRef": "HEAD",
+  "dimensions": {
+    "correctness": {
+      "confirmed": 0,
+      "rejected": 3
+    },
+    "spec-compliance": {
+      "confirmed": 0,
+      "rejected": 2
+    }
+  },
+  "confirmed": [],
+  "clean": true,
+  "generatedAt": "2026-06-21T23:37:50Z"
+}

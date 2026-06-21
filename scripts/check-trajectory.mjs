@@ -88,10 +88,14 @@ for (const slice of slices) {
   if (!processComplete) gated(flags.has("--release"), "process", `${slice}: archived change is missing design.md and/or tasks.md`);
 
   // 3 + 4. trailer presence + module scope (git)
+  // OpenSpec (@fission-ai/openspec) archives a change as `<YYYY-MM-DD>-<name>`,
+  // but the `Slice:` commit trailers use the bare change name (e.g.
+  // `add-app-shell`). Strip a leading date prefix before matching the trailer.
+  const sliceName = slice.replace(/^\d{4}-\d{2}-\d{2}-/, "");
   let trailerCommits = 0;
   let libDomains = [];
   if (isRepo) {
-    const { ok, out } = git(["log", "--all", `--grep=Slice: ${slice}`, "--name-only", "--pretty=format:commit %H"]);
+    const { ok, out } = git(["log", "--all", `--grep=Slice: ${sliceName}`, "--name-only", "--pretty=format:commit %H"]);
     if (ok) {
       const files = new Set();
       for (const line of out.split("\n")) {
@@ -110,7 +114,7 @@ for (const slice of slices) {
         domainToSlices.get(d).push(slice);
       }
     }
-    if (trailerCommits === 0) gated(flags.has("--release"), "trailer", `${slice}: no commit carries a "Slice: ${slice}" trailer`);
+    if (trailerCommits === 0) gated(flags.has("--release"), "trailer", `${slice}: no commit carries a "Slice: ${sliceName}" trailer`);
   }
 
   rows.push({ slice, reviewEvidence, trailerCommits, libDomains, processComplete });

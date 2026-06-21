@@ -63,7 +63,7 @@
     {
       "id": "FR-SHELL-01",
       "specs": [
-        "openspec/changes/add-app-shell/specs/app-shell/spec.md"
+        "openspec/specs/app-shell/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -72,7 +72,7 @@
     {
       "id": "FR-SHELL-02",
       "specs": [
-        "openspec/changes/add-app-shell/specs/app-shell/spec.md"
+        "openspec/specs/app-shell/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -81,7 +81,7 @@
     {
       "id": "FR-SHELL-03",
       "specs": [
-        "openspec/changes/add-app-shell/specs/app-shell/spec.md"
+        "openspec/specs/app-shell/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -623,10 +623,6 @@
     {
       "check": "recording-evidence",
       "msg": "FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"add-app-shell\" is not archived"
     },
     {
       "check": "active-changes",

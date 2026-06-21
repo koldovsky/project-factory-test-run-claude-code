@@ -82,7 +82,9 @@ export function toLocationQuery(location: ActiveLocation): string {
   const params = new URLSearchParams({
     lat: formatCoordinate(location.lat),
     lon: formatCoordinate(location.lon),
-    name: location.name,
+    // Trim so serialize/parse are exact inverses even for a padded name
+    // (parseLocationParams trims on the way in).
+    name: location.name.trim(),
   });
   return params.toString();
 }

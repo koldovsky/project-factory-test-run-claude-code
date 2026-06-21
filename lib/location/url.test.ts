@@ -173,6 +173,16 @@ describe("toLocationQuery — serialize and round-trip", () => {
     expect(roundTripped).toEqual({ ok: true, location });
   });
 
+  // Regression (review-gate): parseLocationParams trims the name, so the
+  // serializer must trim too, or a padded name fails the documented round-trip.
+  it("trims a padded name so it round-trips to the trimmed value", () => {
+    const query = toLocationQuery({ lat: 49.84, lon: 24.03, name: "  Львів  " });
+
+    expect(
+      parseLocationParams(Object.fromEntries(new URLSearchParams(query))),
+    ).toEqual({ ok: true, location: { lat: 49.84, lon: 24.03, name: "Львів" } });
+  });
+
   // Regression (review-gate): String(1e-7) === "1e-7" (exponential) which the
   // coordinate parser rejects, so small-magnitude coordinates near the equator /
   // prime meridian must still round-trip. The map slice stores raw clicked

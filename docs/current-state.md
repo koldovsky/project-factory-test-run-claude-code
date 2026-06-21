@@ -10,9 +10,11 @@
 - **Current phase:** Phase 4 — per-slice loop (wave 0)
 - **Active change:** add-app-shell (implemented, review fixes applied, archiving next);
   add-comfort-score (scaffolded: spec delta + proposal/design/tasks, not yet implemented)
-- **Progress:** G0/G1/G2/G3 PASSED. `add-app-shell` implemented (31 unit tests green,
-  lint/tsc/build clean, ~167KB homepage JS); review-gate run, confirmed findings
-  fixed (TopBar empty-clock a11y/i18n). About to re-review (scoped) + archive.
+- **Progress:** G0/G1/G2/G3 PASSED. `add-app-shell` implemented (33 unit tests green,
+  lint/tsc/build clean, ~167KB homepage JS); reviewed (scoped review-slice),
+  confirmed findings fixed (empty-clock a11y/i18n, exponential coord round-trip,
+  deep-link h1, toLocationQuery name trim, CI flag). Re-reviewing for clean
+  evidence, then archive.
 - **Next task:** Re-run review-gate scoped to add-app-shell (persist
   review-findings.json), archive it, then implement add-comfort-score
   (test-first), then waves 1–4.

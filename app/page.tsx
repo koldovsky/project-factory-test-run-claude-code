@@ -5,7 +5,6 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { t } from "@/lib/i18n";
 import { parseLocationParams } from "@/lib/location/url";
@@ -50,11 +49,15 @@ export default async function Home({
 
   if (parsed.ok) {
     // Location view placeholder — the real forecast comes in a later slice.
+    // The city name is the page's primary heading (a real <h1>) so every page
+    // state exposes a top-level heading for screen-reader/document structure.
     return (
       <Card className="col-span-full mx-auto w-full max-w-xl">
         <CardHeader>
-          <CardTitle>{t("locationLoadingTitle")}</CardTitle>
-          <CardDescription>{parsed.location.name}</CardDescription>
+          <h1 className="text-lg font-semibold leading-none tracking-tight">
+            {parsed.location.name}
+          </h1>
+          <CardDescription>{t("locationLoadingTitle")}</CardDescription>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
           {t("locationLoadingHint")}

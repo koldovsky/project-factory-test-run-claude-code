@@ -55,9 +55,18 @@ export function Clock() {
     getServerSnapshot,
   );
 
+  // Compose the accessible name as label + value so screen readers announce the
+  // actual time (e.g. "Місцевий час 12:05"), not just the label — mirroring the
+  // ComfortBadge label+value pattern. During the placeholder state, announce only
+  // the label so assistive tech never reads "--:--" as a time.
+  const accessibleName =
+    time === PLACEHOLDER
+      ? t("clockRegionLabel")
+      : `${t("clockRegionLabel")} ${time}`;
+
   return (
     <time
-      aria-label={t("clockRegionLabel")}
+      aria-label={accessibleName}
       className="tabular-nums"
       suppressHydrationWarning
     >

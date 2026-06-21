@@ -104,7 +104,7 @@
     {
       "id": "FR-SEARCH-01",
       "specs": [
-        "openspec/specs/city-search/spec.md"
+        "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -113,7 +113,7 @@
     {
       "id": "FR-SEARCH-02",
       "specs": [
-        "openspec/specs/city-search/spec.md"
+        "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -122,8 +122,8 @@
     {
       "id": "FR-SEARCH-03",
       "specs": [
-        "openspec/specs/city-search/spec.md",
-        "openspec/specs/forecast/spec.md"
+        "openspec/changes/add-city-search/specs/city-search/spec.md",
+        "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -132,7 +132,7 @@
     {
       "id": "FR-SEARCH-04",
       "specs": [
-        "openspec/specs/city-search/spec.md"
+        "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -141,7 +141,7 @@
     {
       "id": "FR-SEARCH-05",
       "specs": [
-        "openspec/specs/city-search/spec.md"
+        "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -150,7 +150,7 @@
     {
       "id": "FR-SEARCH-06",
       "specs": [
-        "openspec/specs/city-search/spec.md"
+        "openspec/changes/add-city-search/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -172,7 +172,7 @@
     {
       "id": "FR-FORECAST-01",
       "specs": [
-        "openspec/specs/forecast/spec.md"
+        "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -181,7 +181,7 @@
     {
       "id": "FR-FORECAST-02",
       "specs": [
-        "openspec/specs/forecast/spec.md"
+        "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -190,7 +190,7 @@
     {
       "id": "FR-FORECAST-03",
       "specs": [
-        "openspec/specs/forecast/spec.md"
+        "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -199,7 +199,7 @@
     {
       "id": "FR-FORECAST-04",
       "specs": [
-        "openspec/specs/forecast/spec.md"
+        "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -208,7 +208,7 @@
     {
       "id": "FR-FORECAST-05",
       "specs": [
-        "openspec/specs/forecast/spec.md"
+        "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -616,7 +616,15 @@
     },
     {
       "check": "active-changes",
+      "msg": "active change \"add-city-search\" is not archived"
+    },
+    {
+      "check": "active-changes",
       "msg": "active change \"add-footer-jokes\" is not archived"
+    },
+    {
+      "check": "active-changes",
+      "msg": "active change \"add-forecast\" is not archived"
     },
     {
       "check": "active-changes",

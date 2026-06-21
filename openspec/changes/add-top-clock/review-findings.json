@@ -1,0 +1,21 @@
+{
+  "generatedBy": "review-slice",
+  "scope": "add-top-clock",
+  "change": "add-top-clock",
+  "baseRef": "de08ca1",
+  "headRef": "HEAD",
+  "dimensions": {
+    "correctness": {
+      "confirmed": 0,
+      "rejected": 4
+    },
+    "spec-compliance": {
+      "confirmed": 0,
+      "rejected": 4
+    }
+  },
+  "confirmed": [],
+  "clean": true,
+  "postReviewPolish": "All 8 findings adversarially rejected (spec satisfied; documented design intent). As an a11y enhancement (not a fixed defect), the Clock now composes its aria-label as label+value ('Місцевий час 12:05') — mirroring the ComfortBadge pattern — falling back to the label-only during the --:-- placeholder so AT never reads the placeholder as a time. Battery stayed green.",
+  "generatedAt": "2026-06-21T23:37:20Z"
+}

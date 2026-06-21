@@ -7,17 +7,15 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-21 (Europe/Kyiv)
-- **Current phase:** Phase 2 — baseline specs (spec-pipeline workflow running)
-- **Active change:** none
-- **Progress:** G0 PASSED (Next.js 16.2.9 + React 19.2.4 + TS strict + Tailwind 4
-  scaffolded; loop installed; hooks fire; vercel-react-best-practices vendored).
-  G1 PASSED (33 MVP FR + 9 NFR + 9 TC + 6 BC; Checkpoint 1 sign-off:
-  weekend-compare→MVP, theme=system-pref+indicator no toggle, FR-SEARCH-06 added).
-  Phase 2 baseline specs being authored by the `baseline-specs` workflow
-  (9 capabilities).
-- **Next task:** When specs land, run `npx openspec validate --all --strict` +
-  `node scripts/check-traceability.mjs`, commit G2, then author the
-  capability plan (Phase 3) and get plan sign-off (Checkpoint 2).
+- **Current phase:** Phase 4 — per-slice delivery loop (starting wave 0)
+- **Active change:** none (about to create add-app-shell + add-comfort-score)
+- **Progress:** G0/G1/G2/G3 PASSED. 9 baseline specs validate strictly; all 33
+  MVP FRs owned once. Capability plan approved (Checkpoint 2). FR-MAP-03 amended
+  to coordinate-label (ADR-0004; Open-Meteo has no reverse geocoding). Build is
+  approved to run autonomously through Phases 4→7.
+- **Next task:** Phase 4 wave 0 — deliver `add-app-shell` (foundation) and
+  `add-comfort-score` (pure lib) via the per-slice loop: spec change → tests(red)
+  → implement(green) → battery → review-gate → archive.
 
 ## Source Of Truth
 

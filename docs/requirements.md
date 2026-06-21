@@ -64,7 +64,7 @@
 |---|---|---|---|
 | FR-MAP-01 | MVP | Map | Render an OSM-tiled interactive map (Leaflet via react-leaflet) bounded to the current location. |
 | FR-MAP-02 | MVP | Map | Show a marker at the current location with a popup naming the city. |
-| FR-MAP-03 | MVP | Map | Clicking on the map updates the active location (reverse-geocoded via Open-Meteo) and re-fetches forecast. |
+| FR-MAP-03 | MVP | Map | Clicking on the map updates the active location by the clicked coordinates and re-fetches the forecast; the point is labeled by rounded coordinates. (Amended at Checkpoint 2 / ADR-0004: Open-Meteo has no reverse-geocoding endpoint, so no city name is resolved for arbitrary clicked points.) |
 | FR-MAP-04 | MVP | Map | Display "© OpenStreetMap contributors" attribution at the bottom-right; required by OSM Tile Usage Policy. |
 | FR-MAP-05 | MVP | Map | Map is client-only (`dynamic({ ssr: false })`); SSR placeholder is a skeleton with the same footprint. |
 

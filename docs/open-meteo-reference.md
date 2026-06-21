@@ -61,10 +61,10 @@ Example: `...?name=Kyiv&count=10&language=uk&format=json`
 
 Open-Meteo has **no reverse-geocoding endpoint** (forward search only). This
 contradicts FR-MAP-03's literal wording ("reverse-geocoded via Open-Meteo").
-**Pending decision (raise at Checkpoint 2 / ADR):** on map click, set the active
-location to the clicked lat/lon and re-fetch the forecast (works fully from
-coordinates); label the point by rounded coordinates (e.g. `50.45, 30.52`) since
-no place name is obtainable from Open-Meteo without adding a second provider
-(which NFR-COST-01/TC-STACK-03 discourage). The forecast/comfort/map/animated-bg
-all function from lat/lon; only the human-readable city name is unavailable for
-arbitrary clicked points.
+**Resolved at Checkpoint 2 (ADR-0004):** on map click, set the active location to
+the clicked lat/lon and re-fetch the forecast (works fully from coordinates);
+label the point by rounded coordinates (e.g. `50.45, 30.52`). No second provider
+is added. The forecast/comfort/map/animated-bg all function from lat/lon; only
+the human-readable city name is unavailable for arbitrary clicked points (named
+cities still come from forward geocoding search). FR-MAP-03 and the `map` spec
+were amended to match.

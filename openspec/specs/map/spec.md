@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The map capability renders an interactive, OSM-tiled Leaflet map (via react-leaflet) bound to the active location at roughly city zoom, with a marker and city popup. Clicking the map picks a new active location by reverse-geocoding the clicked point through Open-Meteo, which drives a forecast re-fetch. The map renders client-only with an equal-footprint SSR skeleton to avoid layout shift, shows the required OpenStreetMap attribution, and degrades calmly when reverse-geocoding fails so the user never sees a 500 or a silent blank.
+The map capability renders an interactive, OSM-tiled Leaflet map (via react-leaflet) bound to the active location at roughly city zoom, with a marker and popup. Clicking the map sets a new active location by the clicked coordinates and labels it with a rounded-coordinate string, which drives a forecast re-fetch. Open-Meteo has no reverse-geocoding endpoint, so clicked points are not resolved to a city name (ADR-0004); named locations come from the city search capability. The map renders client-only with an equal-footprint SSR skeleton to avoid layout shift, shows the required OpenStreetMap attribution, and degrades calmly when a forecast re-fetch fails so the user never sees a 500 or a silent blank.
 
 ## Requirements
 
@@ -43,7 +43,7 @@ The system SHALL render an interactive Leaflet map (via react-leaflet) using Ope
 
 ### Requirement: Marker with city popup at the active location
 
-The system SHALL place a marker at the active location's coordinates, and the marker's popup SHALL name the city of the active location (FR-MAP-02). When the active location has no resolved city name, the popup SHALL display a calm fallback label rather than an empty popup or raw coordinates only. The marker SHALL expose an accessible name, and the popup SHALL be reachable and dismissable by keyboard (NFR-A11Y-01).
+The system SHALL place a marker at the active location's coordinates, and the marker's popup SHALL name the active location (FR-MAP-02): the city name when the active location came from city search, or a calm rounded-coordinate label (for example "50.45, 30.52") when it came from a map click, since Open-Meteo has no reverse geocoding (ADR-0004). The marker SHALL expose an accessible name, and the popup SHALL be reachable and dismissable by keyboard (NFR-A11Y-01).
 
 #### Scenario: Marker popup names the city
 
@@ -56,7 +56,7 @@ The system SHALL place a marker at the active location's coordinates, and the ma
 - **GIVEN** the marker is shown at the previous active location
 - **WHEN** the active location changes to new coordinates
 - **THEN** the marker is repositioned to the new coordinates
-- **AND** the popup reflects the new location's city name
+- **AND** the popup reflects the new location's label (city name if from search, otherwise the rounded coordinates)
 
 #### Scenario: Popup fallback when no city name is available
 
@@ -74,45 +74,37 @@ The system SHALL place a marker at the active location's coordinates, and the ma
 
 ### Requirement: Map click sets the active location and re-fetches the forecast
 
-The system SHALL, when the user clicks a point on the map, reverse-geocode the clicked coordinates via the keyless Open-Meteo API to determine the new active location, set that as the active location, and trigger a forecast re-fetch for the new location (FR-MAP-03, TC-STACK-03). Reverse-geocoding SHALL use no API key. Map-click is a pointer-only affordance for setting the active location; the keyboard-accessible path for setting the active location is the city search capability (FR-SEARCH), which is owned outside this capability and is an explicit exclusion here (NFR-A11Y-01). Before issuing a reverse-geocode request, the system SHALL validate that the candidate coordinates are well-formed and within valid bounds (latitude in [-90, 90], longitude in [-180, 180]); out-of-range or malformed coordinates — whether produced by a click or supplied via a deep link — SHALL be rejected without changing the active location.
+The system SHALL, when the user clicks a point on the map, set the active location to the clicked coordinates, label that location with a rounded-coordinate string (no reverse geocoding — Open-Meteo provides none, ADR-0004), and trigger a forecast re-fetch for the new location (FR-MAP-03). No geocoding request is issued for a map click. Map-click is a pointer-only affordance for setting the active location; the keyboard-accessible path for setting the active location is the city search capability (FR-SEARCH), which is owned outside this capability and is an explicit exclusion here (NFR-A11Y-01). The system SHALL validate that the clicked coordinates are well-formed and within valid bounds (latitude in [-90, 90], longitude in [-180, 180]); out-of-range or malformed coordinates — whether produced by a click or supplied via a deep link — SHALL be rejected without changing the active location.
 
 #### Scenario: Clicking the map updates the active location and forecast
 
 - **GIVEN** the map is loaded with an active location
-- **WHEN** the user clicks a different point on the map and reverse-geocoding succeeds
-- **THEN** the active location is updated to the clicked point's resolved location
-- **AND** the marker moves to the clicked point with a popup naming the resolved city
+- **WHEN** the user clicks a different, in-bounds point on the map
+- **THEN** the active location is updated to the clicked coordinates
+- **AND** the marker moves to the clicked point with a popup showing the rounded-coordinate label
 - **AND** a forecast re-fetch is triggered for the new active location
 
-#### Scenario: Reverse-geocode call is keyless
+#### Scenario: Map click issues no geocoding request
 
 - **GIVEN** the user clicks a point on the map
-- **WHEN** the reverse-geocode request to Open-Meteo is issued
-- **THEN** the request includes no API key or secret
-- **AND** Open-Meteo is the only geocoding provider used
+- **WHEN** the active location is set from the click
+- **THEN** no geocoding or reverse-geocoding request is issued for the click
+- **AND** the location is labeled by its rounded coordinates
 
-#### Scenario: Reverse-geocode failure keeps the prior location and surfaces an inline message
+#### Scenario: Forecast re-fetch after a map click fails and surfaces an inline message
 
 - **GIVEN** the map has an active location and a forecast already displayed
-- **WHEN** the user clicks a point and the reverse-geocode request fails (network or API error)
-- **THEN** the active location remains the prior location
-- **AND** an inline, calm message is shown explaining the click could not be resolved, with no exclamation marks
+- **WHEN** the user clicks an in-bounds point and the subsequent forecast re-fetch fails (network or API error)
+- **THEN** the active location is the clicked coordinates
+- **AND** an inline, calm message is shown explaining the forecast could not be loaded, with no exclamation marks
 - **AND** no generic 500 page and no silent blank is shown
 - **AND** a retry affordance is available
-
-#### Scenario: Click over open water or an unresolvable point
-
-- **GIVEN** the user clicks a point for which reverse-geocoding returns zero results
-- **WHEN** the response is processed
-- **THEN** the active location remains the prior location
-- **AND** an inline, calm message indicates no place was found for that point, with no exclamation marks
-- **AND** no error toast is shown
 
 #### Scenario: Out-of-range or malformed coordinates are rejected
 
 - **GIVEN** candidate coordinates outside valid bounds (latitude outside [-90, 90] or longitude outside [-180, 180]) or otherwise malformed, whether derived from a click or supplied via a deep link
 - **WHEN** the system prepares to set the active location from those coordinates
-- **THEN** the coordinates are rejected before any reverse-geocode request is issued
+- **THEN** the coordinates are rejected before the active location changes
 - **AND** the active location remains the prior valid location
 - **AND** an inline, calm message indicates the point was out of range, with no exclamation marks
 - **AND** no generic 500 page and no silent blank is shown

@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
+/*
+ * Theme tokens — shadcn/ui neutral base color, expressed as Tailwind 4 theme
+ * variables. Light is the default; dark is applied via `prefers-color-scheme`
+ * only (FR-SHELL-01) — no class toggle, no cookie (BC-PRIVACY-03).
+ *
+ * Palette chosen for WCAG AA contrast in both themes (NFR-A11Y-02): the
+ * foreground/background and muted-foreground/background pairs all exceed 4.5:1.
+ */
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground: #0a0a0a; /* on #fff ≈ 20.0:1 */
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --primary: #171717;
+  --primary-foreground: #fafafa; /* on #171717 ≈ 16.8:1 */
+  --muted: #f5f5f5;
+  --muted-foreground: #525252; /* on #fff ≈ 7.4:1, on #f5f5f5 ≈ 6.7:1 */
+  --border: #e5e5e5;
+  --ring: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #fafafa; /* on #0a0a0a ≈ 18.9:1 */
+    --card: #171717;
+    --card-foreground: #fafafa;
+    --primary: #fafafa;
+    --primary-foreground: #171717;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3; /* on #0a0a0a ≈ 8.3:1 */
+    --border: #2e2e2e;
+    --ring: #d4d4d4;
   }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/*
+ * Theme indicator (FR-SHELL-01): a pure-CSS reflection of the active theme,
+ * no JavaScript. The light label shows by default; the dark label shows under
+ * `prefers-color-scheme: dark`. Both carry an accessible name from i18n.
+ */
+.theme-indicator [data-theme="dark"] {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-indicator [data-theme="light"] {
+    display: none;
+  }
+  .theme-indicator [data-theme="dark"] {
+    display: inline-flex;
+  }
+}
+
+/* Honor reduced motion globally (FR-ANIM-03). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

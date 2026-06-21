@@ -63,7 +63,7 @@
     {
       "id": "FR-SHELL-01",
       "specs": [
-        "openspec/specs/app-shell/spec.md"
+        "openspec/changes/add-app-shell/specs/app-shell/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -72,7 +72,7 @@
     {
       "id": "FR-SHELL-02",
       "specs": [
-        "openspec/specs/app-shell/spec.md"
+        "openspec/changes/add-app-shell/specs/app-shell/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -81,10 +81,13 @@
     {
       "id": "FR-SHELL-03",
       "specs": [
-        "openspec/specs/app-shell/spec.md"
+        "openspec/changes/add-app-shell/specs/app-shell/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/location/url.test.ts",
+        "evals/cases/app-shell.eval.ts"
+      ],
       "recordings": []
     },
     {
@@ -371,10 +374,6 @@
     },
     {
       "check": "test-trace",
-      "msg": "FR-SHELL-03 has no test annotated \"@trace FR-SHELL-03\""
-    },
-    {
-      "check": "test-trace",
       "msg": "FR-CLOCK-01 has no test annotated \"@trace FR-CLOCK-01\""
     },
     {
@@ -624,6 +623,10 @@
     {
       "check": "recording-evidence",
       "msg": "FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "active-changes",
+      "msg": "active change \"add-app-shell\" is not archived"
     }
   ]
 }

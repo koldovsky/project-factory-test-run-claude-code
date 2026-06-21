@@ -1,17 +1,6 @@
 # App Shell Specification
 
-## Purpose
-
-The app shell is the single-page chrome that hosts every other capability: a top
-bar (logo and theme indicator, with a slot the live clock fills), a main content
-area, and a footer that credits the data providers. It owns the responsive
-layout across mobile, tablet, and desktop breakpoints, and it decides what the
-user sees on first load — a centered hero with city search when no location is in
-the URL, or the requested location directly when `?lat/?lon/?name` are present.
-All copy is Ukrainian-first and drawn from the central string table; the shell
-itself sets no cookies and ships no manual theme toggle in the MVP.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Single-page shell structure
 

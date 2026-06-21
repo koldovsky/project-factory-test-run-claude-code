@@ -10,7 +10,7 @@ Result: PASS, 66 warning(s)
 |---|---|---|---|---|
 | FR-SHELL-01 | yes | yes | - | - |
 | FR-SHELL-02 | yes | yes | - | - |
-| FR-SHELL-03 | yes | yes | - | - |
+| FR-SHELL-03 | yes | yes | 2 | - |
 | FR-CLOCK-01 | yes | yes | - | - |
 | FR-SEARCH-01 | yes | yes | - | - |
 | FR-SEARCH-02 | yes | yes | - | - |
@@ -50,7 +50,6 @@ None.
 
 - **test-trace**: FR-SHELL-01 has no test annotated "@trace FR-SHELL-01"
 - **test-trace**: FR-SHELL-02 has no test annotated "@trace FR-SHELL-02"
-- **test-trace**: FR-SHELL-03 has no test annotated "@trace FR-SHELL-03"
 - **test-trace**: FR-CLOCK-01 has no test annotated "@trace FR-CLOCK-01"
 - **test-trace**: FR-SEARCH-01 has no test annotated "@trace FR-SEARCH-01"
 - **test-trace**: FR-SEARCH-02 has no test annotated "@trace FR-SEARCH-02"
@@ -114,3 +113,4 @@ None.
 - **recording-evidence**: FR-COMPARE-01 is not referenced by any recording manifest under docs/qa/
 - **recording-evidence**: FR-COMPARE-02 is not referenced by any recording manifest under docs/qa/
 - **recording-evidence**: FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/
+- **active-changes**: active change "add-app-shell" is not archived

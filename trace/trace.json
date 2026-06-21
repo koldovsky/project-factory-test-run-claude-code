@@ -294,7 +294,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/scoring/band.test.ts"
+        "lib/scoring/band.test.ts",
+        "components/comfort/ComfortBadge.test.tsx"
       ],
       "recordings": []
     },

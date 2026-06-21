@@ -9,8 +9,8 @@ export const meta = {
 }
 
 // ---- EDIT THESE TWO PER SLICE ----
-const SLICE = 'add-app-shell'
-const BASE = '3ad5902'
+const SLICE = 'add-comfort-score'
+const BASE = '9c9528d'
 // ----------------------------------
 const HEAD = 'HEAD'
 

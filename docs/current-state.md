@@ -7,17 +7,16 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-21 (Europe/Kyiv)
-- **Current phase:** Phase 4 — per-slice loop (wave 0)
-- **Active change:** add-app-shell (implemented, review fixes applied, archiving next);
-  add-comfort-score (scaffolded: spec delta + proposal/design/tasks, not yet implemented)
-- **Progress:** G0/G1/G2/G3 PASSED. `add-app-shell` implemented (all unit tests green,
-  lint/tsc/build clean, ~167KB homepage JS); reviewed (scoped review-slice),
-  confirmed findings fixed (empty-clock a11y/i18n, exponential coord round-trip,
-  deep-link h1, toLocationQuery name trim, CI flag). Re-reviewing for clean
-  evidence, then archive.
-- **Next task:** Re-run review-gate scoped to add-app-shell (persist
-  review-findings.json), archive it, then implement add-comfort-score
-  (test-first), then waves 1–4.
+- **Current phase:** Phase 4 — per-slice loop (wave 0 done, starting wave 1)
+- **Active change:** add-comfort-score (reviewed clean, archiving next)
+- **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
+  **add-comfort-score** (reviewed clean, 82 tests green incl. badge render test).
+  Per-slice loop proven; reusable `.pf/workflows/build-slice.js` +
+  `review-slice.js` (edit SLICE/BASE per slice; args passing is unreliable so
+  these hardcode it).
+- **Next task:** Archive add-comfort-score; then wave 1 (add-top-clock,
+  add-footer-jokes), wave 2 (add-city-search, add-forecast), wave 3 (add-map,
+  add-animated-bg), wave 4 (add-weekend-compare).
 
 ## Source Of Truth
 

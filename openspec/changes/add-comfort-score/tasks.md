@@ -5,8 +5,8 @@
 > is wired by the forecast slice; here we deliver the logic + badge + tests.
 
 ## 1. Contracts
-- [ ] 1.1 Define input/output types in `lib/scoring/comfort.ts`
-        (`DailyComfortInput`, result `{ value; rationale }`, band type).
+- [x] 1.1 Define input/output types in `lib/scoring/comfort.ts`
+        (`DailyComfortInput`, result `{ value; rationale }`; band type in `band.ts`).
 
 ## 2. Failing tests first (red) — from the spec, before implementation
 - [x] 2.1 `lib/scoring/comfort.test.ts`: purity (no framework needed), determinism,
@@ -43,7 +43,8 @@
 - [x] 5.3 `npx tsc --noEmit`
 - [x] 5.4 `npm run build`
 - [x] 5.5 `npx openspec validate add-comfort-score --strict` + `--all --strict`
-- [ ] 5.6 Run review-gate; fix confirmed findings; re-run 5.1–5.5.
-- [ ] 5.7 Update `docs/current-state.md`.
+- [x] 5.6 Run review-gate; fix confirmed findings; re-run 5.1–5.5.
+        (review-slice: badge render test added, task tick; evidence clean.)
+- [x] 5.7 Update `docs/current-state.md`.
 - [x] 5.8 Coverage: confirm `lib/scoring/*` near-100% branch.
-- [ ] 5.9 Archive after 5.1–5.8: `npx openspec archive add-comfort-score --yes`.
+- [x] 5.9 Archive after 5.1–5.8: `npx openspec archive add-comfort-score --yes`.

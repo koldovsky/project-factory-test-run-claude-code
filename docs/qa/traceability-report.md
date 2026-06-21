@@ -32,7 +32,7 @@ Result: PASS, 61 warning(s)
 | FR-COMFORT-01 | yes | yes | 1 | - |
 | FR-COMFORT-02 | yes | yes | 1 | - |
 | FR-COMFORT-03 | yes | yes | 2 | - |
-| FR-COMFORT-04 | yes | yes | 1 | - |
+| FR-COMFORT-04 | yes | yes | 2 | - |
 | FR-COMFORT-05 | yes | yes | 1 | - |
 | FR-ANIM-01 | yes | yes | - | - |
 | FR-ANIM-02 | yes | yes | - | - |

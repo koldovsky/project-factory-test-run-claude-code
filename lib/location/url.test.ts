@@ -172,4 +172,26 @@ describe("toLocationQuery — serialize and round-trip", () => {
 
     expect(roundTripped).toEqual({ ok: true, location });
   });
+
+  // Regression (review-gate): String(1e-7) === "1e-7" (exponential) which the
+  // coordinate parser rejects, so small-magnitude coordinates near the equator /
+  // prime meridian must still round-trip. The map slice stores raw clicked
+  // coordinates (ADR-0004), so this path goes live there.
+  it("round-trips small-magnitude coordinates without exponential notation", () => {
+    for (const location of [
+      { lat: 0.0000001, lon: 30.52, name: "Near equator" },
+      { lat: 50.45, lon: -0.0000005, name: "Near prime meridian" },
+      { lat: 0.0000001, lon: -0.0000005, name: "Near Null Island" },
+    ]) {
+      const query = toLocationQuery(location);
+      const params = new URLSearchParams(query);
+      // The serialized coordinate values must not use exponential notation
+      // (checked on lat/lon only — the name may legitimately contain "e").
+      expect(params.get("lat")).not.toMatch(/[eE]/);
+      expect(params.get("lon")).not.toMatch(/[eE]/);
+      expect(
+        parseLocationParams(Object.fromEntries(params)),
+      ).toEqual({ ok: true, location });
+    }
+  });
 });

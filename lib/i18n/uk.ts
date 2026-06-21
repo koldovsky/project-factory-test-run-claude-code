@@ -10,7 +10,6 @@
 export const uk = {
   // Branding / chrome.
   appName: "Погода",
-  logoAlt: "Логотип застосунку Погода",
 
   // Empty-state hero (FR-SHELL-03).
   heroTitle: "Дізнайтеся погоду у будь-якому місті",

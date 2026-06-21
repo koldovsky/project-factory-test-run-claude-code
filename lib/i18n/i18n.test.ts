@@ -105,4 +105,13 @@ describe("BC-BRAND-01 — calm tone, no exclamation marks in Ukrainian strings",
   it("contains no exclamation mark in the deep-link error notice", () => {
     expect(t("deepLinkErrorNotice")).not.toContain("!");
   });
+
+  // Review-gate: the en fallback table must hold the same calm tone, so a tone
+  // regression in en cannot slip through silently.
+  it("contains no exclamation mark in any en value", () => {
+    for (const [key, value] of Object.entries(en) as [string, string][]) {
+      expect(value.includes("!"), `en.${key} must not contain "!" (BC-BRAND-01)`).toBe(false);
+      expect(value.includes("！"), `en.${key} must not contain a fullwidth "！"`).toBe(false);
+    }
+  });
 });

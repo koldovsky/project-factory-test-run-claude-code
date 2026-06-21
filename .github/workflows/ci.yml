@@ -30,13 +30,17 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit
       - name: Traceability chain (and freshness of generated report)
+        env:
+          RELEASE_FLAG: ${{ (github.ref_name == 'main' || github.ref_name == 'master') && '--release' || '' }}
         run: |
           node scripts/check-traceability.mjs --check-fresh
-          node scripts/check-traceability.mjs ${{ github.ref_name == 'main' || github.ref_name == 'master' && '--release' || '' }}
+          node scripts/check-traceability.mjs $RELEASE_FLAG
       - name: Trajectory process audit (and freshness)
+        env:
+          RELEASE_FLAG: ${{ (github.ref_name == 'main' || github.ref_name == 'master') && '--release' || '' }}
         run: |
           node scripts/check-trajectory.mjs --check-fresh
-          node scripts/check-trajectory.mjs ${{ github.ref_name == 'main' || github.ref_name == 'master' && '--release' || '' }}
+          node scripts/check-trajectory.mjs $RELEASE_FLAG
       - name: OpenSpec strict validation
         run: npx openspec validate --all --strict
       - name: Dependency audit (fail on high+)

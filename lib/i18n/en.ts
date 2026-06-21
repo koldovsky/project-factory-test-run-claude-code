@@ -9,7 +9,6 @@ import type { MessageKey } from "./index";
 export const en: Record<MessageKey, string> = {
   // Branding / chrome.
   appName: "Weather",
-  logoAlt: "Weather app logo",
 
   // Empty-state hero (FR-SHELL-03).
   heroTitle: "Check the weather in any city",

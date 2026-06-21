@@ -35,6 +35,20 @@ function inRange(value: number, min: number, max: number): boolean {
 }
 
 /**
+ * Format a coordinate as a plain decimal string that {@link parseCoordinate}
+ * accepts. `String(1e-7)` yields exponential notation ("1e-7"), which the parser
+ * rejects; coordinates are bounded to +/-180 so the only exponential case is
+ * tiny magnitudes near zero. Normal values use `String` directly (exact, full
+ * precision); exponential ones are reformatted in fixed notation.
+ */
+function formatCoordinate(value: number): string {
+  if (!Number.isFinite(value)) return "0";
+  const s = String(value);
+  if (!s.includes("e") && !s.includes("E")) return s;
+  return value.toFixed(20).replace(/0+$/, "").replace(/\.$/, "");
+}
+
+/**
  * Parse a plain record of query parameters (the shape Next.js App Router hands a
  * page, or `Object.fromEntries(new URLSearchParams(...))`) into an active
  * location. Reads exactly the `lat`, `lon`, and `name` keys; all three are
@@ -66,8 +80,8 @@ export function parseLocationParams(
  */
 export function toLocationQuery(location: ActiveLocation): string {
   const params = new URLSearchParams({
-    lat: String(location.lat),
-    lon: String(location.lon),
+    lat: formatCoordinate(location.lat),
+    lon: formatCoordinate(location.lon),
     name: location.name,
   });
   return params.toString();

@@ -18,6 +18,9 @@ export const en: Record<MessageKey, string> = {
   searchPlaceholder: "Find a city",
   searchLabel: "City search",
 
+  // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
+  clockRegionLabel: "Local time",
+
   // Theme indicator (FR-SHELL-01).
   themeLightLabel: "Light theme",
   themeDarkLabel: "Dark theme",

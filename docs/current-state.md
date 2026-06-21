@@ -7,15 +7,15 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-21 (Europe/Kyiv)
-- **Current phase:** Phase 4 — per-slice delivery loop (starting wave 0)
-- **Active change:** none (about to create add-app-shell + add-comfort-score)
-- **Progress:** G0/G1/G2/G3 PASSED. 9 baseline specs validate strictly; all 33
-  MVP FRs owned once. Capability plan approved (Checkpoint 2). FR-MAP-03 amended
-  to coordinate-label (ADR-0004; Open-Meteo has no reverse geocoding). Build is
-  approved to run autonomously through Phases 4→7.
-- **Next task:** Phase 4 wave 0 — deliver `add-app-shell` (foundation) and
-  `add-comfort-score` (pure lib) via the per-slice loop: spec change → tests(red)
-  → implement(green) → battery → review-gate → archive.
+- **Current phase:** Phase 4 — per-slice loop (wave 0)
+- **Active change:** add-app-shell (implemented, review fixes applied, archiving next);
+  add-comfort-score (scaffolded: spec delta + proposal/design/tasks, not yet implemented)
+- **Progress:** G0/G1/G2/G3 PASSED. `add-app-shell` implemented (31 unit tests green,
+  lint/tsc/build clean, ~167KB homepage JS); review-gate run, confirmed findings
+  fixed (TopBar empty-clock a11y/i18n). About to re-review (scoped) + archive.
+- **Next task:** Re-run review-gate scoped to add-app-shell (persist
+  review-findings.json), archive it, then implement add-comfort-score
+  (test-first), then waves 1–4.
 
 ## Source Of Truth
 

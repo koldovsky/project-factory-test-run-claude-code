@@ -11,15 +11,15 @@
         and a parse-result discriminated union.
 
 ## 2. Failing tests first (red) — from the spec, before implementation
-- [ ] 2.1 Unit `lib/location/url.test.ts`: parse `?lat&lon&name` — valid, missing
+- [x] 2.1 Unit `lib/location/url.test.ts`: parse `?lat&lon&name` — valid, missing
         one param, non-numeric, out-of-range lat/lon, extra whitespace; serialize
         round-trip. Each `@trace FR-SHELL-03` (deep-link/empty-state).
-- [ ] 2.2 Unit `lib/i18n/i18n.test.ts`: `t(key)` returns the uk string; `uk` and
+- [x] 2.2 Unit `lib/i18n/i18n.test.ts`: `t(key)` returns the uk string; `uk` and
         `en` have identical key sets; no uk string contains "!". `@trace NFR-I18N-01, BC-BRAND-01`.
-- [ ] 2.3 Eval case `evals/cases/app-shell.eval.ts`: empty-state hero + deep-link
+- [x] 2.3 Eval case `evals/cases/app-shell.eval.ts`: empty-state hero + deep-link
         error notice copy graded for calm Ukrainian tone, no exclamation marks
         (`@trace BC-BRAND-01, FR-SHELL-03`).
-- [ ] 2.4 Run `npm run test:run` — confirm RED (assertions fail, not import errors).
+- [x] 2.4 Run `npm run test:run` — confirm RED (assertions fail, not import errors).
 
 ## 3. Domain logic (green) — implement until §2 unit tests pass
 - [x] 3.1 `lib/location/url.ts` — `parseLocationParams(params)` →

@@ -19,6 +19,9 @@ export const uk = {
   searchPlaceholder: "Знайдіть місто",
   searchLabel: "Пошук міста",
 
+  // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
+  clockRegionLabel: "Місцевий час",
+
   // Theme indicator (FR-SHELL-01). Accessible names for each active theme.
   themeLightLabel: "Світла тема",
   themeDarkLabel: "Темна тема",

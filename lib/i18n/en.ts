@@ -36,4 +36,14 @@ export const en: Record<MessageKey, string> = {
   // Location-view placeholder.
   locationLoadingTitle: "Loading forecast",
   locationLoadingHint: "Preparing the forecast for the selected city.",
+
+  // Comfort badge (FR-COMFORT-04, NFR-A11Y).
+  comfortBadgeLabel: "Comfort",
+  comfortBandGreenLabel: "favorable",
+  comfortBandYellowLabel: "moderate",
+  comfortBandRedLabel: "unfavorable",
+
+  // Weekend summary (FR-COMFORT-05).
+  comfortWeekendTitle: "Weekend comfort",
+  comfortWeekendPartialNote: "Data for one weekend day only.",
 };

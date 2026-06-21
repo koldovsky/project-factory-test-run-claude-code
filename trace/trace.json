@@ -259,7 +259,9 @@
         "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/scoring/comfort.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -268,7 +270,9 @@
         "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/scoring/comfort.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -277,7 +281,10 @@
         "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/scoring/comfort.test.ts",
+        "evals/cases/comfort-score.eval.ts"
+      ],
       "recordings": []
     },
     {
@@ -286,7 +293,9 @@
         "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/scoring/band.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -295,7 +304,9 @@
         "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/scoring/weekend.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -443,26 +454,6 @@
     {
       "check": "test-trace",
       "msg": "FR-MAP-05 has no test annotated \"@trace FR-MAP-05\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-COMFORT-01 has no test annotated \"@trace FR-COMFORT-01\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-COMFORT-02 has no test annotated \"@trace FR-COMFORT-02\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-COMFORT-03 has no test annotated \"@trace FR-COMFORT-03\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-COMFORT-04 has no test annotated \"@trace FR-COMFORT-04\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-COMFORT-05 has no test annotated \"@trace FR-COMFORT-05\""
     },
     {
       "check": "test-trace",

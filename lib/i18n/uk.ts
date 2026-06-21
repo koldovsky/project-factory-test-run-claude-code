@@ -37,4 +37,16 @@ export const uk = {
   // Location-view placeholder (forecast arrives in a later slice).
   locationLoadingTitle: "Завантаження прогнозу",
   locationLoadingHint: "Готуємо прогноз для обраного міста.",
+
+  // Comfort badge (FR-COMFORT-04, NFR-A11Y). Accessible name must convey the
+  // value and band in words, never by color alone. The badge composes
+  // `comfortBadgeLabel + value + comfortBand<…>Label`.
+  comfortBadgeLabel: "Комфорт",
+  comfortBandGreenLabel: "сприятливо",
+  comfortBandYellowLabel: "помірно",
+  comfortBandRedLabel: "несприятливо",
+
+  // Weekend summary (FR-COMFORT-05).
+  comfortWeekendTitle: "Комфорт на вихідні",
+  comfortWeekendPartialNote: "Дані лише за один день вихідних.",
 } as const;

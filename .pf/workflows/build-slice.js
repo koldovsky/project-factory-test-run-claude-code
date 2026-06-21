@@ -7,8 +7,8 @@ export const meta = {
   ],
 }
 
-const slice = args?.slice
-if (!slice) return { error: 'Pass args.slice = "add-<capability>"' }
+// EDIT PER SLICE (args passing is unreliable for named/scripted workflows here):
+const slice = args?.slice ?? 'add-comfort-score'
 
 phase('Red')
 const red = await agent(

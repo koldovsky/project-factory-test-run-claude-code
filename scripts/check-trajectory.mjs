@@ -39,7 +39,11 @@ const PATHS = {
 };
 // lib/<domain>/ dirs that are conventionally shared — never flagged as a
 // cross-slice overlap.
-const SHARED_DOMAINS = new Set(["auth", "db", "shared", "ui", "utils", "common", "email"]);
+// `i18n` (the shared Ukrainian string table) and `location` (the shared
+// active-location state contract) are intentionally cross-cutting in this app —
+// every slice adds i18n keys, and search/map both read the location contract —
+// so they are not scope-drift overlaps.
+const SHARED_DOMAINS = new Set(["auth", "db", "shared", "ui", "utils", "common", "email", "i18n", "location"]);
 
 const failures = [];
 const warnings = [];

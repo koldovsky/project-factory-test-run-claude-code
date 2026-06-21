@@ -256,7 +256,7 @@
     {
       "id": "FR-COMFORT-01",
       "specs": [
-        "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
+        "openspec/specs/comfort-score/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -267,7 +267,7 @@
     {
       "id": "FR-COMFORT-02",
       "specs": [
-        "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
+        "openspec/specs/comfort-score/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -278,7 +278,7 @@
     {
       "id": "FR-COMFORT-03",
       "specs": [
-        "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
+        "openspec/specs/comfort-score/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -290,7 +290,7 @@
     {
       "id": "FR-COMFORT-04",
       "specs": [
-        "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
+        "openspec/specs/comfort-score/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -302,7 +302,7 @@
     {
       "id": "FR-COMFORT-05",
       "specs": [
-        "openspec/changes/add-comfort-score/specs/comfort-score/spec.md"
+        "openspec/specs/comfort-score/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -615,10 +615,6 @@
     {
       "check": "recording-evidence",
       "msg": "FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"add-comfort-score\" is not archived"
     }
   ]
 }

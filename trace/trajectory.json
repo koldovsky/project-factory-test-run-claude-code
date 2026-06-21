@@ -10,6 +10,16 @@
         "i18n"
       ],
       "processComplete": true
+    },
+    {
+      "slice": "2026-06-21-add-comfort-score",
+      "reviewEvidence": "clean",
+      "trailerCommits": 3,
+      "libDomains": [
+        "i18n",
+        "scoring"
+      ],
+      "processComplete": true
     }
   ],
   "overlaps": [],

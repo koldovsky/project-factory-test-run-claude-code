@@ -1,10 +1,6 @@
 # Forecast Specification
 
-## Purpose
-
-The forecast capability turns the active location into a readable weather outlook: a 7-day daily forecast, an hourly temperature trend for the next 48 hours, and today's sunrise and sunset. It fetches exclusively from the keyless Open-Meteo forecast API on the server, maps the response into pure domain types in `lib/weather`, and re-fetches whenever the active location changes. All failures surface as calm inline states so the reader is never met with a 500 page or a silent blank.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Fetch the 7-day daily forecast from Open-Meteo on the server
 

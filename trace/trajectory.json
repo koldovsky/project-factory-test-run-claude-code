@@ -24,7 +24,7 @@
     {
       "slice": "2026-06-21-add-footer-jokes",
       "reviewEvidence": "clean",
-      "trailerCommits": 3,
+      "trailerCommits": 4,
       "libDomains": [
         "jokes"
       ],
@@ -33,7 +33,7 @@
     {
       "slice": "2026-06-21-add-top-clock",
       "reviewEvidence": "clean",
-      "trailerCommits": 3,
+      "trailerCommits": 4,
       "libDomains": [
         "clock"
       ],

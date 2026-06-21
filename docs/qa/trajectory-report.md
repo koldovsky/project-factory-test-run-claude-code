@@ -12,8 +12,8 @@ Result: PASS
 |---|---|---|---|---|
 | 2026-06-21-add-app-shell | clean | 6 | yes | location, i18n |
 | 2026-06-21-add-comfort-score | clean | 4 | yes | i18n, scoring |
-| 2026-06-21-add-footer-jokes | clean | 3 | yes | jokes |
-| 2026-06-21-add-top-clock | clean | 3 | yes | clock |
+| 2026-06-21-add-footer-jokes | clean | 4 | yes | jokes |
+| 2026-06-21-add-top-clock | clean | 4 | yes | clock |
 
 ## Cross-slice module overlap
 

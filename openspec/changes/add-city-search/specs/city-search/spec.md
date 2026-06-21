@@ -1,10 +1,6 @@
 # City Search Specification
 
-## Purpose
-
-City Search lets a person find any worldwide city by typing a free-form name and choosing from debounced suggestions backed by the keyless Open-Meteo geocoding API. Selecting a suggestion sets the application's active location and reflects it in the URL so the view is deep-linkable. It also offers a single opt-in "Use my location" path. The capability is the primary entry point that drives the rest of the app (forecast, map, comfort), and it keeps all data calls keyless, all copy calm and Ukrainian-first, and all failures inline rather than as toasts or 500s.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Debounced geocoding suggestions
 

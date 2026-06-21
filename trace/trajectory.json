@@ -4,7 +4,7 @@
     {
       "slice": "2026-06-21-add-app-shell",
       "reviewEvidence": "clean",
-      "trailerCommits": 5,
+      "trailerCommits": 6,
       "libDomains": [
         "location",
         "i18n"

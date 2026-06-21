@@ -10,7 +10,7 @@ Result: PASS
 
 | Slice | Review evidence | Trailer commits | design+tasks | lib domains touched |
 |---|---|---|---|---|
-| 2026-06-21-add-app-shell | clean | 5 | yes | location, i18n |
+| 2026-06-21-add-app-shell | clean | 6 | yes | location, i18n |
 
 ## Cross-slice module overlap
 

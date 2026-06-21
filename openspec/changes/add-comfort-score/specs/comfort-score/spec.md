@@ -1,14 +1,6 @@
 # Comfort Score Specification
 
-## Purpose
-
-The comfort-score capability turns a single day's weather into a 0–100 outdoor-comfort
-value plus a short Ukrainian rationale, so travellers can compare days at a glance. The
-scoring logic is a pure, framework-free function so it stays fully unit-testable, and the
-result is surfaced as a colored badge on every day card and as a highlighted upcoming-weekend
-summary at the top of the forecast grid.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Pure framework-free scoring function
 

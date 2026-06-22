@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 import { flagEmoji, type GeoSuggestion } from "@/lib/geo";
 import { t } from "@/lib/i18n";
 import { toLocationQuery } from "@/lib/location/url";
@@ -167,25 +166,23 @@ export function CitySearch() {
 
   return (
     <div className="flex w-full flex-col gap-3">
-      <div
+      {/* WAI-ARIA combobox: role + state live on the focusable input itself, so
+          assistive tech announces the expanded/collapsed state and the controlled
+          listbox (NFR-A11Y-01). */}
+      <Input
+        type="search"
         role="combobox"
+        aria-label={t("searchLabel")}
         aria-expanded={state.status === "results"}
         aria-haspopup="listbox"
         aria-controls={listboxId}
-        aria-owns={listboxId}
-      >
-        <Input
-          type="search"
-          value={query}
-          onChange={(event) => handleQueryChange(event.target.value)}
-          onKeyDown={handleKeyDown}
-          aria-label={t("searchLabel")}
-          aria-autocomplete="list"
-          aria-controls={listboxId}
-          placeholder={t("searchPlaceholder")}
-          autoComplete="off"
-        />
-      </div>
+        aria-autocomplete="list"
+        value={query}
+        onChange={(event) => handleQueryChange(event.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder={t("searchPlaceholder")}
+        autoComplete="off"
+      />
 
       <div className="flex justify-center">
         <Button
@@ -199,53 +196,49 @@ export function CitySearch() {
         </Button>
       </div>
 
-      {/* The suggestion area is always present as a labelled listbox so the
-          inline states (results / nothing-found / error) are announced in place
-          — no toast, no transient popup (FR-SEARCH-05). */}
-      <ul
-        id={listboxId}
-        role="listbox"
-        aria-label={t("searchSuggestionsLabel")}
-        className={cn(
-          "flex flex-col gap-1",
-          state.status === "results" ? "" : "list-none",
-        )}
-      >
-        {state.status === "results"
-          ? state.suggestions.map((suggestion, index) => {
-              const flag = flagEmoji(suggestion.countryCode);
-              const region = suggestion.admin1;
-              const country = suggestion.country;
-              return (
-                <li
-                  key={`${suggestion.name}-${suggestion.lat}-${suggestion.lon}-${index}`}
-                  role="option"
-                  aria-selected={false}
-                  tabIndex={0}
-                  onClick={() => selectSuggestion(suggestion)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      selectSuggestion(suggestion);
-                    }
-                  }}
-                  className="flex cursor-pointer items-center gap-2 rounded-md border border-border bg-background px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  {flag ? (
-                    <span aria-hidden="true">{flag}</span>
-                  ) : null}
-                  <span className="font-medium">{suggestion.name}</span>
-                  {region ? (
-                    <span className="text-muted-foreground">{region}</span>
-                  ) : null}
-                  {country ? (
-                    <span className="text-muted-foreground">{country}</span>
-                  ) : null}
-                </li>
-              );
-            })
-          : null}
-      </ul>
+      {/* The listbox is rendered ONLY when there are results, so no empty named
+          element is exposed to assistive tech in idle/loading/empty/error states
+          (those have their own role=status/alert nodes below). FR-SEARCH-05 keeps
+          all states inline — no toast, no transient popup. */}
+      {state.status === "results" ? (
+        <ul
+          id={listboxId}
+          role="listbox"
+          aria-label={t("searchSuggestionsLabel")}
+          className="flex flex-col gap-1"
+        >
+          {state.suggestions.map((suggestion, index) => {
+            const flag = flagEmoji(suggestion.countryCode);
+            const region = suggestion.admin1;
+            const country = suggestion.country;
+            return (
+              <li
+                key={`${suggestion.name}-${suggestion.lat}-${suggestion.lon}-${index}`}
+                role="option"
+                aria-selected={false}
+                tabIndex={0}
+                onClick={() => selectSuggestion(suggestion)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    selectSuggestion(suggestion);
+                  }
+                }}
+                className="flex cursor-pointer items-center gap-2 rounded-md border border-border bg-background px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {flag ? <span aria-hidden="true">{flag}</span> : null}
+                <span className="font-medium">{suggestion.name}</span>
+                {region ? (
+                  <span className="text-muted-foreground">{region}</span>
+                ) : null}
+                {country ? (
+                  <span className="text-muted-foreground">{country}</span>
+                ) : null}
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
 
       {state.status === "empty" ? (
         <p role="status" className="text-center text-sm text-muted-foreground">

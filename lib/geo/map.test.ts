@@ -246,3 +246,21 @@ describe("toSuggestion — purity & determinism (FR-SEARCH-02, TC-PURE-01)", () 
     expect(result.lon).toBe(24.0299999);
   });
 });
+
+describe("toSuggestion — trims padded optional fields (review regression)", () => {
+  it("stores trimmed admin1 and countryCode, not the padded original", () => {
+    const result = toSuggestion({
+      name: "Lviv",
+      latitude: 49.84,
+      longitude: 24.03,
+      country: "Ukraine",
+      country_code: " ua ",
+      admin1: "  Lviv Oblast  ",
+    });
+
+    // nonBlank must return the trimmed value so the rendered label has no stray
+    // surrounding whitespace (FR-SEARCH-02 clean labels).
+    expect(result.admin1).toBe("Lviv Oblast");
+    expect(result.countryCode).toBe("ua");
+  });
+});

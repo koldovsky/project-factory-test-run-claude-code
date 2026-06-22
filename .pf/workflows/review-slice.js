@@ -9,8 +9,8 @@ export const meta = {
 }
 
 // ---- EDIT THESE TWO PER SLICE ----
-const SLICE = 'add-city-search'
-const BASE = '3cc6caa'
+const SLICE = 'add-map'
+const BASE = 'fd00c76'
 // ----------------------------------
 const HEAD = 'HEAD'
 

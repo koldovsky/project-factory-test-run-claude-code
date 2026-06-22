@@ -87,4 +87,5 @@ export const uk = {
   mapAttribution: "© OpenStreetMap contributors",
   mapLoading: "Завантаження мапи",
   mapTileError: "Не вдалося завантажити мапу зараз. Спробуйте ще раз.",
+  mapClickOutOfRange: "Ця точка поза межами мапи. Оберіть інше місце.",
 } as const;

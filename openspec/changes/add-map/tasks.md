@@ -32,6 +32,7 @@
 - [x] 4.3 `npx tsc --noEmit`
 - [x] 4.4 `npm run build`
 - [x] 4.5 `npx openspec validate add-map --strict` + `--all --strict`
-- [ ] 4.6 Run review-slice; fix confirmed findings; re-run 4.1–4.5.
-- [ ] 4.7 Update `docs/current-state.md`.
-- [ ] 4.8 Archive after 4.1–4.7: `npx openspec archive add-map --yes`.
+- [x] 4.6 Run review-slice; fix confirmed findings; re-run 4.1–4.5.
+        (1 confirmed fixed: out-of-range click message + marker alt.)
+- [x] 4.7 Update `docs/current-state.md`.
+- [x] 4.8 Archive after 4.1–4.7: `npx openspec archive add-map --yes`.

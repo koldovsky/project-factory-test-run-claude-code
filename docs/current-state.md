@@ -7,9 +7,9 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
-- **Current phase:** Phase 4 — per-slice loop (wave 3 next: map, animated-bg)
-- **Active change:** add-forecast reviewed clean (2 findings fixed), archiving.
-  add-map + add-animated-bg scaffolded.
+- **Current phase:** Phase 4 — per-slice loop (animated-bg next, then weekend-compare)
+- **Active change:** add-map reviewed clean (1 finding fixed), archiving.
+  add-animated-bg scaffolded.
 - **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
   **add-comfort-score**, **add-top-clock**, **add-footer-jokes**, **add-city-search**.
   **add-forecast** implemented to green: pure framework-free `lib/weather`

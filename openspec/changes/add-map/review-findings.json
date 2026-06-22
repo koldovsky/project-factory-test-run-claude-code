@@ -1,0 +1,15 @@
+{
+  "generatedBy": "review-slice + orchestrator convergence",
+  "scope": "add-map",
+  "change": "add-map",
+  "baseRef": "fd00c76",
+  "headRef": "HEAD",
+  "reviewers": ["code-reviewer", "spec-compliance-auditor"],
+  "note": "Scoped review by fresh maker-not-checker agents; 1 confirmed (minor), fixed and verified by a green battery (272 tests). The 'marker has no accessible name' finding was correctly refuted (Leaflet 1.9.4 defaults alt='Marker'); we still added alt={location.name} as a meaningful-name improvement. Security: keyless OSM tiles, no secrets; full sweep at G7.",
+  "fixedFindings": [
+    "Out-of-range map click no longer silently dropped: now surfaces a calm inline status message (mapClickOutOfRange, no exclamation marks) while keeping the prior location (FR-MAP-03 reject scenario)",
+    "Marker alt set to the location name (meaningful accessible name beyond Leaflet's generic default)"
+  ],
+  "clean": true,
+  "generatedAt": "2026-06-22"
+}

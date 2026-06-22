@@ -90,13 +90,21 @@ function RecenterOnLocation({ lat, lon }: { lat: number; lon: number }) {
  *  location. Rendered as a child so it can subscribe to map events. */
 function ClickToSetLocation({
   onSelect,
+  onReject,
 }: {
   onSelect: (location: ActiveLocation) => void;
+  onReject: () => void;
 }) {
   useMapEvents({
     click(event) {
       const { lat, lng } = event.latlng;
-      if (!inBounds(lat, lng)) return;
+      // Out-of-range clicks (e.g. antimeridian wrap / polar overscroll at low
+      // zoom) keep the prior location AND surface a calm inline message, never a
+      // silent drop (FR-MAP-03 reject scenario).
+      if (!inBounds(lat, lng)) {
+        onReject();
+        return;
+      }
       onSelect({ lat, lon: lng, name: coordinateLabel(lat, lng) });
     },
   });
@@ -110,6 +118,7 @@ export interface MapViewProps {
 export function MapView({ location }: MapViewProps) {
   const router = useRouter();
   const [tileError, setTileError] = useState(false);
+  const [outOfRange, setOutOfRange] = useState(false);
 
   const center = useMemo<[number, number]>(
     () => [location.lat, location.lon],
@@ -118,10 +127,15 @@ export function MapView({ location }: MapViewProps) {
 
   const handleSelect = useCallback(
     (next: ActiveLocation) => {
+      setOutOfRange(false);
       router.push(`/?${toLocationQuery(next)}`);
     },
     [router],
   );
+
+  const handleReject = useCallback(() => {
+    setOutOfRange(true);
+  }, []);
 
   return (
     <div className="relative h-full w-full">
@@ -146,19 +160,19 @@ export function MapView({ location }: MapViewProps) {
             },
           }}
         />
-        <Marker position={center} title={location.name}>
+        <Marker position={center} title={location.name} alt={location.name}>
           <Popup>{location.name}</Popup>
         </Marker>
         <RecenterOnLocation lat={location.lat} lon={location.lon} />
-        <ClickToSetLocation onSelect={handleSelect} />
+        <ClickToSetLocation onSelect={handleSelect} onReject={handleReject} />
       </MapContainer>
 
-      {tileError ? (
+      {tileError || outOfRange ? (
         <p
           role="status"
           className="pointer-events-none absolute inset-x-0 top-2 z-[400] mx-auto w-fit max-w-[90%] rounded-md bg-background/90 px-3 py-2 text-center text-sm text-muted-foreground shadow"
         >
-          {t("mapTileError")}
+          {tileError ? t("mapTileError") : t("mapClickOutOfRange")}
         </p>
       ) : null}
     </div>

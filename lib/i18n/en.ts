@@ -77,4 +77,5 @@ export const en: Record<MessageKey, string> = {
   mapAttribution: "© OpenStreetMap contributors",
   mapLoading: "Loading map",
   mapTileError: "We could not load the map right now. Try again.",
+  mapClickOutOfRange: "That point is outside the map bounds. Pick another spot.",
 };

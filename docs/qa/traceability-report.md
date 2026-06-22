@@ -19,8 +19,8 @@ Result: PASS, 56 warning(s)
 | FR-SEARCH-05 | yes | yes | 1 | - |
 | FR-SEARCH-06 | yes | yes | - | - |
 | FR-JOKES-01 | yes | yes | 3 | - |
-| FR-FORECAST-01 | yes | yes | - | - |
-| FR-FORECAST-02 | yes | yes | - | - |
+| FR-FORECAST-01 | yes | yes | 2 | - |
+| FR-FORECAST-02 | yes | yes | 4 | - |
 | FR-FORECAST-03 | yes | yes | - | - |
 | FR-FORECAST-04 | yes | yes | - | - |
 | FR-FORECAST-05 | yes | yes | - | - |
@@ -53,8 +53,6 @@ None.
 - **test-trace**: FR-SEARCH-03 has no test annotated "@trace FR-SEARCH-03"
 - **test-trace**: FR-SEARCH-04 has no test annotated "@trace FR-SEARCH-04"
 - **test-trace**: FR-SEARCH-06 has no test annotated "@trace FR-SEARCH-06"
-- **test-trace**: FR-FORECAST-01 has no test annotated "@trace FR-FORECAST-01"
-- **test-trace**: FR-FORECAST-02 has no test annotated "@trace FR-FORECAST-02"
 - **test-trace**: FR-FORECAST-03 has no test annotated "@trace FR-FORECAST-03"
 - **test-trace**: FR-FORECAST-04 has no test annotated "@trace FR-FORECAST-04"
 - **test-trace**: FR-FORECAST-05 has no test annotated "@trace FR-FORECAST-05"
@@ -103,4 +101,6 @@ None.
 - **recording-evidence**: FR-COMPARE-01 is not referenced by any recording manifest under docs/qa/
 - **recording-evidence**: FR-COMPARE-02 is not referenced by any recording manifest under docs/qa/
 - **recording-evidence**: FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/
+- **active-changes**: active change "add-animated-bg" is not archived
 - **active-changes**: active change "add-forecast" is not archived
+- **active-changes**: active change "add-map" is not archived

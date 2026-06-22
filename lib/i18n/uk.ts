@@ -58,4 +58,23 @@ export const uk = {
   // Weekend summary (FR-COMFORT-05).
   comfortWeekendTitle: "Комфорт на вихідні",
   comfortWeekendPartialNote: "Дані лише за один день вихідних.",
+
+  // Forecast (FR-FORECAST-01..05, BC-BRAND-01). Calm tone, no exclamation marks.
+  // The fetch-failure / empty-payload / invalid-coords states all reuse the same
+  // calm inline message and retry control.
+  forecastError: "Не вдалося завантажити прогноз зараз. Спробуйте ще раз.",
+  forecastRetry: "Спробувати ще раз",
+
+  // Hourly temperature chart accessible name (FR-FORECAST-03).
+  hourlyChartLabel: "Погодинний прогноз температури на наступні 48 годин",
+
+  // Sunrise / sunset captions under the chart (FR-FORECAST-04).
+  sunriseLabel: "Схід сонця",
+  sunsetLabel: "Захід сонця",
+
+  // Day-card field labels (FR-FORECAST-02). Short, calm, accessible.
+  forecastHighLabel: "Максимум",
+  forecastLowLabel: "Мінімум",
+  forecastPrecipLabel: "Імовірність опадів",
+  forecastWindLabel: "Вітер",
 } as const;

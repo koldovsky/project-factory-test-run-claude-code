@@ -182,7 +182,10 @@
         "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/weather/map.test.ts",
+        "evals/cases/forecast.eval.ts"
+      ],
       "recordings": []
     },
     {
@@ -191,7 +194,12 @@
         "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/weather/code.test.ts",
+        "lib/weather/map.test.ts",
+        "lib/weather/weekday.test.ts",
+        "evals/cases/forecast.eval.ts"
+      ],
       "recordings": []
     },
     {
@@ -224,7 +232,7 @@
     {
       "id": "FR-MAP-01",
       "specs": [
-        "openspec/specs/map/spec.md"
+        "openspec/changes/add-map/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -233,7 +241,7 @@
     {
       "id": "FR-MAP-02",
       "specs": [
-        "openspec/specs/map/spec.md"
+        "openspec/changes/add-map/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -242,7 +250,7 @@
     {
       "id": "FR-MAP-03",
       "specs": [
-        "openspec/specs/map/spec.md"
+        "openspec/changes/add-map/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -251,7 +259,7 @@
     {
       "id": "FR-MAP-04",
       "specs": [
-        "openspec/specs/map/spec.md"
+        "openspec/changes/add-map/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -260,7 +268,7 @@
     {
       "id": "FR-MAP-05",
       "specs": [
-        "openspec/specs/map/spec.md"
+        "openspec/changes/add-map/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -326,7 +334,7 @@
     {
       "id": "FR-ANIM-01",
       "specs": [
-        "openspec/specs/animated-bg/spec.md"
+        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -335,7 +343,7 @@
     {
       "id": "FR-ANIM-02",
       "specs": [
-        "openspec/specs/animated-bg/spec.md"
+        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -344,7 +352,7 @@
     {
       "id": "FR-ANIM-03",
       "specs": [
-        "openspec/specs/animated-bg/spec.md"
+        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -353,7 +361,7 @@
     {
       "id": "FR-ANIM-04",
       "specs": [
-        "openspec/specs/animated-bg/spec.md"
+        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -408,14 +416,6 @@
     {
       "check": "test-trace",
       "msg": "FR-SEARCH-06 has no test annotated \"@trace FR-SEARCH-06\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-FORECAST-01 has no test annotated \"@trace FR-FORECAST-01\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-FORECAST-02 has no test annotated \"@trace FR-FORECAST-02\""
     },
     {
       "check": "test-trace",
@@ -611,7 +611,15 @@
     },
     {
       "check": "active-changes",
+      "msg": "active change \"add-animated-bg\" is not archived"
+    },
+    {
+      "check": "active-changes",
       "msg": "active change \"add-forecast\" is not archived"
+    },
+    {
+      "check": "active-changes",
+      "msg": "active change \"add-map\" is not archived"
     }
   ]
 }

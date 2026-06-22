@@ -54,4 +54,21 @@ export const en: Record<MessageKey, string> = {
   // Weekend summary (FR-COMFORT-05).
   comfortWeekendTitle: "Weekend comfort",
   comfortWeekendPartialNote: "Data for one weekend day only.",
+
+  // Forecast (FR-FORECAST-01..05, BC-BRAND-01).
+  forecastError: "We could not load the forecast right now. Try again.",
+  forecastRetry: "Try again",
+
+  // Hourly temperature chart accessible name (FR-FORECAST-03).
+  hourlyChartLabel: "Hourly temperature forecast for the next 48 hours",
+
+  // Sunrise / sunset captions under the chart (FR-FORECAST-04).
+  sunriseLabel: "Sunrise",
+  sunsetLabel: "Sunset",
+
+  // Day-card field labels (FR-FORECAST-02).
+  forecastHighLabel: "High",
+  forecastLowLabel: "Low",
+  forecastPrecipLabel: "Precipitation probability",
+  forecastWindLabel: "Wind",
 };

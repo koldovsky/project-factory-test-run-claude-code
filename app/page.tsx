@@ -1,20 +1,20 @@
+import { ForecastError } from "@/components/forecast/ForecastError";
+import { ForecastView } from "@/components/forecast/ForecastView";
+import { getForecast } from "@/components/forecast/getForecast";
 import { CitySearch } from "@/components/search/CitySearch";
 import { EmptyState } from "@/components/shell/EmptyState";
 import { Notice } from "@/components/shell/Notice";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from "@/components/ui/card";
 import { t } from "@/lib/i18n";
 import { parseLocationParams } from "@/lib/location/url";
 
-// Home route — empty-state-vs-deep-link routing (FR-SHELL-03).
+// Home route — empty-state-vs-deep-link routing (FR-SHELL-03) plus the active
+// location's forecast (FR-FORECAST-01..05).
 //
 // searchParams is a Promise in Next.js 16 App Router; await it. A complete,
-// in-range `?lat&lon&name` renders the location view directly (here a calm
-// placeholder — the forecast arrives in a later slice). No params → empty state.
+// in-range `?lat&lon&name` fetches the forecast server-side (keyless Open-Meteo,
+// request-scoped `getForecast` cache) and renders the day cards / hourly chart /
+// sun times, or the calm inline `ForecastError` when the fetch fails or the
+// payload is empty/incomplete/malformed. No params → empty state.
 // Present-but-invalid params → empty state plus an inline calm Notice, never a
 // 500 or blank screen.
 
@@ -49,21 +49,24 @@ export default async function Home({
   const parsed = parseLocationParams(params);
 
   if (parsed.ok) {
-    // Location view placeholder — the real forecast comes in a later slice.
     // The city name is the page's primary heading (a real <h1>) so every page
     // state exposes a top-level heading for screen-reader/document structure.
+    // Coordinates are already range-validated by `parseLocationParams`;
+    // `getForecast` fetches + maps server-side (request-scoped cache), and any
+    // non-happy outcome routes to the calm inline `ForecastError` (never a 500).
+    const result = await getForecast(parsed.location.lat, parsed.location.lon);
+
     return (
-      <Card className="col-span-full mx-auto w-full max-w-xl">
-        <CardHeader>
-          <h1 className="text-lg font-semibold leading-none tracking-tight">
-            {parsed.location.name}
-          </h1>
-          <CardDescription>{t("locationLoadingTitle")}</CardDescription>
-        </CardHeader>
-        <CardContent className="text-sm text-muted-foreground">
-          {t("locationLoadingHint")}
-        </CardContent>
-      </Card>
+      <section className="col-span-full flex w-full flex-col gap-6">
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+          {parsed.location.name}
+        </h1>
+        {result.ok ? (
+          <ForecastView forecast={result.forecast} />
+        ) : (
+          <ForecastError />
+        )}
+      </section>
     );
   }
 

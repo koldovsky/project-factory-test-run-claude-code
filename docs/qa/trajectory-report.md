@@ -14,7 +14,7 @@ Result: PASS
 | 2026-06-21-add-comfort-score | clean | 4 | yes | i18n, scoring |
 | 2026-06-21-add-footer-jokes | clean | 4 | yes | jokes |
 | 2026-06-21-add-top-clock | clean | 4 | yes | clock |
-| 2026-06-22-add-city-search | clean | 5 | yes | geo, i18n |
+| 2026-06-22-add-city-search | clean | 6 | yes | geo, i18n |
 
 ## Cross-slice module overlap
 

@@ -42,7 +42,7 @@
     {
       "slice": "2026-06-22-add-city-search",
       "reviewEvidence": "clean",
-      "trailerCommits": 5,
+      "trailerCommits": 6,
       "libDomains": [
         "geo",
         "i18n"

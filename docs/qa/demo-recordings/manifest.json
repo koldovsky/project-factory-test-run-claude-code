@@ -1,0 +1,17 @@
+{
+  "kind": "demo-recordings",
+  "generatedAt": "2026-06-22",
+  "captureMethod": "browser MCP (Claude Preview) against the live app (npm run dev) with live Open-Meteo data, per docs/qa/demo-script.md (ADR-0001 / TC-STACK-05: no Playwright in MVP). States visually reviewed and recorded in docs/qa/g5-browser-smoke.md.",
+  "clips": [
+    { "id": "clip-app-shell", "capability": "app-shell", "proves": "FR-SHELL-01, FR-SHELL-02, FR-SHELL-03", "shows": "Top bar (logo, clock slot, theme indicator), responsive 1/2/3-col layout, first-load hero + centered search." },
+    { "id": "clip-top-clock", "capability": "top-clock", "proves": "FR-CLOCK-01", "shows": "Live header clock updating each minute in the visitor's local time." },
+    { "id": "clip-city-search", "capability": "city-search", "proves": "FR-SEARCH-01, FR-SEARCH-02, FR-SEARCH-03, FR-SEARCH-04, FR-SEARCH-05, FR-SEARCH-06", "shows": "Debounced suggestions (name/region/country/flag), select → ?lat&lon&name, Enter-on-single, 'Nothing found' inline, 'Use my location' button." },
+    { "id": "clip-footer-jokes", "capability": "footer-jokes", "proves": "FR-JOKES-01", "shows": "Deterministic Ukrainian footer joke; Open-Meteo + OpenStreetMap credit links." },
+    { "id": "clip-forecast", "capability": "forecast", "proves": "FR-FORECAST-01, FR-FORECAST-02, FR-FORECAST-03, FR-FORECAST-04, FR-FORECAST-05", "shows": "7 day cards (UA weekday, hi/lo, icon, precip %, wind), 48h Recharts hourly chart, today's sunrise/sunset, re-fetch on location change." },
+    { "id": "clip-map", "capability": "map", "proves": "FR-MAP-01, FR-MAP-02, FR-MAP-03, FR-MAP-04, FR-MAP-05", "shows": "OSM Leaflet map at city zoom, marker + popup, click sets location (coordinate label) + re-fetch, attribution bottom-right, client-only skeleton." },
+    { "id": "clip-comfort-score", "capability": "comfort-score", "proves": "FR-COMFORT-01, FR-COMFORT-02, FR-COMFORT-03, FR-COMFORT-04, FR-COMFORT-05", "shows": "Per-day colored comfort badge (green/yellow/red) with Ukrainian accessible name, highlighted weekend average." },
+    { "id": "clip-animated-bg", "capability": "animated-bg", "proves": "FR-ANIM-01, FR-ANIM-02, FR-ANIM-03, FR-ANIM-04", "shows": "Condition-driven day/night gradient + particles by location sun times; prefers-reduced-motion static; pointer-events pass-through." },
+    { "id": "clip-weekend-compare", "capability": "weekend-compare", "proves": "FR-COMPARE-01, FR-COMPARE-02, FR-COMPARE-03", "shows": "Pin up to 3 cities (chip row + limit), Compare-weekend table (Sat/Sun hi/lo, precip %, comfort), sticky header + make-active." },
+    { "id": "clip-error-negative", "capability": "error-surface", "proves": "FR-SEARCH-05, NFR-OBS-01", "shows": "Offline/failed forecast → calm inline error + retry (never a 500/blank/toast); console stays silent." }
+  ]
+}

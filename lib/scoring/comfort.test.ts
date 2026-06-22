@@ -291,3 +291,32 @@ describe("comfortScore — Ukrainian rationale copy (FR-COMFORT-03, BC-BRAND-01,
     }
   });
 });
+
+describe("comfortScore — rationale reflects the dominant adverse driver (eval regression, FR-COMFORT-03)", () => {
+  // Eval-gate finding: a near-certain-rain day that nets a score of ~70 was
+  // returning the generic "pleasant day" rationale, ignoring the rain. A
+  // notably-adverse driver must be named even when the overall value is high.
+  it("names the rain on a wet day that still scores high (does not say 'pleasant')", () => {
+    const { value, rationale } = comfortScore({
+      feelsLikeC: 16,
+      precipProbability: 95,
+      windKmh: 15,
+      cloudCover: 90,
+      uvIndex: 2,
+    });
+    expect(value).toBeGreaterThanOrEqual(60); // otherwise-OK day, high net score
+    expect(rationale).toContain("дощ"); // mentions rain
+    expect(rationale).not.toContain("Приємний"); // not the generic pleasant line
+  });
+
+  it("still gives the pleasant line when no driver is notably adverse", () => {
+    const { rationale } = comfortScore({
+      feelsLikeC: 21,
+      precipProbability: 0,
+      windKmh: 8,
+      cloudCover: 40,
+      uvIndex: 3,
+    });
+    expect(rationale).toContain("Приємний");
+  });
+});

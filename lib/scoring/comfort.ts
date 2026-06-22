@@ -135,16 +135,23 @@ function buildRationale(
     if (d.score < worst.score) worst = d;
   }
 
-  // Pleasant overall: lead with the positive, ignore the (mild) worst driver.
-  if (value >= 70) {
-    return "Приємний день, комфортно перебувати надворі.";
-  }
+  // A single notably-adverse driver (e.g. 95% rain) must be named even when the
+  // overall value is otherwise high — a "pleasant day" sentence that ignores
+  // near-certain rain is misleading (eval-gate finding).
+  const SEVERE = 0.35;
 
+  // Hostile overall: the strongest message wins regardless of any one driver.
   if (value < 40) {
     return "Умови надворі несприятливі, краще запланувати справи вдома.";
   }
 
-  // Moderate: name the dominant driver calmly.
+  // Pleasant overall AND no notably-adverse driver: the generic positive.
+  if (value >= 70 && worst.score >= SEVERE) {
+    return "Приємний день, комфортно перебувати надворі.";
+  }
+
+  // Otherwise name the dominant adverse driver calmly — this now also fires for a
+  // high-value day dragged down by one severe factor (e.g. wet day scoring ~70).
   switch (worst.key) {
     case "cold":
       return "Прохолодно, варто вдягнутися тепліше перед виходом.";

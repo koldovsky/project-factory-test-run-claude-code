@@ -22,12 +22,14 @@ export interface DayCardProps {
 
 export function DayCard({ day, highlighted = false }: DayCardProps) {
   const weekday = ukWeekday(day.date);
+  // Null optional fields (Open-Meteo horizon gaps) fall back to comfortScore's
+  // neutral defaults via `?? undefined`.
   const comfort = comfortScore({
-    feelsLikeC: day.feelsLikeMaxC,
-    precipProbability: day.precipProbability,
-    windKmh: day.windKmh,
-    cloudCover: day.cloudCover,
-    uvIndex: day.uvIndex,
+    feelsLikeC: day.feelsLikeMaxC ?? undefined,
+    precipProbability: day.precipProbability ?? undefined,
+    windKmh: day.windKmh ?? undefined,
+    cloudCover: day.cloudCover ?? undefined,
+    uvIndex: day.uvIndex ?? undefined,
   });
 
   return (
@@ -66,12 +68,14 @@ export function DayCard({ day, highlighted = false }: DayCardProps) {
           <span className="inline-flex items-center gap-1">
             <Droplets aria-hidden="true" className="size-4" />
             <span className="sr-only">{t("forecastPrecipLabel")} </span>
-            {Math.round(day.precipProbability)}%
+            {day.precipProbability !== null
+              ? `${Math.round(day.precipProbability)}%`
+              : "—"}
           </span>
           <span className="inline-flex items-center gap-1">
             <Wind aria-hidden="true" className="size-4" />
             <span className="sr-only">{t("forecastWindLabel")} </span>
-            {Math.round(day.windKmh)} км/год
+            {day.windKmh !== null ? `${Math.round(day.windKmh)} км/год` : "—"}
           </span>
         </div>
       </CardContent>

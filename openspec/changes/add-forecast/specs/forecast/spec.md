@@ -152,25 +152,30 @@ The system SHALL treat an Open-Meteo response that returns a success status (e.g
 
 ### Requirement: Surface invalid coordinates and unparseable responses as a calm inline state
 
-The system SHALL validate the active location's coordinates before issuing a forecast fetch and SHALL surface invalid input as a calm inline error state rather than a thrown error or a generic 500 page. Coordinates whose latitude is outside -90..90, whose longitude is outside -180..180, or that are NaN/non-numeric — including those arriving from a malformed `?lat=&lon=&name=` deep link (FR-SEARCH-03) — SHALL be treated as invalid input. The system SHALL also surface an Open-Meteo response body that cannot be parsed by the mapper (malformed or unparseable) as the same calm inline error state (FR-FORECAST-01, FR-SEARCH-03, NFR-OBS-01).
+Invalid coordinates and unparseable responses SHALL always reach the reader as a calm inline state, never a thrown error or a generic 500 page. Responsibility is split to avoid contradicting the app shell (reconciled at review):
 
-#### Scenario: Out-of-range or NaN coordinates do not issue a fetch and show the calm inline state
+- **Malformed / out-of-range / NaN deep-link coordinates** are caught by the app shell at the entry point and routed to the first-load empty state plus an inline Notice, per `app-shell` "Deep-link loads location and skips the hero" (FR-SHELL-03). Because no valid active location exists, the right recovery is to search for a city, not to retry the same bad coordinates — so this path shows the empty-state Notice (no retry), not the forecast-area error.
+- The **forecast fetch helper SHALL still validate coordinates before issuing any request** as defense-in-depth: out-of-range / NaN coordinates yield a typed failure and no Open-Meteo request is made (this guard is unit-tested even though the app shell makes it unreachable from a normal render).
+- For an active location with **valid-range coordinates**, an Open-Meteo response body that cannot be parsed by the mapper (malformed/unparseable) SHALL surface as the forecast-area calm inline error state with a retry control (FR-FORECAST-01, NFR-OBS-01).
 
-- **GIVEN** an active location whose latitude or longitude is outside valid bounds (latitude not in -90..90, longitude not in -180..180) or is NaN/non-numeric
-- **WHEN** the forecast view attempts to render for that location
-- **THEN** no Open-Meteo forecast request is issued for the invalid coordinates, the forecast area shows the calm inline error state in Ukrainian with a retry control, and no generic 500 page and no blank area are shown
-
-#### Scenario: Malformed deep link coordinates surface as the calm inline state
+#### Scenario: Malformed or out-of-range deep-link coordinates fall back to the empty state
 
 - **GIVEN** the page is opened with a malformed `?lat=&lon=&name=` deep link whose `lat` or `lon` is empty, non-numeric, or out of range
-- **WHEN** the forecast view resolves the active location from the URL
-- **THEN** the malformed coordinates are treated as invalid input, the forecast area shows the calm inline error state in Ukrainian, and no thrown error and no generic 500 page reaches the reader
+- **WHEN** the app resolves the active location from the URL
+- **THEN** the first-load empty state (hero plus centered search) is shown with an inline Notice in Ukrainian explaining the link could not be opened (FR-SHELL-03)
+- **AND** no Open-Meteo forecast request is issued and no thrown error or generic 500 page reaches the reader
+
+#### Scenario: The forecast fetch helper rejects invalid coordinates without a request (defense-in-depth)
+
+- **GIVEN** the forecast fetch helper is called directly with latitude outside -90..90 or longitude outside -180..180 or a NaN value
+- **WHEN** it runs
+- **THEN** it returns a typed failure, issues no Open-Meteo request, and does not throw
 
 #### Scenario: Unparseable response body surfaces as the calm inline state
 
 - **GIVEN** an active location with valid coordinates
 - **WHEN** the Open-Meteo request returns a body that the mapper cannot parse (malformed or unparseable)
-- **THEN** the outcome is routed to the calm inline error state in Ukrainian with a retry control, no exception propagates to the reader, and no generic 500 page and no blank area are shown
+- **THEN** the outcome is routed to the forecast-area calm inline error state in Ukrainian with a retry control, no exception propagates to the reader, and no generic 500 page and no blank area are shown
 
 ### Requirement: Keep Open-Meteo mappers and types pure in lib/weather
 

@@ -97,25 +97,15 @@ export function mapForecast(json: unknown): MapForecastResult {
 
     const hiC = finiteNumber(at(maxArr, i));
     const loC = finiteNumber(at(minArr, i));
-    const feelsLikeMaxC = finiteNumber(at(feelsArr, i));
     const weatherCode = finiteNumber(at(codeArr, i));
-    const precipProbability = finiteNumber(at(precipArr, i));
-    const windKmh = finiteNumber(at(windArr, i));
-    const cloudCover = finiteNumber(at(cloudArr, i));
-    const uvIndex = finiteNumber(at(uvArr, i));
 
-    // A day with any unusable required numeric field is not well-formed and is
-    // skipped — never emit a NaN-filled card.
-    if (
-      hiC === null ||
-      loC === null ||
-      feelsLikeMaxC === null ||
-      weatherCode === null ||
-      precipProbability === null ||
-      windKmh === null ||
-      cloudCover === null ||
-      uvIndex === null
-    ) {
+    // CORE render fields only. A day is well-formed if it has a date, hi/lo, and
+    // a weather code (always present for a forecast day). The other fields are
+    // optional: Open-Meteo returns null for precip-probability / UV beyond their
+    // horizon, so coerce a missing/non-finite value to null (a calm placeholder
+    // in the card; comfortScore uses its neutral defaults) rather than dropping
+    // the day or failing the whole forecast (review-gate finding).
+    if (hiC === null || loC === null || weatherCode === null) {
       continue;
     }
 
@@ -123,12 +113,12 @@ export function mapForecast(json: unknown): MapForecastResult {
       date,
       hiC,
       loC,
-      feelsLikeMaxC,
       weatherCode,
-      precipProbability,
-      windKmh,
-      cloudCover,
-      uvIndex,
+      feelsLikeMaxC: finiteNumber(at(feelsArr, i)),
+      precipProbability: finiteNumber(at(precipArr, i)),
+      windKmh: finiteNumber(at(windArr, i)),
+      cloudCover: finiteNumber(at(cloudArr, i)),
+      uvIndex: finiteNumber(at(uvArr, i)),
     });
   }
 

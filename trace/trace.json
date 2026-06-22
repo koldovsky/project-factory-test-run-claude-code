@@ -81,7 +81,8 @@
     {
       "id": "FR-SHELL-03",
       "specs": [
-        "openspec/specs/app-shell/spec.md"
+        "openspec/specs/app-shell/spec.md",
+        "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -127,8 +128,7 @@
     {
       "id": "FR-SEARCH-03",
       "specs": [
-        "openspec/specs/city-search/spec.md",
-        "openspec/changes/add-forecast/specs/forecast/spec.md"
+        "openspec/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],

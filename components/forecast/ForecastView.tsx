@@ -30,11 +30,11 @@ export function ForecastView({ forecast }: ForecastViewProps) {
     days.map((day) => ({
       date: day.date,
       value: comfortScore({
-        feelsLikeC: day.feelsLikeMaxC,
-        precipProbability: day.precipProbability,
-        windKmh: day.windKmh,
-        cloudCover: day.cloudCover,
-        uvIndex: day.uvIndex,
+        feelsLikeC: day.feelsLikeMaxC ?? undefined,
+        precipProbability: day.precipProbability ?? undefined,
+        windKmh: day.windKmh ?? undefined,
+        cloudCover: day.cloudCover ?? undefined,
+        uvIndex: day.uvIndex ?? undefined,
       }).value,
     })),
   );

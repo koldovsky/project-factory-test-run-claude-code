@@ -414,9 +414,47 @@ describe("mapForecast — failures return ok:false and NEVER throw (FR-FORECAST-
       });
 
     expect(run).not.toThrow();
-    // A day whose required numeric fields are unusable is not a well-formed day,
-    // so with no well-formed days the mapper reports failure rather than emitting
-    // a NaN-filled card.
+    // A day whose CORE fields (date, hi/lo, weather code) are unusable is not a
+    // well-formed day; with no well-formed days the mapper reports failure rather
+    // than emitting a NaN-filled card.
     expect(run().ok).toBe(false);
+  });
+});
+
+describe("mapForecast — null optional fields are kept, not dropped (review regression, FR-FORECAST-02)", () => {
+  // Open-Meteo returns null for precipitation_probability_max / uv_index_max
+  // beyond their horizon. A day with valid CORE fields must still render; the
+  // optional fields carry null (calm placeholder in the card; comfortScore uses
+  // its neutral defaults). The day must NOT be dropped and the forecast must not
+  // fail.
+  it("keeps a day whose precip/uv (and other optionals) are null", () => {
+    const result = mapForecast({
+      timezone: "Europe/Kyiv",
+      daily: {
+        time: ["2026-06-20", "2026-06-21"],
+        temperature_2m_max: [24, 25],
+        temperature_2m_min: [14, 15],
+        apparent_temperature_max: [26, null],
+        weather_code: [1, 2],
+        precipitation_probability_max: [10, null],
+        wind_speed_10m_max: [12, null],
+        cloud_cover_mean: [40, null],
+        uv_index_max: [5, null],
+        sunrise: ["2026-06-20T05:00", "2026-06-21T05:00"],
+        sunset: ["2026-06-20T21:00", "2026-06-21T21:00"],
+      },
+      hourly: { time: ["2026-06-20T00:00"], temperature_2m: [15] },
+    });
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.forecast.days).toHaveLength(2);
+    const second = result.forecast.days[1];
+    expect(second.hiC).toBe(25);
+    expect(second.weatherCode).toBe(2);
+    expect(second.precipProbability).toBeNull();
+    expect(second.uvIndex).toBeNull();
+    expect(second.windKmh).toBeNull();
+    expect(second.feelsLikeMaxC).toBeNull();
   });
 });

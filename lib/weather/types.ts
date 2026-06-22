@@ -5,6 +5,12 @@
 // the snake_case Open-Meteo source field for each is noted inline so the mapper
 // and the cards can never drift (docs/open-meteo-reference.md).
 
+// A day renders as long as its CORE fields are present (date, hi/lo, weather
+// code). The remaining fields are `number | null`: Open-Meteo routinely returns
+// null for `precipitation_probability_max` / `uv_index_max` beyond their horizon,
+// so they must NOT drop the day or fail the forecast — the card shows a calm
+// placeholder and `comfortScore` (which tolerates missing inputs) uses its
+// neutral defaults (review-gate finding).
 /** One mapped forecast day, location-local (from a `daily.time` entry). */
 export interface DailyForecast {
   /** "YYYY-MM-DD", location-local (the `daily.time` entry). */
@@ -13,18 +19,18 @@ export interface DailyForecast {
   hiC: number;
   /** Low temperature in °C (from `temperature_2m_min`). */
   loC: number;
-  /** Feels-like maximum in °C (from `apparent_temperature_max`). */
-  feelsLikeMaxC: number;
   /** WMO weather code (from `weather_code`). */
   weatherCode: number;
-  /** Precipitation probability % (from `precipitation_probability_max`). */
-  precipProbability: number;
-  /** Wind speed km/h (from `wind_speed_10m_max`). */
-  windKmh: number;
-  /** Cloud cover % (from `cloud_cover_mean`). */
-  cloudCover: number;
-  /** UV index (from `uv_index_max`). */
-  uvIndex: number;
+  /** Feels-like maximum in °C (from `apparent_temperature_max`); null if absent. */
+  feelsLikeMaxC: number | null;
+  /** Precipitation probability % (from `precipitation_probability_max`); null beyond horizon. */
+  precipProbability: number | null;
+  /** Wind speed km/h (from `wind_speed_10m_max`); null if absent. */
+  windKmh: number | null;
+  /** Cloud cover % (from `cloud_cover_mean`); null if absent. */
+  cloudCover: number | null;
+  /** UV index (from `uv_index_max`); null beyond horizon. */
+  uvIndex: number | null;
 }
 
 /** The full mapped forecast for an active location. */

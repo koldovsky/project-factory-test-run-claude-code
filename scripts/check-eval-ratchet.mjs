@@ -25,7 +25,15 @@ const BASELINE = "quality/eval-baseline.json";
 const TOLERANCE = 1.0;
 
 if (!existsSync(SUMMARY)) {
-  console.error(`FAIL  ${SUMMARY} not found — run the eval-suite workflow first`);
+  // Before the eval-suite has ever run (pre-G6), there is no results file AND no
+  // baseline — the ratchet is a no-op (nothing to guard yet). Once a baseline is
+  // committed, a missing results file IS a regression (evals exist but were not
+  // run), so keep failing in that case.
+  if (!existsSync(BASELINE)) {
+    console.log(`SKIP  ${SUMMARY} not found and no baseline yet — evals are established by the eval-suite workflow (G6)`);
+    process.exit(0);
+  }
+  console.error(`FAIL  ${SUMMARY} not found but a baseline exists — run the eval-suite workflow first`);
   process.exit(1);
 }
 const summary = JSON.parse(readFileSync(SUMMARY, "utf8"));

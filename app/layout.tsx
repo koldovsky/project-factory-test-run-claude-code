@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   description: t("heroSubtitle"),
 };
 
+// Applies the user's stored theme choice to <html> before paint, so a forced
+// light/dark theme does not flash the system theme first (ADR-0007).
+const THEME_INIT = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.dataset.theme=t;}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,6 +36,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
         <AppShell clock={<Clock />}>{children}</AppShell>
       </body>
     </html>

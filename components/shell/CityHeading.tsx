@@ -21,7 +21,7 @@ export function CityHeading({ name }: { name: string }) {
     <h1
       ref={ref}
       tabIndex={-1}
-      className="w-fit rounded-md bg-background/80 px-3 py-1 text-2xl font-semibold tracking-tight text-foreground outline-none backdrop-blur-sm"
+      className="w-fit rounded-md bg-background/90 px-3 py-1 text-2xl font-semibold tracking-tight text-foreground outline-none backdrop-blur-sm"
     >
       {name}
     </h1>

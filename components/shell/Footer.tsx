@@ -43,7 +43,7 @@ export function Footer() {
             </a>
           </span>
         </div>
-        {joke ? <p className="text-muted-foreground/80">{joke}</p> : null}
+        {joke ? <p className="text-muted-foreground">{joke}</p> : null}
       </div>
     </footer>
   );

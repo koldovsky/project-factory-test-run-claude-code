@@ -1,13 +1,11 @@
 import Link from "next/link";
 
+import { ThemeToggle } from "@/components/shell/ThemeToggle";
 import { t } from "@/lib/i18n";
 
 // Top bar (FR-SHELL-01): the only navigation chrome. Logo (a home link back to
-// the empty-state search — BUG-002) + a theme indicator reflecting the OS
-// color-scheme preference + a slot for the live clock.
-//
-// Server component: the theme indicator is pure CSS (see globals.css), so no
-// client JavaScript is needed here.
+// the empty-state search — BUG-002) + a clickable theme toggle (ADR-0007) + a
+// slot for the live clock.
 
 export interface TopBarProps {
   /** Slot for the live clock (top-clock slice mounts a client component here). */
@@ -43,15 +41,8 @@ export function TopBar({ clock }: TopBarProps) {
             <div className="text-sm text-muted-foreground">{clock}</div>
           ) : null}
 
-          {/* Theme indicator: pure-CSS reflection of the active OS theme. */}
-          <span className="theme-indicator text-sm text-muted-foreground">
-            <span data-theme="light" className="inline-flex items-center gap-1">
-              {t("themeLightLabel")}
-            </span>
-            <span data-theme="dark" className="inline-flex items-center gap-1">
-              {t("themeDarkLabel")}
-            </span>
-          </span>
+          {/* Clickable theme toggle (ADR-0007): system default, click to override. */}
+          <ThemeToggle />
         </div>
       </div>
     </header>

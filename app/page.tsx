@@ -85,8 +85,9 @@ export default async function Home({
               theme-independent animated gradient behind it (NFR-A11Y-02). */}
           <CityHeading name={parsed.location.name} />
           {/* Search stays reachable from the forecast view so a user can look up a
-              different city without editing the URL or going back (BUG-001). */}
-          <div className="w-full max-w-md">
+              different city without editing the URL or going back (BUG-001). The
+              backing panel keeps it readable over the animated sky (NFR-A11Y-02). */}
+          <div className="w-full max-w-md rounded-xl bg-background/85 p-3 backdrop-blur-sm">
             <CitySearch />
           </div>
           <MapPanel location={parsed.location} />

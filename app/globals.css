@@ -2,8 +2,8 @@
 
 /*
  * Theme tokens — shadcn/ui neutral base color, expressed as Tailwind 4 theme
- * variables. Light is the default; dark is applied via `prefers-color-scheme`
- * only (FR-SHELL-01) — no class toggle, no cookie (BC-PRIVACY-03).
+ * variables. Light is the default; dark follows `prefers-color-scheme` and can be
+ * overridden by the user's theme toggle via `data-theme` (FR-SHELL-01, ADR-0007).
  *
  * Palette chosen for WCAG AA contrast in both themes (NFR-A11Y-02): the
  * foreground/background and muted-foreground/background pairs all exceed 4.5:1.
@@ -17,13 +17,20 @@
   --primary: #171717;
   --primary-foreground: #fafafa; /* on #171717 ≈ 16.8:1 */
   --muted: #f5f5f5;
-  --muted-foreground: #525252; /* on #fff ≈ 7.4:1, on #f5f5f5 ≈ 6.7:1 */
+  --muted-foreground: #404040; /* on #fff ≈ 10.4:1 — darker for legible small secondary text (BUG-009) */
   --border: #e5e5e5;
   --ring: #171717;
 }
 
+/*
+ * Dark theme tokens. Applied when the OS prefers dark AND the user has not forced
+ * light, OR when the user explicitly chose dark via the theme toggle
+ * (data-theme="dark"). The toggle persists in localStorage — a UI preference, not
+ * a tracking cookie (BC-PRIVACY-03 unaffected); a small inline script in the
+ * layout applies it before paint to avoid a flash (FR-SHELL-01, ADR-0007).
+ */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --background: #0a0a0a;
     --foreground: #fafafa; /* on #0a0a0a ≈ 18.9:1 */
     --card: #171717;
@@ -31,10 +38,23 @@
     --primary: #fafafa;
     --primary-foreground: #171717;
     --muted: #262626;
-    --muted-foreground: #a3a3a3; /* on #0a0a0a ≈ 8.3:1 */
+    --muted-foreground: #b4b4b4; /* on #0a0a0a ≈ 10.6:1 — darker for legible small text (BUG-009) */
     --border: #2e2e2e;
     --ring: #d4d4d4;
   }
+}
+
+:root[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #171717;
+  --muted: #262626;
+  --muted-foreground: #b4b4b4;
+  --border: #2e2e2e;
+  --ring: #d4d4d4;
 }
 
 @theme inline {
@@ -59,21 +79,27 @@ body {
 }
 
 /*
- * Theme indicator (FR-SHELL-01): a pure-CSS reflection of the active theme,
- * no JavaScript. The light label shows by default; the dark label shows under
- * `prefers-color-scheme: dark`. Both carry an accessible name from i18n.
+ * Theme veil over the animated sky (FR-ANIM-02, NFR-A11Y-02, ADR-0007). The sky
+ * gradient is condition-driven and theme-independent (a daytime sky is light blue
+ * even in dark mode), which made dark mode read as a light-blue page. This veil
+ * sits over the gradient (under the particles) and dims it in dark mode so the
+ * page reads as dark and content stays readable; transparent in light mode.
  */
-.theme-indicator [data-theme="dark"] {
-  display: none;
+.sky-theme-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
-  .theme-indicator [data-theme="light"] {
-    display: none;
+  :root:not([data-theme="light"]) .sky-theme-veil {
+    background: rgba(10, 10, 10, 0.62);
   }
-  .theme-indicator [data-theme="dark"] {
-    display: inline-flex;
-  }
+}
+
+:root[data-theme="dark"] .sky-theme-veil {
+  background: rgba(10, 10, 10, 0.62);
 }
 
 /* Honor reduced motion globally (FR-ANIM-03). */

@@ -48,6 +48,20 @@ for (const clip of clips) {
   } else if (statSync(videoPath).size < MIN_VIDEO_BYTES) {
     problems.push(`${where}: video file is suspiciously small (${clip.video})`);
   }
+  // Proof still for the vision verification.
+  if (!clip.frame) {
+    problems.push(`${where}: no proof frame`);
+  } else if (!existsSync(join(recDir, clip.frame))) {
+    problems.push(`${where}: proof frame missing (${clip.frame})`);
+  }
+  // Vision verdict: a fresh agent must have confirmed the requirement is visibly
+  // met AND readable (ADR-0006). Recordings are not "done" until vision-verified.
+  if (!clip.vision) {
+    problems.push(`${where}: no vision verdict (run the recording-vision-verify workflow)`);
+  } else {
+    if (clip.vision.met !== true) problems.push(`${where}: vision says requirement NOT visibly met — ${clip.vision.notes ?? ""}`);
+    if (clip.vision.readable !== true) problems.push(`${where}: vision flagged a readability problem — ${clip.vision.notes ?? ""}`);
+  }
 }
 
 const covered = new Set([

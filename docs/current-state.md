@@ -7,8 +7,9 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
-- **Current phase:** Post-G7 hardening — automated E2E recordings + UX-defect
-  fixes landed (ADR-0006); deploy + push are the user's action.
+- **Current phase:** Post-G7 hardening — automated E2E recordings, visual + a11y
+  validation, and UX-defect fixes landed (ADR-0006/0007/0008); deploy + push are
+  the user's action.
 - **Active change:** none. **All 9 capability slices archived; G0–G6 passed.**
 - **Test counts:** `npm run test:run` = 403 tests across 25 files (this total
   INCLUDES the 32 cross-slice integration tests in `tests/integration/`, which
@@ -30,9 +31,16 @@
   (BUG-001..007, `docs/qa/ux-defects.md`). Headline: the forecast view had no
   search and the logo was not a home link — fixed; the harness now asserts
   search/home reachability so it cannot regress.
-- `qa:verify` all-green (incl. `recordings`); 403 unit + 32 integration tests;
-  8/8 clips validated; release checks (`--release --strict-recordings`,
-  `npm audit --audit-level=high`) pass.
+- **Visual + a11y validation (ADR-0007/0008):** clickable theme toggle (BUG-008);
+  contrast/readability fixes — dark veil over the sky, footer joke + darker muted
+  text (BUG-009). Added `e2e/a11y.spec.ts` (axe WCAG-AA, light + dark) and the
+  `recording-vision-verify` workflow (a fresh agent confirms each clip is visibly
+  met + readable; fix→re-record→re-verify until met). Recordings are now longer
+  (async content renders), carry a Markdown README + proof still + vision verdict;
+  `check-recordings` requires vision-met.
+- `qa:verify` all-green (traceability, trajectory, 403 unit + 32 integration,
+  eval-ratchet, recordings 9/9 vision-met, lint, build, **e2e 13 (9 recordings +
+  4 a11y)**, openspec 9/9).
 - **Slices archived (G4):** add-app-shell, add-comfort-score, add-top-clock,
   add-footer-jokes, add-city-search, add-forecast, add-map, add-animated-bg,
   add-weekend-compare.

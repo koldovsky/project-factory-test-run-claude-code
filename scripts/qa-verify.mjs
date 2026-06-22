@@ -58,6 +58,14 @@ const commands = [
     args: ["run", "build"],
   },
   {
+    // Live browser validation: the recording flows assert their FRs + a silent
+    // console, and the axe suite checks color-contrast/a11y in both themes
+    // (ADR-0006/0008). Needs the Playwright browser (npx playwright install in CI).
+    name: "e2e",
+    command: "npm",
+    args: ["run", "test:e2e"],
+  },
+  {
     name: "openspec-all",
     command: "npx",
     args: ["openspec", "validate", "--all", "--strict"],

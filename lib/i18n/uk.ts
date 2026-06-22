@@ -36,9 +36,11 @@ export const uk = {
   // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
   clockRegionLabel: "Місцевий час",
 
-  // Theme indicator (FR-SHELL-01). Accessible names for each active theme.
+  // Theme toggle (FR-SHELL-01, ADR-0007). Accessible names for each active theme
+  // plus the toggle action.
   themeLightLabel: "Світла тема",
   themeDarkLabel: "Темна тема",
+  themeToggleLabel: "Перемкнути тему",
 
   // Footer credits (FR-SHELL-01, BC-BRAND-02).
   footerCreditsIntro: "Дані надано",

@@ -114,7 +114,17 @@ npm run test:run
 npm run build
 npx openspec validate --all --strict
 node scripts/check-eval-ratchet.mjs   # once evals exist — graded-quality bar
+npm run test:e2e                      # Playwright: recording flows + axe a11y/contrast (ADR-0006/0008)
+npm run check:recordings              # committed recordings are validated + vision-met
 ```
+
+**Validate the rendered result, not just the code and the DOM (ADR-0008).**
+Structural/textual checks miss visual defects (contrast, "looks interactive but
+isn't", half-rendered states). Two layers cover this: axe (`e2e/a11y.spec.ts`,
+WCAG AA contrast in light + dark) and vision verification (the
+`recording-vision-verify` workflow — a fresh agent confirms each clip's
+requirement is *visibly* met + readable). Recordings are not done until
+vision-met; on a failed verdict, fix → re-record → re-verify.
 
 ## Evals (graded quality, not just correctness)
 

@@ -38,6 +38,10 @@ export function AnimatedBackground({ scene }: AnimatedBackgroundProps) {
       role="presentation"
       className={`pointer-events-none fixed inset-0 -z-10 overflow-hidden sky-layer ${resolved.gradient}`}
     >
+      {/* Theme veil: dims the (theme-independent) sky in dark mode so the page
+          reads as dark; transparent in light mode (ADR-0007). Sits under the
+          particles so they stay visible. */}
+      <div className="sky-theme-veil" />
       {resolved.particle !== "none" ? (
         <div
           className={`pointer-events-none absolute inset-0 sky-particles sky-particles-${resolved.particle}`}

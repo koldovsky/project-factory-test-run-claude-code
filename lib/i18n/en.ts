@@ -30,9 +30,10 @@ export const en: Record<MessageKey, string> = {
   // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
   clockRegionLabel: "Local time",
 
-  // Theme indicator (FR-SHELL-01).
+  // Theme toggle (FR-SHELL-01, ADR-0007).
   themeLightLabel: "Light theme",
   themeDarkLabel: "Dark theme",
+  themeToggleLabel: "Toggle theme",
 
   // Footer credits (FR-SHELL-01, BC-BRAND-02).
   footerCreditsIntro: "Data provided by",

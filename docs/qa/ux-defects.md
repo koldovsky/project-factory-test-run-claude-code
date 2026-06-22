@@ -19,6 +19,18 @@ clip or unit test), not just by inspection.
 | **BUG-005** | minor | Focus dropped to `<body>` after navigating to a city (no focus to the new heading). | `CityHeading` (client) takes focus (`tabIndex={-1}`) on name change (`app/page.tsx`). | `clip-navigation-reachability` asserts `activeElement` is the `<h1>` |
 | **BUG-006** | minor | The unpin "✕" was a 24px tap target crowded against the city name. | Enlarge to a 36px target (`size-9`) and `gap-2` spacing (`PinBar.tsx`). | `clip-weekend-compare` asserts the box ≥ 32px |
 | **BUG-007** | minor | The compare table forced horizontal scrolling on mobile with no affordance. | Stack columns vertically below `md` (`w-full` / `flex-col`), row layout from `md` (`CompareTable.tsx`). | `clip-compare-multi-mobile` asserts no horizontal page overflow at 390px with 2 cities |
+| **BUG-008** | major | The theme control looked interactive but did nothing on click (read-only indicator). | Real clickable `ThemeToggle` (system default + light/dark override, no-flash, localStorage); ADR-0007. | `clip-theme-toggle` asserts a click changes `data-theme` |
+| **BUG-009** | major | Poor color contrast / readability: dark mode rendered as a light-blue page (theme-independent sky), the footer joke was faint (`muted/80`), and the forecast search sat low-contrast over the sky. | Dark veil over the sky in dark mode; footer joke → full `muted-foreground`; readable backing panel for the forecast search + stronger heading scrim. | axe a11y/contrast suite (light + dark) + vision verification of every clip |
+
+## How these were caught (the approach gap that let them ship)
+
+The first audit was **code/DOM only** — it never measured contrast or looked at
+pixels, so it missed BUG-008 (perceived affordance) and BUG-009 (readability).
+The fix to the *process* (ADR-0008): **axe** for measurable contrast/a11y, and
+**vision verification** — a fresh agent looks at each recording's proof still and
+confirms the requirement is visibly met + readable. The vision pass immediately
+caught a real low-contrast forecast-search state and frames that captured the
+wrong moment; both were fixed and re-recorded until vision-met.
 
 ## Not defects (verified before claiming)
 

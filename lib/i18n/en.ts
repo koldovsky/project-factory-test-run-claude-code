@@ -78,4 +78,22 @@ export const en: Record<MessageKey, string> = {
   mapLoading: "Loading map",
   mapTileError: "We could not load the map right now. Try again.",
   mapClickOutOfRange: "That point is outside the map bounds. Pick another spot.",
+
+  // Weekend compare (FR-COMPARE-01..03, BC-BRAND-01, NFR-A11Y-01).
+  comparePinAction: "Pin",
+  compareUnpinAction: "Remove",
+  comparePinBarLabel: "Pinned cities",
+  comparePinCurrent: "Pin this city",
+  compareLimitNotice: "You can compare at most three cities. Remove one to add another.",
+  compareToggleLabel: "Compare weekend",
+  compareMakeActiveAction: "Make active",
+  compareEmptyTitle: "No cities pinned yet",
+  compareEmptyHint: "Pin a city to compare the weekend forecast.",
+  compareColumnError: "We could not load the forecast for this city. Try again.",
+  compareColumnRetry: "Try again",
+  compareColumnLoading: "Loading forecast",
+  compareSaturdayLabel: "Saturday",
+  compareSundayLabel: "Sunday",
+  compareNoWeekendData: "No weekend data.",
+  compareTableLabel: "Weekend weather comparison",
 };

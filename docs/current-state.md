@@ -8,24 +8,28 @@
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
 - **Current phase:** Phase 4 — per-slice loop (weekend-compare = last slice)
-- **Active change:** add-animated-bg reviewed clean (1 finding fixed), archiving.
-  add-weekend-compare scaffolded (final slice).
+- **Active change:** add-weekend-compare implemented to green; review-slice +
+  archive pending (run by orchestrator).
 - **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
-  **add-comfort-score**, **add-top-clock**, **add-footer-jokes**, **add-city-search**.
-  **add-forecast** implemented to green: pure framework-free `lib/weather`
-  (`types.ts`, `mapForecast` total/never-throws, `weatherCodeToCondition` →
-  icon-key + UA label, `ukWeekday` arithmetic timezone-invariant, `fetchForecast`
-  keyless server-side Open-Meteo + map), request-scoped `getForecast` via React
-  `cache()` (not process-wide), and `components/forecast/*` (DayCard, WeatherIcon,
-  HourlyChart + HourlyChartLazy `dynamic(ssr:false)`, SunTimes, WeekendHighlight,
-  ForecastError, ForecastView). `app/page.tsx` now validates coords → fetch → map
-  → render or calm inline error. New i18n keys (`forecastError`, `forecastRetry`,
-  `hourlyChartLabel`, `sunriseLabel`, `sunsetLabel`, day-card field labels).
-  249 tests green (81 new in `lib/weather`); lint/tsc/build/openspec all pass;
-  live Open-Meteo fetch smoke verified (Kyiv → ok:true). Review-slice + archive
-  still pending (run by orchestrator).
-- **Next task:** Review + archive add-forecast; then wave 3 (add-map,
-  add-animated-bg), wave 4 (add-weekend-compare).
+  **add-comfort-score**, **add-top-clock**, **add-footer-jokes**, **add-city-search**,
+  **add-forecast**, **add-map**, **add-animated-bg**.
+  **add-weekend-compare** implemented to green: pure framework-free
+  `lib/weather/weekendDays.ts` (upcoming Sat/Sun by each city's LOCAL date,
+  arithmetic/timezone-invariant, returns the SAME day-object refs, total/never
+  throws) and `lib/compare/pins.ts` (pure pin reducer: `MAX_PINS = 3`, add/remove/
+  isPinned by lat/lon identity, `atLimit` on full-list rejection, always a fresh
+  array, total/never throws). Keyless `app/api/forecast/route.ts` (GET `?lat&lon`
+  → `fetchForecast` → mapped `Forecast` JSON; invalid coords → 400, upstream/
+  network → 502 calm body, never throws). Client components
+  `components/compare/{PinBar,CompareTable,CompareView}.tsx` (chip row + 3-limit
+  calm message, "Compare weekend" toggle, one sticky-header column per pinned
+  city with make-active, per-column loading/error+retry via reloadKey effect — no
+  synchronous setState in effect — and the calm empty state). `CompareView` wired
+  above the forecast in `app/page.tsx`. New i18n keys (compare* group) in uk + en.
+  365 tests green (31 new: 16 pins, 15 weekendDays); lint/tsc/build/openspec all
+  pass.
+- **Next task:** Review + archive add-weekend-compare (orchestrator runs
+  review-slice then `npx openspec archive add-weekend-compare --yes`).
 
 ## Source Of Truth
 

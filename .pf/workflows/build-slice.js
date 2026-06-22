@@ -9,7 +9,7 @@ export const meta = {
 
 // EDIT PER WAVE (args passing is unreliable for scripted workflows here).
 // Builds each slice sequentially (red -> green) — they must touch disjoint files.
-const SLICES = ['add-animated-bg']
+const SLICES = ['add-weekend-compare']
 
 // Build each slice sequentially: red (test-engineer) then green (implementer).
 // Sequential (not parallel) because the agents share one working tree.

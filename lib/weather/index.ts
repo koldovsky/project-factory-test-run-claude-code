@@ -8,4 +8,5 @@ export type { MapForecastResult } from "./map";
 export { weatherCodeToCondition } from "./code";
 export type { WeatherCondition } from "./code";
 export { ukWeekday } from "./weekday";
+export { weekendDays } from "./weekendDays";
 export { fetchForecast, buildForecastUrl } from "./fetchForecast";

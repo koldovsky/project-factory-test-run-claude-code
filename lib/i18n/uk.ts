@@ -88,4 +88,24 @@ export const uk = {
   mapLoading: "Завантаження мапи",
   mapTileError: "Не вдалося завантажити мапу зараз. Спробуйте ще раз.",
   mapClickOutOfRange: "Ця точка поза межами мапи. Оберіть інше місце.",
+
+  // Weekend compare (FR-COMPARE-01..03, BC-BRAND-01, NFR-A11Y-01). Calm tone,
+  // no exclamation marks. Pin/unpin/make-active accessible names compose the
+  // base verb with the city name in the component (e.g. "Закріпити Київ").
+  comparePinAction: "Закріпити",
+  compareUnpinAction: "Прибрати",
+  comparePinBarLabel: "Закріплені міста",
+  comparePinCurrent: "Закріпити це місто",
+  compareLimitNotice: "Можна порівнювати щонайбільше три міста. Приберіть одне, щоб додати інше.",
+  compareToggleLabel: "Порівняти вихідні",
+  compareMakeActiveAction: "Зробити активним",
+  compareEmptyTitle: "Поки що немає закріплених міст",
+  compareEmptyHint: "Закріпіть місто, щоб порівняти прогноз на вихідні.",
+  compareColumnError: "Не вдалося завантажити прогноз для цього міста. Спробуйте ще раз.",
+  compareColumnRetry: "Спробувати ще раз",
+  compareColumnLoading: "Завантаження прогнозу",
+  compareSaturdayLabel: "Субота",
+  compareSundayLabel: "Неділя",
+  compareNoWeekendData: "Немає даних на вихідні.",
+  compareTableLabel: "Порівняння погоди на вихідні",
 } as const;

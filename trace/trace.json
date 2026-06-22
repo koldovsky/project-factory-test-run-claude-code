@@ -380,7 +380,9 @@
         "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/compare/pins.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -389,7 +391,9 @@
         "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/weather/weekendDays.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -459,14 +463,6 @@
     {
       "check": "test-trace",
       "msg": "FR-ANIM-04 has no test annotated \"@trace FR-ANIM-04\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-COMPARE-01 has no test annotated \"@trace FR-COMPARE-01\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-COMPARE-02 has no test annotated \"@trace FR-COMPARE-02\""
     },
     {
       "check": "test-trace",

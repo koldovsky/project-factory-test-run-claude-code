@@ -1,4 +1,5 @@
 import { AnimatedBackground } from "@/components/background/AnimatedBackground";
+import { CompareView } from "@/components/compare/CompareView";
 import { ForecastError } from "@/components/forecast/ForecastError";
 import { ForecastView } from "@/components/forecast/ForecastView";
 import { getForecast } from "@/components/forecast/getForecast";
@@ -84,6 +85,10 @@ export default async function Home({
             {parsed.location.name}
           </h1>
           <MapPanel location={parsed.location} />
+          {/* Weekend compare (FR-COMPARE-01..03): pin cities + toggle the
+              comparison table. Client-only state (BC-PRIVACY-03); rendered above
+              the forecast. */}
+          <CompareView active={parsed.location} />
           {result.ok ? (
             <ForecastView forecast={result.forecast} />
           ) : (

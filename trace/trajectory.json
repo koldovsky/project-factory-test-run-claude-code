@@ -52,7 +52,7 @@
     {
       "slice": "2026-06-22-add-forecast",
       "reviewEvidence": "clean",
-      "trailerCommits": 4,
+      "trailerCommits": 5,
       "libDomains": [
         "weather",
         "i18n"

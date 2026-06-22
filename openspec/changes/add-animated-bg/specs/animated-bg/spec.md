@@ -1,10 +1,6 @@
 # Animated Background Specification
 
-## Purpose
-
-The animated background paints the app behind all content with a condition-driven scene: a day/night gradient plus rain, snow, or drifting clouds chosen from the active location's current weather code. Daytime versus nighttime is decided by today's sunrise/sunset for the active location, not the visitor's clock. The background is purely decorative — it respects reduced-motion preferences and never intercepts pointer interaction.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Condition-driven background scene
 

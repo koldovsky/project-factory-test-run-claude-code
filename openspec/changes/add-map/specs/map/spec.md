@@ -1,10 +1,6 @@
 # Map Specification
 
-## Purpose
-
-The map capability renders an interactive, OSM-tiled Leaflet map (via react-leaflet) bound to the active location at roughly city zoom, with a marker and popup. Clicking the map sets a new active location by the clicked coordinates and labels it with a rounded-coordinate string, which drives a forecast re-fetch. Open-Meteo has no reverse-geocoding endpoint, so clicked points are not resolved to a city name (ADR-0004); named locations come from the city search capability. The map renders client-only with an equal-footprint SSR skeleton to avoid layout shift, shows the required OpenStreetMap attribution, and degrades calmly when a forecast re-fetch fails so the user never sees a 500 or a silent blank.
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Interactive OSM-tiled map bound to the active location
 

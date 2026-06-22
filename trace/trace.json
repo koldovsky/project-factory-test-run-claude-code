@@ -377,7 +377,7 @@
     {
       "id": "FR-COMPARE-01",
       "specs": [
-        "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
+        "openspec/specs/weekend-compare/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -388,7 +388,7 @@
     {
       "id": "FR-COMPARE-02",
       "specs": [
-        "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
+        "openspec/specs/weekend-compare/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -399,7 +399,7 @@
     {
       "id": "FR-COMPARE-03",
       "specs": [
-        "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
+        "openspec/specs/weekend-compare/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -599,10 +599,6 @@
     {
       "check": "recording-evidence",
       "msg": "FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"add-weekend-compare\" is not archived"
     }
   ]
 }

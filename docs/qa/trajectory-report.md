@@ -5,8 +5,8 @@ archived slice took: review evidence, `Slice:` trailers, and module scope.
 It does NOT verify test-first ordering or test integrity (not derivable from
 one-commit-per-slice history) — those are graded by the trajectory-eval workflow.
 
-Scope: 8 archived slice(s).
-Result: PASS
+Scope: 9 archived slice(s).
+Result: PASS, 1 warning(s)
 
 | Slice | Review evidence | Trailer commits | design+tasks | lib domains touched |
 |---|---|---|---|---|
@@ -18,10 +18,11 @@ Result: PASS
 | 2026-06-22-add-city-search | clean | 6 | yes | geo, i18n |
 | 2026-06-22-add-forecast | clean | 5 | yes | weather, i18n |
 | 2026-06-22-add-map | clean | 4 | yes | i18n, location |
+| 2026-06-22-add-weekend-compare | clean | 3 | yes | compare, i18n, weather |
 
 ## Cross-slice module overlap
 
-None.
+- `lib/weather/` touched by: 2026-06-22-add-forecast, 2026-06-22-add-weekend-compare
 
 ## Failures
 
@@ -29,4 +30,4 @@ None.
 
 ## Warnings
 
-None.
+- **in-scope**: lib/weather/ modified by 2 slices (2026-06-22-add-forecast, 2026-06-22-add-weekend-compare) — review for scope drift

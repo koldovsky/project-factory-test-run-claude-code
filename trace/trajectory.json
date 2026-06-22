@@ -48,6 +48,16 @@
         "i18n"
       ],
       "processComplete": true
+    },
+    {
+      "slice": "2026-06-22-add-forecast",
+      "reviewEvidence": "clean",
+      "trailerCommits": 4,
+      "libDomains": [
+        "weather",
+        "i18n"
+      ],
+      "processComplete": true
     }
   ],
   "overlaps": [],

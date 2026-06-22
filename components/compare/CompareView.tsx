@@ -31,6 +31,19 @@ export function CompareView({ active }: CompareViewProps) {
   const [comparing, setComparing] = useState(false);
   const [atLimit, setAtLimit] = useState(false);
 
+  // Reset the limit notice when the active city changes (soft navigation keeps
+  // this component mounted, so its state survives) — the notice belongs to a
+  // specific rejected pin attempt and must not carry over to a newly-selected,
+  // not-yet-attempted city (global review finding). React's documented
+  // "adjust state when a prop changes" pattern: compare against the previous
+  // value during render rather than in an effect (avoids cascading-render lint).
+  const activeKey = `${active.lat},${active.lon}`;
+  const [prevActiveKey, setPrevActiveKey] = useState(activeKey);
+  if (activeKey !== prevActiveKey) {
+    setPrevActiveKey(activeKey);
+    setAtLimit(false);
+  }
+
   const handlePinActive = useCallback(() => {
     setPins((current) => {
       const result = addPin(current, active);

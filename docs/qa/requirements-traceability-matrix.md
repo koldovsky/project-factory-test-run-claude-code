@@ -18,13 +18,13 @@ Evidence keys:
 - **Smoke** = a documented state in [`g5-browser-smoke.md`](./g5-browser-smoke.md).
 - **Tests** = the unit/integration files listed (run counts in
   [`automated-verification-latest.md`](./automated-verification-latest.md):
-  397 unit + 32 integration, all green).
+  399 tests total (incl. 32 integration), all green).
 - **Eval** = a graded quality case in `evals/cases/*.eval.ts`, scored in
   [`eval-report.md`](./eval-report.md) (generated 2026-06-22 by the `eval-suite`
-  workflow: 8 cases, 7 pass / 1 FAIL; dimensions `copy-tone` 87.6,
-  `error-clarity` 96). The eval *decides* a quality case; cite its verdict, not
-  just a clip. `check-eval-ratchet` is still SKIP (no baseline committed yet —
-  the one failing case must be fixed before the baseline is set).
+  workflow: 8 cases, 8 pass / 0 fail; dimensions `copy-tone` 94.4,
+  `error-clarity` 100). The eval *decides* a quality case; cite its verdict, not
+  just a clip. `check-eval-ratchet` guards the committed baseline
+  (`quality/eval-baseline.json`).
 - **G7** = verified only on the deployed URL (Lighthouse / Vercel) — not claimed
   passing here.
 
@@ -90,7 +90,7 @@ can grep for them.
 |---|---|---|---|
 | FR-COMFORT-01 | `lib/scoring/comfort.ts` (pure total `comfortScore`) | `lib/scoring/comfort.test.ts` (`@trace FR-COMFORT-01, FR-COMFORT-02, FR-COMFORT-03`, 23 tests) | Tests (never throws, clamping, boundaries) |
 | FR-COMFORT-02 | `lib/scoring/comfort.ts` inputs: feels-like, precip prob, wind, cloud, UV | `lib/scoring/comfort.test.ts` (`@trace FR-COMFORT-01, FR-COMFORT-02, FR-COMFORT-03`, 23) | Tests |
-| FR-COMFORT-03 | `lib/scoring/comfort.ts` rationale (UA, ≤80 chars, no emoji) | `lib/scoring/comfort.test.ts` (`@trace ... FR-COMFORT-03`, 23) | Tests pass (UA, ≤80 chars, no `!`). **Eval: 3/4 pass** — `eval-comfort-rationale-{pleasant 95, cold 88, hostile 96}` pass; **`eval-comfort-rationale-wet` FAILS at 42** ([`eval-report.md`](./eval-report.md)): at 95% precip the rationale "Приємний день, комфортно перебувати надворі" ignores rain. The unit tests cannot catch this (accuracy is a quality judgment) — **open defect, see acceptance report §5 and risk R-16.** |
+| FR-COMFORT-03 | `lib/scoring/comfort.ts` rationale (UA, ≤80 chars, no emoji) | `lib/scoring/comfort.test.ts` (`@trace ... FR-COMFORT-03`, incl. the dominant-adverse-driver regression tests) | Tests pass (UA, ≤80 chars, no `!`). **Eval: 4/4 pass** ([`eval-report.md`](./eval-report.md)). The eval gate originally caught a real bug — a 95%-rain day scoring ~70 returned the "pleasant day" rationale, ignoring the rain — now fixed: a notably-adverse driver is named even at high values (`SEVERE = 0.35` in `buildRationale`), with a unit regression guard. |
 | FR-COMFORT-04 | `components/comfort/ComfortBadge.tsx`, `lib/scoring/band.ts` (green ≥70 / yellow 40–69 / red <40) | `lib/scoring/band.test.ts` (`@trace FR-COMFORT-04`, 8), `components/comfort/ComfortBadge.test.tsx` (`@trace FR-COMFORT-04`, 4), `tests/integration/forecast-pipeline.test.ts` (`@trace ... FR-COMFORT-04 ...`, 5) | Smoke: 8 comfort badges with `data-band`; manual MT-08 |
 | FR-COMFORT-05 | `components/forecast/WeekendHighlight.tsx`, `lib/scoring/weekend.ts`, `lib/weather/weekendDays.ts`, `ForecastView.tsx` | `lib/scoring/weekend.test.ts` (`@trace FR-COMFORT-05`, 13), `tests/integration/forecast-pipeline.test.ts` (`@trace ... FR-COMFORT-05`, 5) | Smoke: "weekend comfort highlight 88 сприятливо"; manual MT-08 |
 

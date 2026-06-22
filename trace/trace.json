@@ -454,7 +454,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/compare/pins.test.ts"
+        "lib/compare/pins.test.ts",
+        "components/compare/PinBar.test.tsx"
       ],
       "recordings": [
         "docs/qa/demo-recordings/manifest.json"

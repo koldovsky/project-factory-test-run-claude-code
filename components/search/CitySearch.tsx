@@ -7,13 +7,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flagEmoji, type GeoSuggestion } from "@/lib/geo";
 import { t } from "@/lib/i18n";
+import { coordinateLabel } from "@/lib/location/coordinateLabel";
 import { toLocationQuery } from "@/lib/location/url";
 
 // City search (FR-SEARCH-01..06). Client component: it owns the debounced
-// fetch, the accessible combobox/listbox, keyboard handling, and the opt-in
-// geolocation path. All pure mapping lives in `lib/geo`; all copy comes from
-// `lib/i18n`. The geocoding URL never ships here — the component calls our own
-// `/api/geocode` proxy (TC-DATA-01).
+// fetch, an accessible focusable suggestion button-list (a plain native-button
+// list, not an ARIA combobox — see the add-city-search review: a combobox
+// without aria-activedescendant/arrow-nav advertises semantics it does not
+// drive), keyboard handling, and the opt-in geolocation path. All pure mapping
+// lives in `lib/geo`; all copy comes from `lib/i18n`. The geocoding URL never
+// ships here — the component calls our own `/api/geocode` proxy (TC-DATA-01).
 //
 // Key behaviors:
 //  - ~300 ms trailing debounce; whitespace-only input issues no request.
@@ -35,10 +38,9 @@ type SearchState =
   | { status: "empty" }
   | { status: "error" };
 
-/** Build the calm coordinate label used when geolocation has no place name. */
-function coordinateLabel(lat: number, lon: number): string {
-  return `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
-}
+// The geolocation result has no place name, so it is labelled by coordinates —
+// using the SHARED `coordinateLabel` (lib/location) so a geolocation label and a
+// map-click label are identical for the same point (global review finding).
 
 export function CitySearch() {
   const router = useRouter();

@@ -32,6 +32,7 @@ const DAILY_FIELDS = [
 
 const FORECAST_DAYS = 7;
 const FORECAST_HOURS = 48;
+const FETCH_TIMEOUT_MS = 8000;
 
 const LAT_MIN = -90;
 const LAT_MAX = 90;
@@ -81,6 +82,9 @@ export async function fetchForecast(
   try {
     const res = await fetch(buildForecastUrl(lat, lon), {
       headers: { Accept: "application/json" },
+      // Bound the upstream call so a slow/hung Open-Meteo never stalls the SSR
+      // render; a timeout aborts and is caught below as a calm typed failure.
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!res.ok) return { ok: false, reason: "upstream" };
 

@@ -14,6 +14,7 @@ import { parseGeocodeResponse, type GeoSuggestion } from "@/lib/geo";
 // (TC-DATA-01). Open-Meteo treats overly long names as no-match anyway.
 const MAX_QUERY_LENGTH = 200;
 const RESULT_COUNT = 10;
+const UPSTREAM_TIMEOUT_MS = 8000;
 const GEOCODING_ENDPOINT = "https://geocoding-api.open-meteo.com/v1/search";
 
 /** Type the JSON body so the calm error shape is consistent across branches. */
@@ -42,6 +43,9 @@ export async function GET(request: Request): Promise<Response> {
   try {
     const res = await fetch(upstream, {
       headers: { Accept: "application/json" },
+      // Bound the upstream call so a slow/hung Open-Meteo never stalls the
+      // request; a timeout aborts and is caught below as a calm 502.
+      signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
     });
 
     // Non-2xx upstream → calm error status, never a raw throw or a 500 page.

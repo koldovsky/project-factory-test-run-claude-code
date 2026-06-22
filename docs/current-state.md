@@ -7,33 +7,28 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
-- **Current phase:** Phase 6 COMPLETE (G6) → Phase 7 (global review + release)
-- **Active change:** none. All 9 slices archived; G0–G6 passed.
-- **G5:** 32 integration tests; coverage baseline; browser-MCP smoke (docs/qa/g5-browser-smoke.md).
-- **G6:** QA pack (6 docs) + demo-recordings manifest; eval-suite 8/8 (copy-tone
-  94.4, error-clarity 100), baseline committed + ratchet guards. The eval gate
-  caught + fixed a real comfort-rationale bug (wet day said "pleasant").
-  399 unit + 32 integration tests; qa:verify all-green.
-- **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
-  **add-comfort-score**, **add-top-clock**, **add-footer-jokes**, **add-city-search**,
-  **add-forecast**, **add-map**, **add-animated-bg**.
-  **add-weekend-compare** implemented to green: pure framework-free
-  `lib/weather/weekendDays.ts` (upcoming Sat/Sun by each city's LOCAL date,
-  arithmetic/timezone-invariant, returns the SAME day-object refs, total/never
-  throws) and `lib/compare/pins.ts` (pure pin reducer: `MAX_PINS = 3`, add/remove/
-  isPinned by lat/lon identity, `atLimit` on full-list rejection, always a fresh
-  array, total/never throws). Keyless `app/api/forecast/route.ts` (GET `?lat&lon`
-  → `fetchForecast` → mapped `Forecast` JSON; invalid coords → 400, upstream/
-  network → 502 calm body, never throws). Client components
-  `components/compare/{PinBar,CompareTable,CompareView}.tsx` (chip row + 3-limit
-  calm message, "Compare weekend" toggle, one sticky-header column per pinned
-  city with make-active, per-column loading/error+retry via reloadKey effect — no
-  synchronous setState in effect — and the calm empty state). `CompareView` wired
-  above the forecast in `app/page.tsx`. New i18n keys (compare* group) in uk + en.
-  365 tests green (31 new: 16 pins, 15 weekendDays); lint/tsc/build/openspec all
-  pass.
-- **Next task:** Review + archive add-weekend-compare (orchestrator runs
-  review-slice then `npx openspec archive add-weekend-compare --yes`).
+- **Current phase:** Phase 7 (global review + release) — review-gate +
+  trajectory-eval run and findings addressed; deploy + push are the user's action.
+- **Active change:** none. **All 9 capability slices archived; G0–G6 passed.**
+- **Test counts:** `npm run test:run` = 403 tests across 25 files (this total
+  INCLUDES the 32 cross-slice integration tests in `tests/integration/`, which
+  `npm run test:integration` runs on their own). Do not add the 32 again.
+- **G5:** integration tests + coverage baseline + browser-MCP smoke (docs/qa/g5-browser-smoke.md).
+- **G6:** QA pack + demo-recordings manifest; eval-suite 8/8 (copy-tone 94.4,
+  error-clarity 100), baseline committed + ratchet guards. The eval gate caught +
+  fixed a real comfort-rationale bug (a wet day said "pleasant").
+- **G7:** global review-gate (whole codebase) + trajectory-eval (9 slices) run;
+  confirmed findings fixed (CompareView stale limit-notice, shared coordinateLabel,
+  fetch timeouts, dead i18n keys, PinBar regression tests); accepted/declined the
+  rest with justification (ADR-0005 gate calibration; rate-limit MVP risk note).
+  `qa:verify` all-green; release checks (`--release --strict-recordings --check-fresh`,
+  `npm audit --audit-level=high`) pass.
+- **Slices archived (G4):** add-app-shell, add-comfort-score, add-top-clock,
+  add-footer-jokes, add-city-search, add-forecast, add-map, add-animated-bg,
+  add-weekend-compare.
+- **Next task:** Deploy to Vercel (user's account) + push to a Git remote (user's
+  approval), then live-smoke the production URL and measure NFR-PERF/A11Y
+  (Lighthouse). The repo is a release candidate.
 
 ## Source Of Truth
 

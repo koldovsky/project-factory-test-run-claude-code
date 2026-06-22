@@ -38,7 +38,7 @@ Result: PASS, 12 warning(s)
 | FR-ANIM-02 | yes | yes | 2 | yes |
 | FR-ANIM-03 | yes | yes | - | yes |
 | FR-ANIM-04 | yes | yes | - | yes |
-| FR-COMPARE-01 | yes | yes | 1 | yes |
+| FR-COMPARE-01 | yes | yes | 2 | yes |
 | FR-COMPARE-02 | yes | yes | 2 | yes |
 | FR-COMPARE-03 | yes | yes | - | yes |
 

@@ -41,10 +41,6 @@ export const en: Record<MessageKey, string> = {
   deepLinkErrorNotice:
     "We could not open this link. Try searching for a city instead.",
 
-  // Location-view placeholder.
-  locationLoadingTitle: "Loading forecast",
-  locationLoadingHint: "Preparing the forecast for the selected city.",
-
   // Comfort badge (FR-COMFORT-04, NFR-A11Y).
   comfortBadgeLabel: "Comfort",
   comfortBandGreenLabel: "favorable",

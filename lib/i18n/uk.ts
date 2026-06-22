@@ -43,10 +43,6 @@ export const uk = {
   deepLinkErrorNotice:
     "Не вдалося відкрити посилання. Спробуйте знайти місто у пошуку.",
 
-  // Location-view placeholder (forecast arrives in a later slice).
-  locationLoadingTitle: "Завантаження прогнозу",
-  locationLoadingHint: "Готуємо прогноз для обраного міста.",
-
   // Comfort badge (FR-COMFORT-04, NFR-A11Y). Accessible name must convey the
   // value and band in words, never by color alone. The badge composes
   // `comfortBadgeLabel + value + comfortBand<…>Label`.

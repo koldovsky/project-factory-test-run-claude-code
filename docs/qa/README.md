@@ -58,7 +58,7 @@ check, and what it covers:
 |---|---|---|
 | traceability | `node scripts/check-traceability.mjs` | Every MVP FR maps to a spec, a plan slice, ≥1 `@trace`'d test, and (where present) a recording manifest. Writes `traceability-report.md`. |
 | trajectory | `node scripts/check-trajectory.mjs` | Each archived slice took a sound path (review evidence, `Slice:` trailers, disjoint module scope). Writes `trajectory-report.md`. |
-| unit-tests | `npm run test:run` | Vitest unit suite on `lib/` + a component test (`ComfortBadge`). **397 tests** across 24 files. |
+| unit-tests | `npm run test:run` | Vitest unit suite on `lib/` + a component test (`ComfortBadge`). **399 tests** across 24 files. |
 | integration-tests | `npm run test:integration` | Route handlers (`/api/geocode`, `/api/forecast`) + the forecast→comfort→weekend pipeline vs Open-Meteo fixtures. **32 tests**. |
 | eval-ratchet | `node scripts/check-eval-ratchet.mjs` | Guards the graded quality score against regressions. Currently **SKIP** — `evals/results/latest.json` exists (generated 2026-06-22) but no `quality/eval-baseline.json` is committed yet. The baseline should **not** be established until the one failing case (`eval-comfort-rationale-wet`) is fixed, or it would lock in a failure. |
 | lint | `npm run lint` | ESLint (Next config) clean. |
@@ -80,7 +80,7 @@ npm run check:trace     # regenerate the traceability report only
 Three tools answer three different questions; this pack uses all three:
 
 - **Tests** — "is the output exactly correct?" Deterministic logic (scoring,
-  mapping, URL/state, weekend math). 397 unit + 32 integration.
+  mapping, URL/state, weekend math). 399 tests total (incl. 32 integration).
 - **Evals** — "across many cases, how good is the *quality*?" Copy tone, error
   clarity, condition naming. Graded by a rubric, ratcheted over time. The eval
   *decides* a quality case; a recording only *illustrates* it.

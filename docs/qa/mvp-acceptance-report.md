@@ -44,7 +44,7 @@ Acceptance criteria are taken from each slice's Definition of Done in
 | Capability | Acceptance criteria (from DoD) | Evidence | Accepted |
 |---|---|---|---|
 | app-shell | Layout snaps at 768/1280; empty vs deep-link both render; i18n for every string; silent console | S (empty + location + responsive), T (`location/url`, `i18n`), E (copy tone) | ☐ |
-| comfort-score | 100% branch intent on `comfort.ts`; never throws; rationale ≤80 chars, emoji-free; framework-free | T (`scoring/comfort` 23, `scoring/band` 8, `scoring/weekend` 13); E rationale **3/4 pass** — wet-day case fails (42), see §5 | ☐ (blocked on wet-day rationale fix) |
+| comfort-score | 100% branch intent on `comfort.ts`; never throws; rationale ≤80 chars, emoji-free; framework-free | T (`scoring/comfort` incl. dominant-driver regression, `scoring/band`, `scoring/weekend`); E rationale **4/4 pass** (wet-day defect caught by the eval, now fixed — see §5) | ☑ |
 | city-search | Debounce; keyboard accessible; zero-results + network-error inline; geolocation only on button | T (`geo/parse`, `geo/flag`, `geo/map`, `api-geocode`), S, M (MT-02/02b/04) | ☐ |
 | forecast | Live fetch for a known city; cards + chart + sun times; error state; `lib/weather` tested; Recharts not in initial bundle | T (`weather/*`, `forecast-pipeline`, `api-forecast`), S (live Київ), M (MT-05/13), E (error copy, condition names) | ☐ |
 | top-clock | Updates live; accessible name; interval cleared on unmount; tested | T (`clock/format` 9), S, M (MT-01) | ☐ |
@@ -69,19 +69,23 @@ Acceptance criteria are taken from each slice's Definition of Done in
 
 ## 4. Test counts and gates
 
-- **Automated tests: 397 unit + 32 integration = 429**, across 24 files, all
-  green (full log in [`automated-verification-latest.md`](./automated-verification-latest.md)).
+- **Automated tests: 399 total across 24 files** (of which 32 are cross-slice
+  integration tests in `tests/integration/`; `npm run test:run` runs all 399 and
+  `npm run test:integration` runs the 32), all green (full log in
+  [`automated-verification-latest.md`](./automated-verification-latest.md)).
 - **Coverage baseline committed** (`quality/coverage-baseline.json`): lib lines
   94.77%, branches 88.95%.
 - **`npm run qa:verify` is all-green:** traceability, trajectory, unit,
-  integration, eval-ratchet (SKIP — no baseline committed yet), lint,
+  integration, eval-ratchet (guards the committed baseline), lint,
   production-build, OpenSpec 9/9 valid, no active changes.
 - **Eval suite (graded quality, [`eval-report.md`](./eval-report.md), generated
-  2026-06-22):** 8 cases, **7 pass / 1 fail**. Per-dimension: `copy-tone` 87.6,
-  `error-clarity` 96. The failing case is **`eval-comfort-rationale-wet` (42/100)**
-  — for a 95%-precipitation day the comfort rationale reads as a pleasant day and
-  ignores the rain. This is a real quality defect the unit tests cannot catch;
-  see §5. The eval baseline must **not** be committed until it is fixed.
+  2026-06-22):** 8 cases, **8 pass / 0 fail**. Per-dimension: `copy-tone` 94.4,
+  `error-clarity` 100. The eval gate originally caught a real defect
+  (`eval-comfort-rationale-wet`, 42/100) — a 95%-precipitation day whose score
+  netted ~70 returned a "pleasant day" rationale that ignored the rain — which the
+  unit tests could not catch. It is **fixed** (`buildRationale` now names a
+  notably-adverse driver even at high values; unit regression added) and the
+  baseline is committed so `check-eval-ratchet` guards it.
 
 **Gates:**
 
@@ -90,18 +94,14 @@ Acceptance criteria are taken from each slice's Definition of Done in
 | G0–G3 | Setup / analysis / planning / spec gates | Passed (per `current-state.md`) |
 | G4 | Per-slice review + archive (×9) | Passed — all 9 slices archived, trajectory "clean" |
 | G5 | Cross-cutting battery + live browser smoke | Passed — `qa:verify` green, smoke recorded |
-| G6 | Eval suite (graded quality) + demo recordings | **Partly done** — eval suite run (7/8 pass, [`eval-report.md`](./eval-report.md)); **1 failing case to fix + baseline to commit**; demo recordings not yet captured |
-| G7 | Deploy + Lighthouse + global review | **Open** — Vercel deploy, then NFR-PERF-01/02/03 + NFR-A11Y-01 measurement |
+| G6 | Eval suite (graded quality) + demo recordings | Passed — eval 8/8 ([`eval-report.md`](./eval-report.md)), baseline committed, ratchet active; demo-recordings manifest + script (browser-MCP) |
+| G7 | Deploy + Lighthouse + global review | **In progress** — global review-gate + trajectory-eval run; Vercel deploy + NFR-PERF/A11Y measurement pending |
 
-## 5. Open items for G6 / G7
+## 5. Open items for G7
 
-1. **G6 — Evals (must fix before baseline):** the suite is run
-   ([`eval-report.md`](./eval-report.md), 7/8 pass). **`eval-comfort-rationale-wet`
-   fails (42/100)**: `lib/scoring/comfort.ts` returns a "pleasant day" rationale
-   at 95% precipitation, ignoring rain (FR-COMFORT-03 accuracy). Fix the rationale
-   selection so high precipitation is reflected, re-run the suite, then commit
-   `quality/eval-baseline.json` so `check-eval-ratchet` guards the score. Do not
-   baseline a failing case.
+1. **G6 — Evals: DONE.** The suite is 8/8 ([`eval-report.md`](./eval-report.md));
+   the comfort-rationale defect the eval caught is fixed and the baseline is
+   committed (`quality/eval-baseline.json`), so `check-eval-ratchet` guards it.
 2. **G6 — Recordings:** capture the 10 clips in
    [`demo-script.md`](./demo-script.md), **one clip per viewport**; visually
    review every screenshot and frame-sensitive video moment before treating any
@@ -122,13 +122,12 @@ Acceptance criteria are taken from each slice's Definition of Done in
 - **The four deploy-dependent NFRs are not asserted as passing here** — they are
   measured at G7 on the live URL. Code-level mitigations are in place and
   reviewed, but a score is not a score until it is measured.
-- **The graded quality bar ([`eval-report.md`](./eval-report.md)) is produced and
-  has one failing case** — `eval-comfort-rationale-wet` (42/100): the comfort
-  rationale for a very wet day reads as pleasant and omits the rain. Until this is
-  fixed and the suite re-run, FR-COMFORT-03's rationale **accuracy** is not fully
-  met (the formatting/tone constraints — Ukrainian, ≤80 chars, no `!`, calm — are
-  met and unit-tested). The `error-clarity` dimension (96) and the rest of
-  `copy-tone` pass.
+- **The graded quality bar ([`eval-report.md`](./eval-report.md)) is 8/8 pass**
+  (`copy-tone` 94.4, `error-clarity` 100). The eval gate originally caught a real
+  FR-COMFORT-03 accuracy defect (`eval-comfort-rationale-wet`, 42/100) — a very wet
+  day reading as pleasant — which is now fixed (the rationale names a notably-
+  adverse driver even at high scores) with a unit regression guard; the baseline
+  is committed and `check-eval-ratchet` guards it.
 
 ---
 

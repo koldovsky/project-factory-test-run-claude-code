@@ -35,7 +35,7 @@ chain and the map all render from live data.
 
 ## Automated battery (G5)
 
-`npm run qa:verify` is all-green (traceability, trajectory, 397 unit + 32
-integration tests, lint, build, OpenSpec 9/9, no active changes). Coverage
+`npm run qa:verify` is all-green (traceability, trajectory, 399 tests total
+incl. 32 integration, lint, build, OpenSpec 9/9, no active changes). Coverage
 baseline committed (`quality/coverage-baseline.json`: lib lines 94.77%,
 branches 88.95%).

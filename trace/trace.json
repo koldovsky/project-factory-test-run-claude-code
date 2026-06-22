@@ -109,7 +109,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/geo/parse.test.ts"
+        "lib/geo/parse.test.ts",
+        "tests/integration/api-geocode.test.ts"
       ],
       "recordings": []
     },
@@ -150,7 +151,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/geo/parse.test.ts"
+        "lib/geo/parse.test.ts",
+        "tests/integration/api-geocode.test.ts"
       ],
       "recordings": []
     },
@@ -184,6 +186,8 @@
       "planned": true,
       "tests": [
         "lib/weather/map.test.ts",
+        "tests/integration/api-forecast.test.ts",
+        "tests/integration/forecast-pipeline.test.ts",
         "evals/cases/forecast.eval.ts"
       ],
       "recordings": []
@@ -198,6 +202,7 @@
         "lib/weather/code.test.ts",
         "lib/weather/map.test.ts",
         "lib/weather/weekday.test.ts",
+        "tests/integration/forecast-pipeline.test.ts",
         "evals/cases/forecast.eval.ts"
       ],
       "recordings": []
@@ -318,6 +323,7 @@
       "planned": true,
       "tests": [
         "lib/scoring/band.test.ts",
+        "tests/integration/forecast-pipeline.test.ts",
         "components/comfort/ComfortBadge.test.tsx"
       ],
       "recordings": []
@@ -329,7 +335,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/scoring/weekend.test.ts"
+        "lib/scoring/weekend.test.ts",
+        "tests/integration/forecast-pipeline.test.ts"
       ],
       "recordings": []
     },
@@ -392,7 +399,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/weather/weekendDays.test.ts"
+        "lib/weather/weekendDays.test.ts",
+        "tests/integration/api-forecast.test.ts"
       ],
       "recordings": []
     },

@@ -12,15 +12,15 @@ Result: PASS, 48 warning(s)
 | FR-SHELL-02 | yes | yes | - | - |
 | FR-SHELL-03 | yes | yes | 2 | - |
 | FR-CLOCK-01 | yes | yes | 1 | - |
-| FR-SEARCH-01 | yes | yes | 1 | - |
+| FR-SEARCH-01 | yes | yes | 2 | - |
 | FR-SEARCH-02 | yes | yes | 2 | - |
 | FR-SEARCH-03 | yes | yes | - | - |
 | FR-SEARCH-04 | yes | yes | - | - |
-| FR-SEARCH-05 | yes | yes | 1 | - |
+| FR-SEARCH-05 | yes | yes | 2 | - |
 | FR-SEARCH-06 | yes | yes | - | - |
 | FR-JOKES-01 | yes | yes | 3 | - |
-| FR-FORECAST-01 | yes | yes | 2 | - |
-| FR-FORECAST-02 | yes | yes | 4 | - |
+| FR-FORECAST-01 | yes | yes | 4 | - |
+| FR-FORECAST-02 | yes | yes | 5 | - |
 | FR-FORECAST-03 | yes | yes | - | - |
 | FR-FORECAST-04 | yes | yes | - | - |
 | FR-FORECAST-05 | yes | yes | - | - |
@@ -32,14 +32,14 @@ Result: PASS, 48 warning(s)
 | FR-COMFORT-01 | yes | yes | 1 | - |
 | FR-COMFORT-02 | yes | yes | 1 | - |
 | FR-COMFORT-03 | yes | yes | 2 | - |
-| FR-COMFORT-04 | yes | yes | 2 | - |
-| FR-COMFORT-05 | yes | yes | 1 | - |
+| FR-COMFORT-04 | yes | yes | 3 | - |
+| FR-COMFORT-05 | yes | yes | 2 | - |
 | FR-ANIM-01 | yes | yes | 1 | - |
 | FR-ANIM-02 | yes | yes | 2 | - |
 | FR-ANIM-03 | yes | yes | - | - |
 | FR-ANIM-04 | yes | yes | - | - |
 | FR-COMPARE-01 | yes | yes | 1 | - |
-| FR-COMPARE-02 | yes | yes | 1 | - |
+| FR-COMPARE-02 | yes | yes | 2 | - |
 | FR-COMPARE-03 | yes | yes | - | - |
 
 ## Failures

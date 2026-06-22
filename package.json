@@ -11,7 +11,7 @@
     "test": "vitest",
     "test:run": "vitest run --passWithNoTests",
     "test:watch": "vitest",
-    "test:integration": "vitest run --passWithNoTests --dir tests/integration",
+    "test:integration": "vitest run --passWithNoTests tests/integration",
     "test:e2e": "node -e \"console.log('E2E is verified via browser MCP recordings — see docs/qa/demo-recordings (ADR-0001, TC-STACK-05).')\"",
     "test:coverage": "vitest run --passWithNoTests --coverage",
     "qa:verify": "node scripts/qa-verify.mjs",

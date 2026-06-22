@@ -7,9 +7,8 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
-- **Current phase:** Phase 4 — per-slice loop (weekend-compare = last slice)
-- **Active change:** add-weekend-compare implemented to green; review-slice +
-  archive pending (run by orchestrator).
+- **Current phase:** Phase 4 COMPLETE (all 9 slices archived) → Phase 5 next
+- **Active change:** none (add-weekend-compare reviewed clean, archiving).
 - **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
   **add-comfort-score**, **add-top-clock**, **add-footer-jokes**, **add-city-search**,
   **add-forecast**, **add-map**, **add-animated-bg**.

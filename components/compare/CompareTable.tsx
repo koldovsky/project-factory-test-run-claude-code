@@ -42,7 +42,14 @@ export interface CompareTableProps {
 /** Render one weekend cell value (hi/lo + precip %), or a calm dash when null. */
 function WeekendCell({ day }: { day: DailyForecast | null }) {
   if (day === null) {
-    return <span className="text-muted-foreground">—</span>;
+    // Visible em dash plus an sr-only explanation so assistive tech announces
+    // why the cell is empty rather than a bare dash.
+    return (
+      <span className="text-muted-foreground">
+        <span aria-hidden="true">—</span>
+        <span className="sr-only">{t("compareNoWeekendData")}</span>
+      </span>
+    );
   }
   const comfort = comfortScore({
     feelsLikeC: day.feelsLikeMaxC ?? undefined,

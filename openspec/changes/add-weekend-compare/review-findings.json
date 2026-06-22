@@ -1,0 +1,16 @@
+{
+  "generatedBy": "review-slice + orchestrator convergence",
+  "scope": "add-weekend-compare",
+  "change": "add-weekend-compare",
+  "baseRef": "dfb253e",
+  "headRef": "HEAD",
+  "reviewers": ["code-reviewer", "spec-compliance-auditor"],
+  "note": "Scoped review by fresh maker-not-checker agents; 3 distinct confirmed findings (all minor; the dead-key finding was raised by both dimensions). All fixed and verified by a green battery (365 tests). Security: keyless /api/forecast proxy, no secrets, client-only state; full sweep at G7.",
+  "fixedFindings": [
+    "Dead i18n key compareNoWeekendData now wired into the empty weekend cell as an sr-only label (announces why the cell is empty instead of a bare em dash)",
+    "Limit notice no longer stays stale: gated on atLimit && canPinActive, so navigating to an already-pinned active city hides both the pin control and the notice",
+    "WCAG 2.5.3 label-in-name: the pin button's aria-label now contains its visible label ('Закріпити це місто — <city>')"
+  ],
+  "clean": true,
+  "generatedAt": "2026-06-22"
+}

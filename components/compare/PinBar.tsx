@@ -70,7 +70,9 @@ export function PinBar({
             type="button"
             variant="outline"
             size="sm"
-            aria-label={`${t("comparePinAction")} ${active.name}`}
+            // WCAG 2.5.3 (label-in-name): the accessible name contains the visible
+            // label, then adds the city for context.
+            aria-label={`${t("comparePinCurrent")} — ${active.name}`}
             onClick={onPinActive}
           >
             {t("comparePinCurrent")}
@@ -78,7 +80,11 @@ export function PinBar({
         ) : null}
       </div>
 
-      {atLimit ? (
+      {/* Only show the limit notice while the (rejected) pin affordance is still
+          relevant — i.e. an unpinned active city is on offer. Navigating to an
+          already-pinned city hides both the pin control and this notice, so it is
+          never left stale. */}
+      {atLimit && canPinActive ? (
         <p role="status" className="text-sm text-muted-foreground">
           {t("compareLimitNotice")}
         </p>

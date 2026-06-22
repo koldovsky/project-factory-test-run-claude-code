@@ -78,7 +78,9 @@ export default async function Home({
       <>
         <AnimatedBackground scene={sceneInput} />
         <section className="col-span-full flex w-full flex-col gap-6">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+          {/* Theme-aware backing so the city heading keeps AA contrast over the
+              theme-independent animated gradient behind it (NFR-A11Y-02). */}
+          <h1 className="w-fit rounded-md bg-background/80 px-3 py-1 text-2xl font-semibold tracking-tight text-foreground backdrop-blur-sm">
             {parsed.location.name}
           </h1>
           <MapPanel location={parsed.location} />

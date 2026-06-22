@@ -9,8 +9,8 @@ export const meta = {
 }
 
 // ---- EDIT THESE TWO PER SLICE ----
-const SLICE = 'add-map'
-const BASE = 'fd00c76'
+const SLICE = 'add-animated-bg'
+const BASE = 'b5e9736'
 // ----------------------------------
 const HEAD = 'HEAD'
 

@@ -17,7 +17,9 @@ export interface EmptyStateProps {
 export function EmptyState({ search }: EmptyStateProps) {
   return (
     <div className="col-span-full flex flex-col items-center justify-center gap-6 py-16 text-center">
-      <div className="flex max-w-2xl flex-col items-center gap-3">
+      {/* Theme-aware backing so the hero text keeps AA contrast over the
+          theme-independent animated gradient behind it (NFR-A11Y-02). */}
+      <div className="flex max-w-2xl flex-col items-center gap-3 rounded-2xl bg-background/80 px-6 py-5 backdrop-blur-sm">
         <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
           {t("heroTitle")}
         </h1>

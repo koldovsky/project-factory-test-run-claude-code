@@ -1,0 +1,14 @@
+{
+  "generatedBy": "review-slice + orchestrator convergence",
+  "scope": "add-animated-bg",
+  "change": "add-animated-bg",
+  "baseRef": "b5e9736",
+  "headRef": "HEAD",
+  "reviewers": ["code-reviewer", "spec-compliance-auditor"],
+  "note": "Scoped review by fresh maker-not-checker agents; 1 confirmed (major), fixed. The days[0]-weatherCode vs day-0-suntimes pairing finding was correctly refuted (unreachable core-field gap + day/night and particle are orthogonal). The AA-contrast fix is a CSS/visual change verified at G6. Security: pure decoration, no surface; full sweep at G7.",
+  "fixedFindings": [
+    "h1/hero text over the theme-independent gradient could fail AA contrast (e.g. dark text + night gradient in light theme). Added a theme-aware backing scrim (bg-background/80 + backdrop-blur) behind the location-view city heading and the empty-state hero, so foreground text keeps the theme's AA contrast while the gradient still shows around it (NFR-A11Y-02)."
+  ],
+  "clean": true,
+  "generatedAt": "2026-06-22"
+}

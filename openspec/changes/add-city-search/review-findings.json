@@ -1,0 +1,17 @@
+{
+  "generatedBy": "review-slice (2 rounds) + orchestrator convergence",
+  "scope": "add-city-search",
+  "change": "add-city-search",
+  "baseRef": "3cc6caa",
+  "headRef": "HEAD",
+  "reviewers": ["code-reviewer", "spec-compliance-auditor"],
+  "note": "Two scoped review rounds by fresh maker-not-checker agents. Round 1 (3 confirmed): combobox role on a wrapper div not the input; nonBlank returned the untrimmed value; listbox always rendered (empty named element). Round 2, after the first fix, found the combobox shell was half-implemented (options as Tab stops, no aria-activedescendant/arrow-nav; dangling aria-controls). Resolution adopts the reviewer's explicitly-recommended terminal option: dropped the combobox/listbox/option roles entirely and made each suggestion a native <button> (focusable, Enter/Space-activatable, visible focus ring), the list renders only with results, and the input is a plain labelled search box. This removes the whole class of advertised-but-undriven ARIA and dangling-IDREF issues — honest ARIA, fully keyboard accessible. nonBlank trims (regression test added). 168 tests green. Security: keyless route-handler proxy, no secrets; full sweep at G7.",
+  "fixedFindings": [
+    "Suggestions are now a native <button> focusable list (not a half-implemented combobox/listbox) — resolves both the role-placement and the Tab-stop/aria-activedescendant findings (NFR-A11Y-01)",
+    "No aria-controls/aria-expanded on the input — no dangling IDREF in idle/empty/error states",
+    "Suggestion list rendered only with results — no empty named element",
+    "lib/geo/map.ts nonBlank returns the trimmed value (regression test added)"
+  ],
+  "clean": true,
+  "generatedAt": "2026-06-22"
+}

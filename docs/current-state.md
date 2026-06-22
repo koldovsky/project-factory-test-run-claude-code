@@ -7,9 +7,9 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
-- **Current phase:** Phase 4 — per-slice loop (wave 2 next: city-search, forecast)
-- **Active change:** add-city-search + add-forecast scaffolded (deltas + proposal/
-  design/tasks committed-pending); building city-search next
+- **Current phase:** Phase 4 — per-slice loop (wave 2: forecast next)
+- **Active change:** add-forecast (scaffolded; building next). add-city-search
+  reviewed clean (2 rounds) and archiving.
 - **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
   **add-comfort-score** (reviewed clean). **add-top-clock** implemented to green
   (live clock via `useSyncExternalStore`, mount-guard, i18n aria-label).

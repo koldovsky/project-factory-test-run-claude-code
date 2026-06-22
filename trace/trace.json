@@ -104,7 +104,7 @@
     {
       "id": "FR-SEARCH-01",
       "specs": [
-        "openspec/changes/add-city-search/specs/city-search/spec.md"
+        "openspec/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -115,7 +115,7 @@
     {
       "id": "FR-SEARCH-02",
       "specs": [
-        "openspec/changes/add-city-search/specs/city-search/spec.md"
+        "openspec/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -127,7 +127,7 @@
     {
       "id": "FR-SEARCH-03",
       "specs": [
-        "openspec/changes/add-city-search/specs/city-search/spec.md",
+        "openspec/specs/city-search/spec.md",
         "openspec/changes/add-forecast/specs/forecast/spec.md"
       ],
       "planned": true,
@@ -137,7 +137,7 @@
     {
       "id": "FR-SEARCH-04",
       "specs": [
-        "openspec/changes/add-city-search/specs/city-search/spec.md"
+        "openspec/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -146,7 +146,7 @@
     {
       "id": "FR-SEARCH-05",
       "specs": [
-        "openspec/changes/add-city-search/specs/city-search/spec.md"
+        "openspec/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -157,7 +157,7 @@
     {
       "id": "FR-SEARCH-06",
       "specs": [
-        "openspec/changes/add-city-search/specs/city-search/spec.md"
+        "openspec/specs/city-search/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -608,10 +608,6 @@
     {
       "check": "recording-evidence",
       "msg": "FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"add-city-search\" is not archived"
     },
     {
       "check": "active-changes",

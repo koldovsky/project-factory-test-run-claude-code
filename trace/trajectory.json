@@ -38,6 +38,16 @@
         "clock"
       ],
       "processComplete": true
+    },
+    {
+      "slice": "2026-06-22-add-city-search",
+      "reviewEvidence": "clean",
+      "trailerCommits": 5,
+      "libDomains": [
+        "geo",
+        "i18n"
+      ],
+      "processComplete": true
     }
   ],
   "overlaps": [],

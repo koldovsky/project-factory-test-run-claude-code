@@ -58,6 +58,16 @@
         "i18n"
       ],
       "processComplete": true
+    },
+    {
+      "slice": "2026-06-22-add-map",
+      "reviewEvidence": "clean",
+      "trailerCommits": 3,
+      "libDomains": [
+        "i18n",
+        "location"
+      ],
+      "processComplete": true
     }
   ],
   "overlaps": [],

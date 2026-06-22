@@ -232,7 +232,7 @@
     {
       "id": "FR-MAP-01",
       "specs": [
-        "openspec/changes/add-map/specs/map/spec.md"
+        "openspec/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -241,7 +241,7 @@
     {
       "id": "FR-MAP-02",
       "specs": [
-        "openspec/changes/add-map/specs/map/spec.md"
+        "openspec/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -250,7 +250,7 @@
     {
       "id": "FR-MAP-03",
       "specs": [
-        "openspec/changes/add-map/specs/map/spec.md"
+        "openspec/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -261,7 +261,7 @@
     {
       "id": "FR-MAP-04",
       "specs": [
-        "openspec/changes/add-map/specs/map/spec.md"
+        "openspec/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -270,7 +270,7 @@
     {
       "id": "FR-MAP-05",
       "specs": [
-        "openspec/changes/add-map/specs/map/spec.md"
+        "openspec/specs/map/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -610,10 +610,6 @@
     {
       "check": "active-changes",
       "msg": "active change \"add-animated-bg\" is not archived"
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"add-map\" is not archived"
     }
   ]
 }

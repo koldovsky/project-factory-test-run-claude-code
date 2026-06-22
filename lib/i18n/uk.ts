@@ -10,6 +10,9 @@
 export const uk = {
   // Branding / chrome.
   appName: "Погода",
+  // Logo/home link accessible name (FR-SHELL-01, BUG-002): the top-bar brand is a
+  // link back to the empty-state search — the conventional "click logo to go home".
+  homeLinkLabel: "Погода — на головну",
 
   // Empty-state hero (FR-SHELL-03).
   heroTitle: "Дізнайтеся погоду у будь-якому місті",
@@ -26,6 +29,9 @@ export const uk = {
   searchRetry: "Спробувати ще раз",
   searchUseMyLocation: "Моє місцезнаходження",
   searchLocating: "Визначаємо місцезнаходження",
+  // Calm inline note when the browser has no geolocation support (BUG-004), so the
+  // button never looks dead. No toast, no exclamation marks (BC-BRAND-01).
+  searchGeoUnsupported: "Геолокація недоступна у цьому браузері. Скористайтеся пошуком.",
 
   // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
   clockRegionLabel: "Місцевий час",

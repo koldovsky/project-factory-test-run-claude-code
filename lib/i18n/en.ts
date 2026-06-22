@@ -9,6 +9,7 @@ import type { MessageKey } from "./index";
 export const en: Record<MessageKey, string> = {
   // Branding / chrome.
   appName: "Weather",
+  homeLinkLabel: "Weather — home",
 
   // Empty-state hero (FR-SHELL-03).
   heroTitle: "Check the weather in any city",
@@ -24,6 +25,7 @@ export const en: Record<MessageKey, string> = {
   searchRetry: "Try again",
   searchUseMyLocation: "My location",
   searchLocating: "Detecting your location",
+  searchGeoUnsupported: "Geolocation is unavailable in this browser. Use search instead.",
 
   // Clock slot accessible name (FR-CLOCK-01; filled by the top-clock slice).
   clockRegionLabel: "Local time",

@@ -119,7 +119,7 @@
 | TC-STACK-02 | MVP | Technical | Tailwind CSS 4 (PostCSS plugin); shadcn/ui base-nova; class-variance-authority. |
 | TC-STACK-03 | MVP | Technical | Open-Meteo APIs (forecast + geocoding); no other weather provider. |
 | TC-STACK-04 | MVP | Technical | Leaflet + react-leaflet for maps; OSM raster tiles only. |
-| TC-STACK-05 | MVP | Technical | Vitest for unit tests on `lib/`; no Playwright in MVP — use chrome-devtools MCP for E2E verification recordings. |
+| TC-STACK-05 | MVP | Technical | Vitest for unit tests on `lib/`; automated E2E recording + requirement validation via headless Playwright (`@playwright/test`, `e2e/`), recorded as video and guarded by `check-recordings` (amended 2026-06-22 by user decision, ADR-0006; originally specified the chrome-devtools MCP without Playwright). |
 | TC-DEPLOY-01 | MVP | Technical | Vercel for hosting; preview URL per PR via Git integration. |
 | TC-DATA-01 | MVP | Technical | All Open-Meteo calls happen from Server Components or Route Handlers when possible; never expose Open-Meteo URLs in the client bundle in a way that suggests they require keys. |
 | TC-MAP-01 | MVP | Technical | OSM tiles include attribution; respect the Tile Usage Policy (HTTPS, no scraping, valid Referer). |

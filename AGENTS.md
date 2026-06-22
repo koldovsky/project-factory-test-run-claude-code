@@ -46,7 +46,11 @@ when this file grows past it.
 - Leaflet + react-leaflet; OSM raster tiles only (TC-STACK-04, TC-MAP-01).
 - Recharts for charts (FR-FORECAST-03); Vitest for `lib/` unit tests.
 - **No database, no auth, no email, no cookies, no analytics** (BC-PRIVACY-01/02/03).
-- E2E verification via browser MCP (Claude Preview / chrome-devtools), NOT Playwright (TC-STACK-05).
+- Automated E2E recording + requirement validation via **headless Playwright**
+  (`@playwright/test`, `e2e/recordings.spec.ts`): each clip drives a flow, asserts
+  its FRs, records video; `npm run qa:record-demos` builds the manifest and
+  `npm run check:recordings` guards it (TC-STACK-05 amended, ADR-0006). Never route
+  recordings through the user's own browser.
 
 ## Skills (load on demand)
 

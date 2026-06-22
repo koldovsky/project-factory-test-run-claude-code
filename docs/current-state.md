@@ -7,8 +7,8 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
-- **Current phase:** Phase 7 (global review + release) — review-gate +
-  trajectory-eval run and findings addressed; deploy + push are the user's action.
+- **Current phase:** Post-G7 hardening — automated E2E recordings + UX-defect
+  fixes landed (ADR-0006); deploy + push are the user's action.
 - **Active change:** none. **All 9 capability slices archived; G0–G6 passed.**
 - **Test counts:** `npm run test:run` = 403 tests across 25 files (this total
   INCLUDES the 32 cross-slice integration tests in `tests/integration/`, which
@@ -21,7 +21,17 @@
   confirmed findings fixed (CompareView stale limit-notice, shared coordinateLabel,
   fetch timeouts, dead i18n keys, PinBar regression tests); accepted/declined the
   rest with justification (ADR-0005 gate calibration; rate-limit MVP risk note).
-  `qa:verify` all-green; release checks (`--release --strict-recordings --check-fresh`,
+- **Automated recordings (ADR-0006):** headless Playwright harness
+  (`e2e/recordings.spec.ts`) drives each flow, asserts its FRs, records video;
+  `npm run qa:record-demos` writes 8 validated `*.webm` clips + `manifest.json`;
+  `npm run check:recordings` guards them inside `qa:verify`. Replaced the manual
+  browser-MCP recordings (TC-STACK-05 amended; no user browser, no manual save).
+- **UX-defect audit (maker≠checker):** 7 obvious-behavior defects found + fixed
+  (BUG-001..007, `docs/qa/ux-defects.md`). Headline: the forecast view had no
+  search and the logo was not a home link — fixed; the harness now asserts
+  search/home reachability so it cannot regress.
+- `qa:verify` all-green (incl. `recordings`); 403 unit + 32 integration tests;
+  8/8 clips validated; release checks (`--release --strict-recordings`,
   `npm audit --audit-level=high`) pass.
 - **Slices archived (G4):** add-app-shell, add-comfort-score, add-top-clock,
   add-footer-jokes, add-city-search, add-forecast, add-map, add-animated-bg,

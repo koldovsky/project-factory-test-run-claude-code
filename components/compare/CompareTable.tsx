@@ -127,7 +127,9 @@ function CompareColumn({ city }: { city: ActiveLocation }) {
       : { saturday: null, sunday: null };
 
   return (
-    <div className="flex min-w-[10rem] flex-col">
+    // Full width (stacked) on mobile so 2-3 cities never force a horizontal
+    // scroll in the single-column layout; a fixed-width column on md+ (BUG-007).
+    <div className="flex w-full flex-col md:min-w-[10rem]">
       {/* Sticky column header: stays visible while the table body scrolls. */}
       <div className="sticky top-0 z-10 flex flex-col gap-2 border-b border-border bg-background px-3 py-2">
         <span className="text-sm font-semibold text-foreground">{city.name}</span>
@@ -202,7 +204,9 @@ export function CompareTable({ pins }: CompareTableProps) {
       aria-label={t("compareTableLabel")}
       className="max-h-[28rem] overflow-auto rounded-md border border-border"
     >
-      <div className="flex divide-x divide-border">
+      {/* Stack columns on mobile (single column, no horizontal scroll); lay them
+          out in a row from md upward (BUG-007). */}
+      <div className="flex flex-col divide-y divide-border md:flex-row md:divide-x md:divide-y-0">
         {pins.map((city) => (
           <CompareColumn key={`${city.lat},${city.lon}`} city={city} />
         ))}

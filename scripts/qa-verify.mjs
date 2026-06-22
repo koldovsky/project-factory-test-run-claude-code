@@ -41,6 +41,13 @@ const commands = [
     args: ["scripts/check-eval-ratchet.mjs"],
   },
   {
+    // Guards the committed automated-recordings evidence: every demo clip
+    // validated its FRs and has a real video on disk (ADR-0006).
+    name: "recordings",
+    command: "node",
+    args: ["scripts/check-recordings.mjs"],
+  },
+  {
     name: "lint",
     command: "npm",
     args: ["run", "lint"],

@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 import { t } from "@/lib/i18n";
 
-// Top bar (FR-SHELL-01): the only navigation chrome. Logo + a theme indicator
-// reflecting the OS color-scheme preference + a slot for the live clock (the
-// functional clock arrives in the top-clock slice).
+// Top bar (FR-SHELL-01): the only navigation chrome. Logo (a home link back to
+// the empty-state search — BUG-002) + a theme indicator reflecting the OS
+// color-scheme preference + a slot for the live clock.
 //
 // Server component: the theme indicator is pure CSS (see globals.css), so no
 // client JavaScript is needed here.
@@ -16,7 +18,11 @@ export function TopBar({ clock }: TopBarProps) {
   return (
     <header className="border-b border-border bg-background">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4">
-        <div className="flex items-center gap-2">
+        <Link
+          href="/"
+          aria-label={t("homeLinkLabel")}
+          className="flex items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
           <span
             aria-hidden="true"
             className="inline-flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground text-sm font-semibold"
@@ -26,7 +32,7 @@ export function TopBar({ clock }: TopBarProps) {
           <span className="text-base font-semibold text-foreground">
             {t("appName")}
           </span>
-        </div>
+        </Link>
 
         <div className="flex items-center gap-4">
           {/* Clock slot — only rendered when the top-clock slice provides a

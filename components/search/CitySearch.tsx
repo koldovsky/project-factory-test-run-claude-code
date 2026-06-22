@@ -47,6 +47,9 @@ export function CitySearch() {
   const [query, setQuery] = useState("");
   const [state, setState] = useState<SearchState>({ status: "idle" });
   const [locating, setLocating] = useState(false);
+  // True when the browser has no geolocation support, so the button shows a calm
+  // inline note instead of doing nothing (BUG-004).
+  const [geoUnsupported, setGeoUnsupported] = useState(false);
 
   // Monotonic request id: responses from anything but the latest request are
   // dropped (debounce-race guard, design risk "Debounce races").
@@ -146,7 +149,12 @@ export function CitySearch() {
 
   const handleUseMyLocation = useCallback(() => {
     // Opt-in only (BC-PRIVACY-02): geolocation is requested here, never on load.
-    if (typeof navigator === "undefined" || !navigator.geolocation) return;
+    // No support -> calm inline note instead of a dead button (BUG-004).
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      setGeoUnsupported(true);
+      return;
+    }
+    setGeoUnsupported(false);
     setLocating(true);
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -159,9 +167,12 @@ export function CitySearch() {
         });
       },
       () => {
-        // Denial/failure -> silent fallback to the empty state (no toast).
+        // Denial/failure/timeout -> silent fallback to the empty state (no toast).
         setLocating(false);
       },
+      // A finite timeout so the button can never hang forever waiting for a fix
+      // that never resolves; the error path above re-enables it (BUG-003).
+      { enableHighAccuracy: false, timeout: 10_000, maximumAge: 60_000 },
     );
   }, [navigateTo]);
 
@@ -194,6 +205,12 @@ export function CitySearch() {
           {locating ? t("searchLocating") : t("searchUseMyLocation")}
         </Button>
       </div>
+
+      {geoUnsupported ? (
+        <p role="status" className="text-center text-sm text-muted-foreground">
+          {t("searchGeoUnsupported")}
+        </p>
+      ) : null}
 
       {/* The suggestion list is rendered ONLY when there are results, so no empty
           named element is exposed in idle/loading/empty/error states (those have

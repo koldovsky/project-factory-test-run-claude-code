@@ -49,14 +49,15 @@ export function PinBar({
         {pins.map((city) => (
           <span
             key={`${city.lat},${city.lon}`}
-            className="inline-flex items-center gap-1 rounded-full border border-border bg-muted px-3 py-1 text-sm text-foreground"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-muted py-1 pl-3 pr-1 text-sm text-foreground"
           >
             <span>{city.name}</span>
+            {/* Comfortable touch target, not crowded against the name (BUG-006). */}
             <Button
               type="button"
               variant="ghost"
               size="icon"
-              className="size-6 rounded-full"
+              className="size-9 rounded-full"
               aria-label={`${t("compareUnpinAction")} ${city.name}`}
               onClick={() => onUnpin(city)}
             >

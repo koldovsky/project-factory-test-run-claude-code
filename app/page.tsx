@@ -5,6 +5,7 @@ import { ForecastView } from "@/components/forecast/ForecastView";
 import { getForecast } from "@/components/forecast/getForecast";
 import { MapPanel } from "@/components/map/MapPanel";
 import { CitySearch } from "@/components/search/CitySearch";
+import { CityHeading } from "@/components/shell/CityHeading";
 import { EmptyState } from "@/components/shell/EmptyState";
 import { Notice } from "@/components/shell/Notice";
 import { t } from "@/lib/i18n";
@@ -79,11 +80,15 @@ export default async function Home({
       <>
         <AnimatedBackground scene={sceneInput} />
         <section className="col-span-full flex w-full flex-col gap-6">
-          {/* Theme-aware backing so the city heading keeps AA contrast over the
+          {/* The city name is the page's <h1>; it also takes focus after a soft
+              navigation (BUG-005). Theme-aware backing keeps AA contrast over the
               theme-independent animated gradient behind it (NFR-A11Y-02). */}
-          <h1 className="w-fit rounded-md bg-background/80 px-3 py-1 text-2xl font-semibold tracking-tight text-foreground backdrop-blur-sm">
-            {parsed.location.name}
-          </h1>
+          <CityHeading name={parsed.location.name} />
+          {/* Search stays reachable from the forecast view so a user can look up a
+              different city without editing the URL or going back (BUG-001). */}
+          <div className="w-full max-w-md">
+            <CitySearch />
+          </div>
           <MapPanel location={parsed.location} />
           {/* Weekend compare (FR-COMPARE-01..03): pin cities + toggle the
               comparison table. Client-only state (BC-PRIVACY-03); rendered above

@@ -7,12 +7,13 @@
 ## Last Updated
 
 - **Date and time:** 2026-06-22 (Europe/Kyiv)
-- **Current phase:** Phase 5 COMPLETE (G5) → Phase 6 (QA pack + evals) next
-- **Active change:** none. All 9 slices archived; cross-cutting hardening done.
-- **G5:** 32 integration tests (route handlers + forecast→comfort→weekend pipeline
-  vs Open-Meteo fixtures); coverage baseline committed; `qa:verify` all-green;
-  browser-MCP smoke verified the live app (empty state, location view, mobile +
-  desktop, light + dark, silent console) — see docs/qa/g5-browser-smoke.md.
+- **Current phase:** Phase 6 COMPLETE (G6) → Phase 7 (global review + release)
+- **Active change:** none. All 9 slices archived; G0–G6 passed.
+- **G5:** 32 integration tests; coverage baseline; browser-MCP smoke (docs/qa/g5-browser-smoke.md).
+- **G6:** QA pack (6 docs) + demo-recordings manifest; eval-suite 8/8 (copy-tone
+  94.4, error-clarity 100), baseline committed + ratchet guards. The eval gate
+  caught + fixed a real comfort-rationale bug (wet day said "pleasant").
+  399 unit + 32 integration tests; qa:verify all-green.
 - **Progress:** G0/G1/G2/G3 PASSED. Slices archived: **add-app-shell** (G4),
   **add-comfort-score**, **add-top-clock**, **add-footer-jokes**, **add-city-search**,
   **add-forecast**, **add-map**, **add-animated-bg**.

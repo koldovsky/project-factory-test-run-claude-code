@@ -336,7 +336,7 @@
     {
       "id": "FR-ANIM-01",
       "specs": [
-        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
+        "openspec/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -347,7 +347,7 @@
     {
       "id": "FR-ANIM-02",
       "specs": [
-        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
+        "openspec/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [
@@ -359,7 +359,7 @@
     {
       "id": "FR-ANIM-03",
       "specs": [
-        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
+        "openspec/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -368,7 +368,7 @@
     {
       "id": "FR-ANIM-04",
       "specs": [
-        "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
+        "openspec/specs/animated-bg/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -603,10 +603,6 @@
     {
       "check": "recording-evidence",
       "msg": "FR-COMPARE-03 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"add-animated-bg\" is not archived"
     },
     {
       "check": "active-changes",

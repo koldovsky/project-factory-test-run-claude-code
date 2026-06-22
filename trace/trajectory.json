@@ -40,6 +40,15 @@
       "processComplete": true
     },
     {
+      "slice": "2026-06-22-add-animated-bg",
+      "reviewEvidence": "clean",
+      "trailerCommits": 3,
+      "libDomains": [
+        "sky"
+      ],
+      "processComplete": true
+    },
+    {
       "slice": "2026-06-22-add-city-search",
       "reviewEvidence": "clean",
       "trailerCommits": 6,

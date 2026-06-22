@@ -81,7 +81,7 @@
     {
       "slice": "2026-06-22-add-weekend-compare",
       "reviewEvidence": "clean",
-      "trailerCommits": 3,
+      "trailerCommits": 4,
       "libDomains": [
         "compare",
         "i18n",
@@ -90,20 +90,7 @@
       "processComplete": true
     }
   ],
-  "overlaps": [
-    {
-      "domain": "weather",
-      "slices": [
-        "2026-06-22-add-forecast",
-        "2026-06-22-add-weekend-compare"
-      ]
-    }
-  ],
+  "overlaps": [],
   "failures": [],
-  "warnings": [
-    {
-      "check": "in-scope",
-      "msg": "lib/weather/ modified by 2 slices (2026-06-22-add-forecast, 2026-06-22-add-weekend-compare) — review for scope drift"
-    }
-  ]
+  "warnings": []
 }

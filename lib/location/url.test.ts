@@ -1,4 +1,8 @@
-// @trace FR-SHELL-03
+// @trace FR-SHELL-03, FR-SEARCH-03
+//
+// (FR-SEARCH-03: the `?lat=&lon=&name=` URL contract a suggestion selection
+// writes and a deep link reads is exactly what toLocationQuery/parseLocationParams
+// implement and these tests pin.)
 //
 // Test-first (RED): these tests are written BEFORE `lib/location/url.ts` exists.
 // They define the contract for the pure deep-link parser/serializer that backs

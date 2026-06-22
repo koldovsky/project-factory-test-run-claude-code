@@ -144,7 +144,9 @@
         "openspec/specs/city-search/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/location/url.test.ts"
+      ],
       "recordings": [
         "docs/qa/demo-recordings/manifest.json"
       ]
@@ -239,7 +241,9 @@
         "openspec/specs/forecast/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "tests/integration/api-forecast.test.ts"
+      ],
       "recordings": [
         "docs/qa/demo-recordings/manifest.json"
       ]
@@ -261,7 +265,9 @@
         "openspec/specs/forecast/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "tests/integration/api-forecast.test.ts"
+      ],
       "recordings": [
         "docs/qa/demo-recordings/manifest.json"
       ]
@@ -492,10 +498,6 @@
     },
     {
       "check": "test-trace",
-      "msg": "FR-SEARCH-03 has no test annotated \"@trace FR-SEARCH-03\""
-    },
-    {
-      "check": "test-trace",
       "msg": "FR-SEARCH-04 has no test annotated \"@trace FR-SEARCH-04\""
     },
     {
@@ -504,15 +506,7 @@
     },
     {
       "check": "test-trace",
-      "msg": "FR-FORECAST-03 has no test annotated \"@trace FR-FORECAST-03\""
-    },
-    {
-      "check": "test-trace",
       "msg": "FR-FORECAST-04 has no test annotated \"@trace FR-FORECAST-04\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-FORECAST-05 has no test annotated \"@trace FR-FORECAST-05\""
     },
     {
       "check": "test-trace",

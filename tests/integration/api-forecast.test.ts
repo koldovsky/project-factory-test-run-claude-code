@@ -1,4 +1,8 @@
-// @trace FR-FORECAST-01, FR-COMPARE-02, TC-DATA-01
+// @trace FR-FORECAST-01, FR-FORECAST-03, FR-FORECAST-05, FR-COMPARE-02, TC-DATA-01
+//
+// (FR-FORECAST-03: the mapped 48h hourly temperature series the chart plots;
+//  FR-FORECAST-05: a per-coordinates server fetch — the re-fetch a location
+//  change triggers — is exactly what this route exercises.)
 //
 // Phase 5 cross-cutting integration: the /api/forecast route handler driven by a
 // REAL `new Request(...)` against a STUBBED `globalThis.fetch` returning a

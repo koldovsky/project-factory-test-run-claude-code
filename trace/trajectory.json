@@ -62,7 +62,7 @@
     {
       "slice": "2026-06-22-add-map",
       "reviewEvidence": "clean",
-      "trailerCommits": 3,
+      "trailerCommits": 4,
       "libDomains": [
         "i18n",
         "location"

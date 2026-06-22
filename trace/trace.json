@@ -339,7 +339,9 @@
         "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/sky/scene.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -348,7 +350,10 @@
         "openspec/changes/add-animated-bg/specs/animated-bg/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/sky/daynight.test.ts",
+        "lib/sky/scene.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -372,7 +377,7 @@
     {
       "id": "FR-COMPARE-01",
       "specs": [
-        "openspec/specs/weekend-compare/spec.md"
+        "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -381,7 +386,7 @@
     {
       "id": "FR-COMPARE-02",
       "specs": [
-        "openspec/specs/weekend-compare/spec.md"
+        "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -390,7 +395,7 @@
     {
       "id": "FR-COMPARE-03",
       "specs": [
-        "openspec/specs/weekend-compare/spec.md"
+        "openspec/changes/add-weekend-compare/specs/weekend-compare/spec.md"
       ],
       "planned": true,
       "tests": [],
@@ -446,14 +451,6 @@
     {
       "check": "test-trace",
       "msg": "FR-MAP-05 has no test annotated \"@trace FR-MAP-05\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-ANIM-01 has no test annotated \"@trace FR-ANIM-01\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-ANIM-02 has no test annotated \"@trace FR-ANIM-02\""
     },
     {
       "check": "test-trace",
@@ -610,6 +607,10 @@
     {
       "check": "active-changes",
       "msg": "active change \"add-animated-bg\" is not archived"
+    },
+    {
+      "check": "active-changes",
+      "msg": "active change \"add-weekend-compare\" is not archived"
     }
   ]
 }

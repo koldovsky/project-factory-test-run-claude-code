@@ -16,7 +16,7 @@ Result: PASS
 | 2026-06-21-add-top-clock | clean | 4 | yes | clock |
 | 2026-06-22-add-city-search | clean | 6 | yes | geo, i18n |
 | 2026-06-22-add-forecast | clean | 5 | yes | weather, i18n |
-| 2026-06-22-add-map | clean | 3 | yes | i18n, location |
+| 2026-06-22-add-map | clean | 4 | yes | i18n, location |
 
 ## Cross-slice module overlap
 

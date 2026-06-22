@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,6 @@ export function CitySearch() {
   // Monotonic request id: responses from anything but the latest request are
   // dropped (debounce-race guard, design risk "Debounce races").
   const requestIdRef = useRef(0);
-  const listboxId = useId();
 
   const runSearch = useCallback(async (rawQuery: string) => {
     const trimmed = rawQuery.trim().slice(0, MAX_QUERY_LENGTH);
@@ -166,17 +165,15 @@ export function CitySearch() {
 
   return (
     <div className="flex w-full flex-col gap-3">
-      {/* WAI-ARIA combobox: role + state live on the focusable input itself, so
-          assistive tech announces the expanded/collapsed state and the controlled
-          listbox (NFR-A11Y-01). */}
+      {/* A plain labelled search input. Suggestions are a list of focusable
+          buttons (below) rather than an ARIA combobox/listbox: that pattern would
+          require aria-activedescendant + arrow-key navigation to be honest, so the
+          simpler button list is fully keyboard accessible (each suggestion is a
+          native button) without advertising semantics it does not drive
+          (NFR-A11Y-01). Enter still auto-selects a lone suggestion (FR-SEARCH-04). */}
       <Input
         type="search"
-        role="combobox"
         aria-label={t("searchLabel")}
-        aria-expanded={state.status === "results"}
-        aria-haspopup="listbox"
-        aria-controls={listboxId}
-        aria-autocomplete="list"
         value={query}
         onChange={(event) => handleQueryChange(event.target.value)}
         onKeyDown={handleKeyDown}
@@ -196,17 +193,13 @@ export function CitySearch() {
         </Button>
       </div>
 
-      {/* The listbox is rendered ONLY when there are results, so no empty named
-          element is exposed to assistive tech in idle/loading/empty/error states
-          (those have their own role=status/alert nodes below). FR-SEARCH-05 keeps
-          all states inline — no toast, no transient popup. */}
+      {/* The suggestion list is rendered ONLY when there are results, so no empty
+          named element is exposed in idle/loading/empty/error states (those have
+          their own role=status/alert nodes below). Each suggestion is a native
+          <button> — focusable, Enter/Space-activatable, with a visible focus ring.
+          FR-SEARCH-05 keeps all states inline — no toast, no transient popup. */}
       {state.status === "results" ? (
-        <ul
-          id={listboxId}
-          role="listbox"
-          aria-label={t("searchSuggestionsLabel")}
-          className="flex flex-col gap-1"
-        >
+        <ul aria-label={t("searchSuggestionsLabel")} className="flex flex-col gap-1">
           {state.suggestions.map((suggestion, index) => {
             const flag = flagEmoji(suggestion.countryCode);
             const region = suggestion.admin1;
@@ -214,26 +207,21 @@ export function CitySearch() {
             return (
               <li
                 key={`${suggestion.name}-${suggestion.lat}-${suggestion.lon}-${index}`}
-                role="option"
-                aria-selected={false}
-                tabIndex={0}
-                onClick={() => selectSuggestion(suggestion)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    selectSuggestion(suggestion);
-                  }
-                }}
-                className="flex cursor-pointer items-center gap-2 rounded-md border border-border bg-background px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                {flag ? <span aria-hidden="true">{flag}</span> : null}
-                <span className="font-medium">{suggestion.name}</span>
-                {region ? (
-                  <span className="text-muted-foreground">{region}</span>
-                ) : null}
-                {country ? (
-                  <span className="text-muted-foreground">{country}</span>
-                ) : null}
+                <button
+                  type="button"
+                  onClick={() => selectSuggestion(suggestion)}
+                  className="flex w-full cursor-pointer items-center gap-2 rounded-md border border-border bg-background px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  {flag ? <span aria-hidden="true">{flag}</span> : null}
+                  <span className="font-medium">{suggestion.name}</span>
+                  {region ? (
+                    <span className="text-muted-foreground">{region}</span>
+                  ) : null}
+                  {country ? (
+                    <span className="text-muted-foreground">{country}</span>
+                  ) : null}
+                </button>
               </li>
             );
           })}

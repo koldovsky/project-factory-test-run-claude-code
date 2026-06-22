@@ -1,10 +1,6 @@
 # Weekend Compare Specification
 
-## Purpose
-
-Weekend Compare lets a visitor pin up to three cities and compare their upcoming Saturday and Sunday weather side by side, so they can decide where to take a weekend trip. Pinned cities show as a chip row above the forecast, a toggle switches into a three-column compare table (hi/lo, precipitation %, comfort score), and each column can promote its city to the main view. All state is client-only — no cookies are set and nothing persists across reloads (BC-PRIVACY-03).
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Pin cities to a chip row
 

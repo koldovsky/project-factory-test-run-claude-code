@@ -42,7 +42,7 @@
     {
       "slice": "2026-06-22-add-animated-bg",
       "reviewEvidence": "clean",
-      "trailerCommits": 3,
+      "trailerCommits": 4,
       "libDomains": [
         "sky"
       ],

@@ -1,6 +1,7 @@
 import { ForecastError } from "@/components/forecast/ForecastError";
 import { ForecastView } from "@/components/forecast/ForecastView";
 import { getForecast } from "@/components/forecast/getForecast";
+import { MapPanel } from "@/components/map/MapPanel";
 import { CitySearch } from "@/components/search/CitySearch";
 import { EmptyState } from "@/components/shell/EmptyState";
 import { Notice } from "@/components/shell/Notice";
@@ -61,6 +62,7 @@ export default async function Home({
         <h1 className="text-2xl font-semibold tracking-tight text-foreground">
           {parsed.location.name}
         </h1>
+        <MapPanel location={parsed.location} />
         {result.ok ? (
           <ForecastView forecast={result.forecast} />
         ) : (

@@ -77,4 +77,14 @@ export const uk = {
   forecastLowLabel: "Мінімум",
   forecastPrecipLabel: "Імовірність опадів",
   forecastWindLabel: "Вітер",
+
+  // Map (FR-MAP-01..05, TC-MAP-01, BC-BRAND-01). Calm tone, no exclamation marks.
+  // The map region is a labelled landmark; the attribution text is required by
+  // the OSM Tile Usage Policy and must read exactly "© OpenStreetMap
+  // contributors"; the loading and tile-failure states keep the footprint and
+  // stay calm.
+  mapRegionLabel: "Мапа обраного місця",
+  mapAttribution: "© OpenStreetMap contributors",
+  mapLoading: "Завантаження мапи",
+  mapTileError: "Не вдалося завантажити мапу зараз. Спробуйте ще раз.",
 } as const;

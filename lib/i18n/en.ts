@@ -71,4 +71,10 @@ export const en: Record<MessageKey, string> = {
   forecastLowLabel: "Low",
   forecastPrecipLabel: "Precipitation probability",
   forecastWindLabel: "Wind",
+
+  // Map (FR-MAP-01..05, TC-MAP-01, BC-BRAND-01).
+  mapRegionLabel: "Map of the selected location",
+  mapAttribution: "© OpenStreetMap contributors",
+  mapLoading: "Loading map",
+  mapTileError: "We could not load the map right now. Try again.",
 };

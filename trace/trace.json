@@ -253,7 +253,9 @@
         "openspec/changes/add-map/specs/map/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/location/coordinateLabel.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -436,10 +438,6 @@
     {
       "check": "test-trace",
       "msg": "FR-MAP-02 has no test annotated \"@trace FR-MAP-02\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-MAP-03 has no test annotated \"@trace FR-MAP-03\""
     },
     {
       "check": "test-trace",

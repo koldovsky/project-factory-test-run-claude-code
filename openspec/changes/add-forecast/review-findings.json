@@ -1,0 +1,15 @@
+{
+  "generatedBy": "review-slice + orchestrator convergence",
+  "scope": "add-forecast",
+  "change": "add-forecast",
+  "baseRef": "3aa2598",
+  "headRef": "HEAD",
+  "reviewers": ["code-reviewer", "spec-compliance-auditor"],
+  "note": "Scoped review by fresh maker-not-checker agents; 2 confirmed (both major), both fixed and verified by a green battery (250 tests). Rejected findings were adversarially refuted. Security: keyless server-side fetch, no secrets; full sweep at G7.",
+  "fixedFindings": [
+    "mapForecast over-strictness: now requires only CORE fields (date, hi/lo, weather code); precip/uv/wind/cloud/feels are number|null so an Open-Meteo horizon-null never drops a day or fails the forecast — DayCard shows a calm placeholder, comfortScore uses neutral defaults (regression test added)",
+    "spec contradiction (app-shell vs forecast on invalid deep-link coords) reconciled by amending the forecast spec: malformed/out-of-range deep links are handled by the app-shell empty-state Notice (FR-SHELL-03 — search is the right recovery, not retry); fetchForecast keeps coord validation as defense-in-depth; forecast calm-error+retry covers valid-coord fetch/parse failures. The implementation already did the correct thing; the spec was amended to match."
+  ],
+  "clean": true,
+  "generatedAt": "2026-06-22"
+}

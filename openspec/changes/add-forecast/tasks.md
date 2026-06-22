@@ -47,8 +47,9 @@
 - [x] 4.3 `npx tsc --noEmit`
 - [x] 4.4 `npm run build`
 - [x] 4.5 `npx openspec validate add-forecast --strict` + `--all --strict`
-- [ ] 4.6 Run review-slice; fix confirmed findings; re-run 4.1–4.5.
+- [x] 4.6 Run review-slice; fix confirmed findings; re-run 4.1–4.5.
+        (2 confirmed fixed: nullable optional fields; invalid-coord spec reconciled.)
 - [x] 4.7 Update `docs/current-state.md`.
 - [x] 4.8 Real fetch smoke: `fetchForecast` for a known city returns a mapped
         forecast (exercise the real Open-Meteo path once).
-- [ ] 4.9 Archive after 4.1–4.8: `npx openspec archive add-forecast --yes`.
+- [x] 4.9 Archive after 4.1–4.8: `npx openspec archive add-forecast --yes`.

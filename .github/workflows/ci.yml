@@ -60,6 +60,11 @@ jobs:
       - name: Integration tests (lib + route handlers vs fixtures)
         run: npm run test:integration
       - name: E2E (browser MCP recordings — informational)
+        # Informational only: CI installs no Playwright browsers and runs
+        # before the production build, so `playwright test` cannot start its
+        # webServer. Real E2E coverage is the committed, vision-verified MCP
+        # recordings (TC-STACK-05, ADR-0006). Never gate the job on this step.
+        continue-on-error: true
         run: npm run test:e2e
 
       # --- production build ---

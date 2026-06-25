@@ -36,6 +36,9 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
+    "@emnapi/core": "1.10.0",
+    "@emnapi/runtime": "1.10.0",
+    "@fission-ai/openspec": "^1.4.1",
     "@playwright/test": "^1.61.0",
     "@tailwindcss/postcss": "^4",
     "@types/leaflet": "^1.9.20",
@@ -53,7 +56,7 @@
     "vitest": "^3.2.4"
   },
   "comments": {
-    "overrides": "Pin the @emnapi/* peer deps of @napi-rs/wasm-runtime (bundled inside @tailwindcss/oxide-wasm32-wasi) to the version that tarball actually bundles. Without this, npm's ideal tree upgrades the ^1.7.1 peer range to the latest registry release (1.11.1), which is absent from the lock, so `npm ci` fails with EUSAGE on Linux CI. The WASM fallback is never used on the native Linux/Windows binaries."
+    "emnapi": "@emnapi/core and @emnapi/runtime are pinned here (direct devDeps) and in overrides solely to stabilise the lock. They are peer deps of @napi-rs/wasm-runtime, bundled inside the optional @tailwindcss/oxide-wasm32-wasi WASM fallback. Left alone, npm's ideal tree upgrades the ^1.7.1 peer range to the latest registry release (1.11.1, published after the lock), which Linux `npm ci` then reports as missing — EUSAGE. The override caps the version at the 1.10.0 the tarball actually bundles; the direct devDeps force a root entry into the lock on every platform (Windows prunes the optional-only subtree, so without this the lock regenerates incomplete). The WASM fallback is never used on the native Linux/Windows oxide binaries."
   },
   "overrides": {
     "@emnapi/core": "1.10.0",

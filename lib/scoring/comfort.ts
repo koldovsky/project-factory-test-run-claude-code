@@ -154,6 +154,11 @@ function buildRationale(
   // high-value day dragged down by one severe factor (e.g. wet day scoring ~70).
   switch (worst.key) {
     case "cold":
+      // Graduate the wording to the actual temperature: "прохолодно" (cool)
+      // understates a sub-zero feels-like, so name real cold honestly while
+      // keeping the calm, practical tone (BC-BRAND-01).
+      if (feels < -5) return "Морозно, вдягніться якомога тепліше перед виходом.";
+      if (feels < 4) return "Холодно, варто вдягнутися тепло перед виходом.";
       return "Прохолодно, варто вдягнутися тепліше перед виходом.";
     case "wet":
       return "Висока ймовірність дощу, візьміть парасольку.";

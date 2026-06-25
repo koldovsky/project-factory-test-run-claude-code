@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T02:32:29Z",
+  "generatedAt": "2026-06-25T18:04:03Z",
   "kind": "eval",
   "results": [
     {
@@ -13,7 +13,7 @@
       "id": "eval-copy-tone-deep-link-error-notice",
       "dimension": "copy-tone",
       "proof": "BC-BRAND-01, FR-SHELL-03",
-      "score": 97,
+      "score": 96,
       "pass": true
     },
     {
@@ -27,7 +27,7 @@
       "id": "eval-comfort-rationale-cold",
       "dimension": "copy-tone",
       "proof": "FR-COMFORT-03, BC-BRAND-01",
-      "score": 85,
+      "score": 93,
       "pass": true
     },
     {
@@ -48,14 +48,14 @@
       "id": "eval-forecast-error-copy-tone",
       "dimension": "error-clarity",
       "proof": "FR-FORECAST-01, BC-BRAND-01",
-      "score": 100,
+      "score": 96,
       "pass": true
     },
     {
       "id": "eval-forecast-condition-names",
       "dimension": "copy-tone",
       "proof": "FR-FORECAST-02, BC-BRAND-01",
-      "score": 96,
+      "score": 97,
       "pass": true
     }
   ]

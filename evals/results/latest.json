@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-22T02:32:29Z",
+  "generatedAt": "2026-06-25T18:04:03Z",
   "threshold": 70,
   "dimensions": {
-    "copy-tone": 94.4,
-    "error-clarity": 100
+    "copy-tone": 95.6,
+    "error-clarity": 96
   },
   "cases": [
     {
@@ -18,7 +18,7 @@
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "All five criteria, including both critical ones, are satisfied with quotable evidence: the three strings are fully Ukrainian, contain no exclamation marks (subtitle ends in a period), use no emojis, maintain a calm practical tone via \"переглянути прогноз на тиждень і спланувати поїздку\", and clearly direct the user to search via \"Введіть назву міста\" and the \"Знайдіть місто\" placeholder. The copy is coherent and shippable as-is. Score held just below the 90s ceiling only because the brief copy offers limited surface to confirm exceptional polish beyond meeting the stated bar."
+      "notes": "All three user-visible strings are grammatical Ukrainian with no exclamation marks, satisfying both critical criteria. The copy is plainly informative ('переглянути прогноз на тиждень і спланувати поїздку') with no emojis or salesy hype, and every line points to city search as the primary action. Minor deduction only because the empty-state copy is competent but unremarkable rather than polished enough to be unambiguously ship-perfect."
     },
     {
       "id": "eval-copy-tone-deep-link-error-notice",
@@ -28,11 +28,11 @@
         "FR-SHELL-03"
       ],
       "capability": "app-shell",
-      "score": 97,
+      "score": 96,
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "The single user-facing string satisfies all five criteria, including both critical ones: it is idiomatic Ukrainian (\\\"Не вдалося\\\", \\\"у пошуку\\\"), contains no exclamation mark, uses no emojis or decoration, and reads calmly via an impersonal failure statement plus a gentle search suggestion. It both explains that the link could not be opened and implies the search path. Held just below a perfect score because the verdict rests on one short visible line with no surrounding context to confirm placement or that nothing else (e.g., an icon) accompanies it in the actual notice."
+      "notes": "The notice is fully Ukrainian, ends both sentences with periods (no exclamation mark), and uses no emojis or decorative symbols, satisfying both critical criteria and the symbol rule. The phrasing 'Не вдалося відкрити посилання' is passive and blame-free, and 'Спробуйте знайти місто у пошуку' clearly directs the user to search instead, covering the explanation criterion. All five criteria are met; a tiny deduction reflects that the output is a single bare line with no visible empty-state context, but the rubric only asks for the notice text, which is exactly right."
     },
     {
       "id": "eval-comfort-rationale-pleasant",
@@ -46,7 +46,7 @@
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "The rationale 'Приємний день, комфортно перебувати надворі.' satisfies both critical criteria: it is genuinely Ukrainian and ends with a period with no exclamation mark. It is also a single calm sentence with no emojis or decorative symbols, and its 'pleasant day, comfortable to be outside' wording aligns precisely with the pleasant input conditions (feels-like 21°C, 0% precip, light wind). Output is shippable as-is; held just below 90+ ceiling only as a conservative margin, with no concrete defect found."
+      "notes": "Both critical criteria are met: the rationale 'Приємний день, комфортно перебувати надворі.' is fully Ukrainian and ends with a period, not an exclamation mark. It is free of emojis, is a single calm declarative sentence, and clearly matches the pleasant conditions ('pleasant day, comfortable to be outside') consistent with the high score of 98. The wording is somewhat generic and offers no specific practical detail, which is a minor stylistic shortfall, but it satisfies every rubric criterion as written."
     },
     {
       "id": "eval-comfort-rationale-cold",
@@ -56,11 +56,11 @@
         "BC-BRAND-01"
       ],
       "capability": "comfort-score",
-      "score": 85,
+      "score": 93,
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "All three critical criteria are met: the rationale is unambiguously Ukrainian, contains no exclamation mark, and uses no emojis or decorative symbols. Tone is calm and practical. The one shortfall is criterion 4: while the rationale correctly identifies cold as the dominant condition and gives appropriate \"dress warmer\" advice, the word \"Прохолодно\" (chilly/cool) understates a feels-like -8°C, which is genuinely cold rather than merely cool, making the rationale a slightly soft reflection of the dominant condition."
+      "notes": "All five criteria, including both critical ones, are satisfied by the visible output: the rationale \"Морозно, вдягніться якомога тепліше перед виходом.\" is Ukrainian, period-terminated, emoji-free, correctly identifies the -8°C cold as dominant, and stays calm and practical. The single intensifier \"якомога тепліше\" reads as helpful guidance rather than alarm, so it does not breach criterion 5. Held a few points below 95 only because the advice is slightly generic and offers minimal differentiation, but it is shippable as-is."
     },
     {
       "id": "eval-comfort-rationale-wet",
@@ -74,7 +74,7 @@
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "Both critical criteria are met: the rationale is correct, idiomatic Ukrainian ('Висока ймовірність дощу, візьміть парасольку.') and ends with a period with no exclamation mark. All non-critical criteria are also satisfied — no emojis/decorative symbols, the high rain probability (95%) is accurately surfaced as the dominant condition, and the tone is a calm, practical heads-up with a simple umbrella suggestion. The output is concise and shippable as-is, warranting a high score with only a minor reservation against a perfect 100."
+      "notes": "The rationale 'Висока ймовірність дощу, візьміть парасольку.' is fully Ukrainian, ends with a period (no exclamation), uses no emojis, and correctly identifies the 95% rain probability as the dominant condition with a calm, practical umbrella suggestion. All five criteria, including both critical ones, are satisfied. Score held just under top tier because the rationale is functional but minimal, with no acknowledgement of the otherwise mild conditions reflected in the score of 70."
     },
     {
       "id": "eval-comfort-rationale-hostile",
@@ -88,7 +88,7 @@
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "Both critical criteria are met: the rationale 'Умови надворі несприятливі, краще запланувати справи вдома.' is in Ukrainian and contains no exclamation mark. It uses no emojis or decorative symbols, honestly conveys that conditions are poor and suggests indoor activities, and keeps a calm, blame-free tone ('несприятливі' rather than alarmist language). The low score of 31 is consistent with the hostile conditions; all five criteria are satisfied, so this is a ship-ready output with only minor deduction for an otherwise flawless but minimal rationale."
+      "notes": "Both critical criteria are satisfied: the rationale is entirely in Ukrainian and contains no exclamation mark. All three non-critical criteria are also met — no emojis/symbols, the copy honestly conveys poor outdoor conditions for a score of 31 with hostile inputs, and the tone stays calm and practical (\"краще запланувати справи вдома\") without catastrophizing. I withhold the last few points only because the rationale is somewhat generic and conveys severity (near-freezing, 100% precip, 60 km/h wind) only at a high level rather than with any specific, shippable richness."
     },
     {
       "id": "eval-forecast-error-copy-tone",
@@ -98,11 +98,11 @@
         "BC-BRAND-01"
       ],
       "capability": "forecast",
-      "score": 100,
+      "score": 96,
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "All six criteria are satisfied with clear evidence. Both critical criteria pass: the copy is correct Ukrainian and contains no exclamation mark (both strings end with periods). The message calmly states the forecast could not be loaded 'зараз' (right now), the retry label 'Спробувати ще раз' (try again) clearly invites another attempt, and the impersonal blame-free phrasing keeps the tone reassuring rather than alarming. The output would ship unchanged."
+      "notes": "Both visible strings are correct Ukrainian, free of exclamation marks and emojis, and convey calmly that the forecast could not be loaded right now ('Не вдалося завантажити прогноз зараз'). The retry control 'Спробувати ще раз' clearly invites another attempt, and the overall tone is blame-free and practical. All six criteria, including both critical ones, are satisfied; a minor stylistic note is the slight redundancy of 'Спробуйте ще раз' in the message duplicating the button intent, which keeps it just shy of perfect."
     },
     {
       "id": "eval-forecast-condition-names",
@@ -112,11 +112,11 @@
         "BC-BRAND-01"
       ],
       "capability": "forecast",
-      "score": 96,
+      "score": 97,
       "pass": true,
       "judges": 1,
       "disagreement": false,
-      "notes": "All ten WMO codes map to accurate, idiomatic Ukrainian condition names that are clearly distinguishable across the represented categories (clear/cloudy/overcast/fog/drizzle/rain/snow/showers/thunderstorm). Both critical criteria are met: every label is natural Ukrainian and none contains an exclamation mark. The names are plain text with no emojis and are concise neutral noun/adjective phrases appropriate as icon alt text (e.g. ясно, туман, мінлива хмарність, гроза з градом), satisfying all five criteria with no observable defects."
+      "notes": "All five criteria, including both critical ones, are satisfied: every label is a natural, accurate, concise Ukrainian noun phrase free of exclamation marks, emojis, and hype. The labels correctly distinguish each WMO category and even capture the hail nuance at code 99 (\"гроза з градом\"). This is a clean, shippable mapping; the score is just shy of perfect only because \"хмарно\" maps to overcast where a finer distinction from \"багато хмар\" could be argued, but it remains accurate for code 3."
     }
   ]
 }

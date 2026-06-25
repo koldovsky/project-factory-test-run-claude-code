@@ -51,5 +51,12 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^3.2.4"
+  },
+  "comments": {
+    "overrides": "Pin the @emnapi/* peer deps of @napi-rs/wasm-runtime (bundled inside @tailwindcss/oxide-wasm32-wasi) to the version that tarball actually bundles. Without this, npm's ideal tree upgrades the ^1.7.1 peer range to the latest registry release (1.11.1), which is absent from the lock, so `npm ci` fails with EUSAGE on Linux CI. The WASM fallback is never used on the native Linux/Windows binaries."
+  },
+  "overrides": {
+    "@emnapi/core": "1.10.0",
+    "@emnapi/runtime": "1.10.0"
   }
 }

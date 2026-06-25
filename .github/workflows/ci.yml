@@ -17,6 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        # Full history: the trajectory process audit reads the git log for
+        # per-slice "Slice:" trailers and commit ordering. A shallow (depth-1)
+        # clone hides those commits, so the report regenerates differently and
+        # the freshness gate fails. fetch-depth: 0 makes CI match local.
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -54,6 +60,11 @@ jobs:
       - name: Integration tests (lib + route handlers vs fixtures)
         run: npm run test:integration
       - name: E2E (browser MCP recordings — informational)
+        # Informational only: CI installs no Playwright browsers and runs
+        # before the production build, so `playwright test` cannot start its
+        # webServer. Real E2E coverage is the committed, vision-verified MCP
+        # recordings (TC-STACK-05, ADR-0006). Never gate the job on this step.
+        continue-on-error: true
         run: npm run test:e2e
 
       # --- production build ---

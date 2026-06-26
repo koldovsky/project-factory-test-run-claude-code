@@ -87,6 +87,10 @@ export function buildRecommendation(input: PublishInput): Recommendation {
     });
   }
 
+  // Normalise display order: best score first (the winner is the top fit), so the
+  // card is always cleanly ordered even if the agent emits an out-of-order list.
+  ranked.sort((a, b) => b.score - a.score);
+
   const criterion = typeof input?.criterion === "string" && input.criterion.trim()
     ? clampText(input.criterion.trim())
     : "комфорт";

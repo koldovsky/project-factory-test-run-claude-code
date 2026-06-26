@@ -22,6 +22,20 @@ describe("buildRecommendation", () => {
     expect(rec.query.criterion).toBe("прохолода");
   });
 
+  it("sorts ranked by score descending (winner = top score), even if input is unordered", () => {
+    const rec = buildRecommendation({
+      dates: ["2026-06-27"],
+      criterion: "прохолода",
+      ranked: [
+        { name: "Харків", score: 85, note: "" },
+        { name: "Полтава", score: 88, note: "" },
+        { name: "Суми", score: 86, note: "" },
+      ],
+    });
+    expect(rec.ranked.map((c) => c.score)).toEqual([88, 86, 85]);
+    expect(rec.winner?.nameEn).toBe("Poltava");
+  });
+
   it("skips unknown cities with a note (never fabricates)", () => {
     const rec = buildRecommendation({
       dates: [],

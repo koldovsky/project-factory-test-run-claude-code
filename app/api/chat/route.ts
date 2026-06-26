@@ -31,9 +31,18 @@ const SYSTEM = `Ти — асистент застосунку Weather Explorer.
 export async function POST(req: Request): Promise<Response> {
   const { messages }: { messages: UIMessage[] } = await req.json();
 
+  // Ground the model in the real date — LLMs otherwise default to training-era
+  // dates and emit stale years.
+  const today = new Date().toISOString().slice(0, 10);
+  const dateContext =
+    `Сьогодні ${today}. Для відносних дат («ці вихідні», «завтра») ЗАВЖДИ став поле ` +
+    `"when" (today | tomorrow | this-weekend | next-3-days), не вигадуй конкретних дат. ` +
+    `У showRecommendation передавай ті самі "dates", що повернув getWeatherTable. ` +
+    `Став різні "score" під критерій (не однакові для всіх міст).`;
+
   const result = streamText({
     model: openai(MODEL),
-    system: SYSTEM,
+    system: `${dateContext}\n\n${SYSTEM}`,
     messages: await convertToModelMessages(messages),
     stopWhen: stepCountIs(6),
     tools: {

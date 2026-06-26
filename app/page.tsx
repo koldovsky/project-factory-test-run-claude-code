@@ -1,9 +1,11 @@
 import { AnimatedBackground } from "@/components/background/AnimatedBackground";
+import { Assistant } from "@/components/assistant/Assistant";
 import { CompareView } from "@/components/compare/CompareView";
 import { ForecastError } from "@/components/forecast/ForecastError";
 import { ForecastView } from "@/components/forecast/ForecastView";
 import { getForecast } from "@/components/forecast/getForecast";
 import { MapPanel } from "@/components/map/MapPanel";
+import { RecommendationPanel } from "@/components/recommend/RecommendationPanel";
 import { CitySearch } from "@/components/search/CitySearch";
 import { CityHeading } from "@/components/shell/CityHeading";
 import { EmptyState } from "@/components/shell/EmptyState";
@@ -79,6 +81,8 @@ export default async function Home({
     return (
       <>
         <AnimatedBackground scene={sceneInput} />
+        <RecommendationPanel />
+        <Assistant />
         <section className="col-span-full flex w-full flex-col gap-6">
           {/* The city name is the page's <h1>; it also takes focus after a soft
               navigation (BUG-005). Theme-aware backing keeps AA contrast over the
@@ -111,6 +115,8 @@ export default async function Home({
   return (
     <>
       <AnimatedBackground />
+      <RecommendationPanel />
+      <Assistant />
       {hasLocationParams ? (
         <div className="col-span-full">
           <Notice>{t("deepLinkErrorNotice")}</Notice>

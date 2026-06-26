@@ -14,6 +14,7 @@
     "test:integration": "vitest run --passWithNoTests tests/integration",
     "test:e2e": "playwright test",
     "test:coverage": "vitest run --passWithNoTests --coverage",
+    "agent:watch": "node scripts/agent-watch.mjs",
     "qa:verify": "node scripts/qa-verify.mjs",
     "qa:record-demos": "node scripts/record-demos.mjs",
     "check:trace": "node scripts/check-traceability.mjs",
@@ -23,6 +24,9 @@
     "check:recordings": "node scripts/check-recordings.mjs"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.0",
+    "@ai-sdk/react": "^4.0.2",
+    "ai": "^7.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "leaflet": "^1.9.4",
@@ -32,7 +36,8 @@
     "react-dom": "19.2.4",
     "react-leaflet": "^5.0.0",
     "recharts": "^3.8.1",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
@@ -52,6 +57,7 @@
     "eslint-config-next": "16.2.9",
     "jsdom": "^25.0.1",
     "tailwindcss": "^4",
+    "tsx": "^4.22.4",
     "typescript": "^5",
     "vitest": "^3.2.4"
   },

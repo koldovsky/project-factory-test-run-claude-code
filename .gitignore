@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Day 03 skills demo — agent <-> app file-protocol output (runtime only)
+/agent-bridge/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

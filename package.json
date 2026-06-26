@@ -15,6 +15,8 @@
     "test:e2e": "playwright test",
     "test:coverage": "vitest run --passWithNoTests --coverage",
     "agent:watch": "node scripts/agent-watch.mjs",
+    "mcp": "tsx mcp/weather.ts",
+    "mcp:smoke": "node scripts/mcp-smoke.mjs",
     "qa:verify": "node scripts/qa-verify.mjs",
     "qa:record-demos": "node scripts/record-demos.mjs",
     "check:trace": "node scripts/check-traceability.mjs",
@@ -26,6 +28,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^4.0.0",
     "@ai-sdk/react": "^4.0.2",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "ai": "^7.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

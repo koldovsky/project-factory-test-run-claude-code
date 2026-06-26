@@ -20,7 +20,14 @@ Appendix; full detail lives in git history + the session memory.)
   **NOT yet exercised live** — needs `OPENAI_API_KEY` (`OPENAI_MODEL` optional, default
   `gpt-4o-mini`) in `.env.local`. The model ranks (two-tool chain); the result renders
   as the shared card (generative UI).
-- **Part 3 — Self-contained, portable Skill (Hermes / any harness) — TO BUILD.**
+- **Part 3 — Self-contained, portable Skill — BUILT & verified.**
+  `.claude/skills/holiday-weather/` = `SKILL.md` + a zero-dependency `run.mjs`
+  (vendored city list + direct Open-Meteo fetch + compact comfort hint; the agent
+  ranks for ANY criterion from the printed metrics). Verified running from a temp
+  dir OUTSIDE the repo (only the 2 files, no `node_modules`/key). Installed into the
+  Hermes skills dir (`…\hermes\skills\holiday-weather\`); the stale app-coupled
+  `where-to-go` copy was removed from Hermes. Same folder works in Claude Code
+  (already there) and any harness — copy it in.
 - **DROPPED** (see §6): connecting Hermes to the app over HTTP; MCP (former Stage 3).
 
 ---
@@ -181,8 +188,9 @@ there earlier — Hermes gets the standalone skill instead.
 **To build (Part 2):** `app/api/chat/route.ts` · `components/assistant/*` (chat +
 GenUI) · tool(s) reusing `lib/recommend` · deps: `ai`, `@ai-sdk/react`, provider.
 
-**To build (Part 3):** `holiday-weather/{SKILL.md,run.mjs}` (self-contained) →
-installed into Hermes skills dir.
+**Built (Part 3):** `.claude/skills/holiday-weather/{SKILL.md,run.mjs}` (zero-dep,
+self-contained) → also installed into the Hermes skills dir; copy to OpenClaw / any
+harness the same way.
 
 ---
 
